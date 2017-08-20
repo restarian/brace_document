@@ -20,9 +20,9 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-  Brace UMD is a unified module definition script to use when defining javascript modules.
+  Markdown mutate is module to automatically add markdown page navigation links.
 
-  this code segment is a part of Brace UMD
+  this file is a part of Markdown mutate 
 
  Author: Robert Edward Steckroth II, Bustout, <RobertSteckroth@gmail.com>
 */
@@ -33,7 +33,7 @@ var path = require("path"),
 	program = require("commander"),
 	Spinner = require("process-wrap").Spinner
 
-var dir = "./doc", repo_uri = "https://github.com/restarian/brace_umd/blob/master/"
+var dir = "./", repo_uri = "https://github.com/restarian/brace_umd/blob/master/"
 program.version(info.name + " " + info.version)
 .usage("[options] [directory] -- This directory is the base path where the markdown files to mutate are found (default: "+dir+")"+
 "\n Important: The directory must be relative to the project root dir. The project root is the directory whixh contains.git repository."+

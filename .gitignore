@@ -1,0 +1,4 @@
+node_modules/
+SCRAP.js
+test.js
+*.sw[a-z]

@@ -1,11 +1,11 @@
 {
   "name": "markdown-mutute",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A project documentation mutation device to auto-add page navigation to markdown files",
   "main": "mutate.js",
   "bin": {
-		"mutate_markdown": "./bin/mutate_command.js"
-	},
+    "mutate_markdown": "./bin/mutate_command.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

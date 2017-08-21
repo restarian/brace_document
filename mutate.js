@@ -82,13 +82,14 @@ new Spinner("git", ["rev-parse", "--show-toplevel"], undefined, function() {
 
 			var branch = this.stdout.replace(/\s*\*\s*/, "").replace(/[\n\r]*/g, "")
 			var meta = {}
-			dir = dir.replace(new RegExp(base_dir), "").replace(/[\n\r]*/g, "")
+			dir = path.relative(base_dir, dir)
 
 			if ( program.verbose ) 
 				console.log("Using git repository with root directory:", base_dir, "\nUsing markdown files in directory:", path.join(base_dir, "/", dir))
 
-			if ( !repo_url )
-				repo_url = origin_url.protocol + "//"+ origin_url.hostname + path.join(origin_url.path.replace(/\.git$/, ""), "/blob", "/"+branch, "/"+dir)
+			if ( !repo_url ) 
+				repo_url = origin_url.protocol + "//"+ origin_url.hostname + 
+						path.posix.join(origin_url.path.replace(/\.git$/, ""), "/blob", "/"+branch, "/"+dir)
 			// An Array with all the values(files), in the base directory is filtered to include all of the files included with the regex (non-hidden 
 			// markdown files).
 			var found = fs.readdirSync(path.join(base_dir, "/", dir)).filter(function(value) { return RegExp(/^[^\.].*\.md$/).test(value) })

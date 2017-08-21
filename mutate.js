@@ -107,7 +107,7 @@ new Spinner("git", ["rev-parse", "--show-toplevel"], undefined, function() {
 				var title = contents.match(title_regex)
 				if ( !title )
 					return console.log("A sub-heading (##[#,..]), could not be found in file", file, "It will be skiped.")
-				return { file_name: val, heading: title[0], title: title[2], path: file, url: repo_url+path.join("/", val)}
+				return { file_name: val, heading: title[0], title: title[2], path: file, url: repo_url+path.posix.join("/", val)}
 			})
 
 			// This makes an Object with information regarding the markdown files found in the directory.

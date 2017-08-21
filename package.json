@@ -4,7 +4,7 @@
   "description": "A project documentation mutation device to auto-add page navigation to markdown files",
   "main": "mutate.js",
   "bin": {
-    "mutate_markdown": "./bin/mutate_command.js"
+    "markdown_mutate": "./bin/mutate_command.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

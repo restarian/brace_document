@@ -6,6 +6,7 @@
 ### Document pages
 * [The main page](https://github.com/restarian/markdown_mutate/blob/master/doc/README.md)
 * [The todo list](https://github.com/restarian/markdown_mutate/blob/master/doc/todo.md)
+* [Using the command](https://github.com/restarian/markdown_mutate/blob/master/doc/usage.md)
 
 ----
 

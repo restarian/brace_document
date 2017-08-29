@@ -1,17 +1,17 @@
 {
-  "name": "markdown-mutute",
+  "name": "brace-navlink",
   "version": "0.1.1",
   "description": "A project documentation mutation device to auto-add page navigation to markdown files",
-  "main": "mutate.js",
+  "main": "navlink.js",
   "bin": {
-    "markdown_mutate": "./bin/mutate_command.js"
+    "navlink": "./bin/navlink_command.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/restarian/markdown_mutate.git"
+    "url": "git+https://github.com/restarian/brace_navlink.git"
   },
   "keywords": [
     "markdown",
@@ -20,9 +20,9 @@
   "author": "Robert Steckroth",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/restarian/markdown_mutate/issues"
+    "url": "https://github.com/restarian/brace_navlink/issues"
   },
-  "homepage": "https://github.com/restarian/markdown_mutate#readme",
+  "homepage": "https://github.com/restarian/brace_navlink#readme",
   "dependencies": {
     "commander": "^2.11.0",
     "process-wrap": "0.0.1"

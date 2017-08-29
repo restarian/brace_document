@@ -1,6 +1,7 @@
-
 /*
 Copyright (c) 2017 Robert Steckroth <RobertSteckroth@gmail.com>
+
+	Brace navlink resides under the MIT licensed.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -20,9 +21,9 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-  Markdown mutate is module to automatically add markdown page navigation links.
+  Brace navlink is module to automatically add markdown page navigation links.
 
-  this file is a part of Markdown mutate 
+  this file is a part of Brace navlink 
 
  Author: Robert Edward Steckroth II, Bustout, <RobertSteckroth@gmail.com>
 */

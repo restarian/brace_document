@@ -1,4 +1,4 @@
-# Markdown mutate
+# Brace navbar 
 ## The main page
 
 ----
@@ -9,7 +9,10 @@
 
 ----
 
-[![Bash on Windows](https://raw.githubusercontent.com/restarian/brace_umd/master/doc/image/ubuntu_windows_logo.png)](https://github.com/Microsoft/BashOnWindows)
+[![Bash on Windows](https://raw.githubusercontent.com/restarian/restarian/master/doc/image/ubuntu_windows_logo.png)](https://github.com/Microsoft/BashOnWindows)
+
+..part of the [Brace suite](https://github.com/restarian/restarian/blob/master/brace/README.md)
+![Brace](https://raw.githubusercontent.com/restarian/restarian/master/brace/doc/image/brace_logo_small.png)
 
 **Author: Robert Steckroth, Bustout**
 
@@ -18,7 +21,7 @@
 **Bonuses:**
 * Tested in Ubuntu 16.04 and Windows 10
 * Integrates git repository information
-* Script runs as a command from anywhere on the system or locally as a nodejs script 
+* Idempotent javascript runs as a command from anywhere on the system or locally as a nodejs script 
 * Document pages are valid markdown documents before and after mutation 
 * Script is idempotent while maintaining individual changes to pages.
 * Branch specific urls so branches maintain own unique documentation commits
@@ -38,7 +41,7 @@ Below is the markdown page before and after mutation:
 
 Some text about the project here
 ```
-After running the markdown_mutate command/script:
+After running the *navbar* command/script the navigation links are add like below.
 
 ```javascript
 

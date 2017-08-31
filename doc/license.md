@@ -1,16 +1,16 @@
-# Brace navbar 
+# Brace navlink
 ### License information
 
 
 ----
 ### Document pages
-* [The main page](https://github.com/restarian/markdown_mutate/blob/master/doc/README.md)
-* [The todo list](https://github.com/restarian/markdown_mutate/blob/master/doc/todo.md)
-* [Using the command](https://github.com/restarian/markdown_mutate/blob/master/doc/usage.md)
+* [The main page](https://github.com/restarian/brace_navlink/blob/master/doc/README.md)
+* [The todo list](https://github.com/restarian/brace_navlink/blob/master/doc/todo.md)
+* [Document pages](https://github.com/restarian/brace_navlink/blob/master/doc/usage.md)
 
 ----
 
-Markdown mutate resides under the MIT license
+Brace navlink resides under the MIT license
 
 Copyright (c) 2017 Robert Steckroth <RobertSteckroth@gmail.com>
 
@@ -32,7 +32,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-  Markdown mutate is module to automatically add markdown page navigation links.
+  Brace navlink is module to automatically add markdown page navigation links.
 
   this file is a part of Markdown mutate 
 

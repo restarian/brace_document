@@ -1,11 +1,14 @@
-# Brace navbar 
+# Brace navlink 
 ## The main page
+
+..part of the [Brace suite](https://github.com/restarian/restarian/blob/master/brace/README.md)
+![Brace](https://raw.githubusercontent.com/restarian/restarian/master/brace/doc/image/brace_logo_small.png)
 
 ----
 ### Document pages
-* [License information](https://github.com/restarian/markdown_mutate/blob/master/doc/license.md)
-* [The todo list](https://github.com/restarian/markdown_mutate/blob/master/doc/todo.md)
-* [Using the command](https://github.com/restarian/markdown_mutate/blob/master/doc/usage.md)
+* [License information](https://github.com/restarian/brace_navlink/blob/master/doc/license.md)
+* [The todo list](https://github.com/restarian/brace_navlink/blob/master/doc/todo.md)
+* [Document pages](https://github.com/restarian/brace_navlink/blob/master/doc/usage.md)
 
 ----
 
@@ -19,7 +22,6 @@
 **License: MIT**
 
 **Bonuses:**
-* Tested in Ubuntu 16.04 and Windows 10
 * Integrates git repository information
 * Idempotent javascript runs as a command from anywhere on the system or locally as a nodejs script 
 * Document pages are valid markdown documents before and after mutation 
@@ -50,10 +52,6 @@ After running the *navbar* command/script the navigation links are add like belo
 
 ----
 ### Document pages
-* [License information](https://github.com/username/project/blob/master/doc/license.md)
-* [The todo list](https://github.com/username/project/blob/master/doc/todo.md)
-* [Using the command](https://github.com/username/project/blob/master/doc/usage.md)
-
 ----
 
 Some text about the project here

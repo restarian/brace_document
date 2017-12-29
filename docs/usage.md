@@ -1,4 +1,5 @@
 # Brace navlink
+### Command usage
 
 ----
 ### Document pages
@@ -8,4 +9,7 @@
 
 ----
 
-unfinished..
+```navlink ./path/to/docs```
+
+The directory should be relative to the present working directory when the script was ran. Other options can be viewed using ```navlink -h```.
+

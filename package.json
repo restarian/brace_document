@@ -2,12 +2,13 @@
   "name": "brace_navlink",
   "version": "0.2.0",
   "description": "A project documentation mutation device to auto-add page navigation to markdown files",
-  "main": "navlink.js",
+  "main": "build/brace_navlink.js",
+  "main": "lib/brace_navlink.js",
   "bin": {
-    "navlink": "./bin/navlink_command.js"
+    "navlink": "./bin/navlink.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -25,7 +26,7 @@
   "homepage": "https://github.com/restarian/brace_navlink#readme",
   "devDependencies": {},
   "dependencies": {
-    "commander": "^2.11.0",
-    "process-wrap": "0.0.1"
+    "bracket_print": "^0.9.5",
+    "commander": "^2.11.0"
   }
 }

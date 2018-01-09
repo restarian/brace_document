@@ -5,7 +5,7 @@ var info = require("../package.json"),
 var dir = "", repo_url = ""
 program.version(info.name + " " + info.version)
 .usage(print().l(
-"[options] <directory>",
+"[options] [directory]",
 "----------------------------------------------------------------------------------------------------",
 "The directory is the base path where the markdown files to mutate are",
 " found. The default directory is the directory where the script was started.", 
@@ -30,8 +30,9 @@ program.version(info.name + " " + info.version)
 " string than one will be ceeated underneath the sub-heading found above.",
 "-------------------------------------------------------------------------------------------------------").toString())
 .option("-u, --url <string>", "This is the url of the repository server. The default is to either use the git remote origin url of the current project.") 
+.option("-t, --title <string>", "The title of the navlink heading to use when one is not found. This is also used when the force title flag is set. ") 
+.option("-f, --force-title", "The title found in the current page markdown will be used if this is not set.") 
 .option("-v, --verbose", "Print any superfluous information from the run-time.")
-.option("-p, --print-meta", "Print the meta data assembled from parsing the markdown files (in ecma sytax).")
 .option("-r, --recursive", "Descend into all sub-directories to find markdown files.")
 .option("-b, --backup", "This will use separate files for the mutations and keep the originals intact.")
 .option("-s, --sort", "The program will arrange the navlinks list in alphanumeric order (which is how ls and dir show them), by default." +

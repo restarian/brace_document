@@ -18,8 +18,8 @@
 **License: MIT**
 
 **Bonuses:**
-* Idempotent design runs safely from anywhere on the system in modules or from the command line.
 * Fully asynchronous design for non-blocking run-time use.
+* Idempotent design runs safely from anywhere on the system in modules or from the command line.
 * Well commented, professional code
 
 **Caveat:**

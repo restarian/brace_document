@@ -6,19 +6,19 @@ var dir = "", repo_url = ""
 program.version(info.name + " " + info.version)
 .usage(`[options] [directory]
 ----------------------------------------------------------------------------------------------------
-The directory is the base path where the markdown files to mutate are
- found. The default directory is the directory where the script was started.
-Important: the directory must be relative to the project root dir. The project root is the
- directory which contains.git repository. This is done so that the links will work when click
- within a http platform.
-Note: all of the markdown files need to be at the same level in the directory (recursive
- processing is not yet implemented). The first sub-heading of the markdown file found will be
- used for the link title which is the first ##[#,..] found in the file. The page navagation
- list will be inserted (or replaced), at the first markdown underline ---[-,..] found followed
- by the heading: #[#,..] [specified navlink title]. If an existing navigation list is not found
- than it will be injecte below the first sub-heading (has more than one #), found in the file.
+The last parameter is the base directory where the markdown files are found. The directory where the 
+script was started is used when not supplied. This directory must be at or below a project root directory
+structure in order to use the associated information. The project root is the directory which contains
+the .git repository. The backup directory can be an absolute path or a relative path and does not need
+to be contained in a project. The project root directory will be used as the base directory (the same way
+the last parameter is), if it is supplied as relative.
 
-The following is matched in the markdown file for navlink replacement:
+The first sub-heading of the markdown file found will be used for the link title which is the first ##[#,..]
+found in the document. The page navagation list will be inserted (or replaced), at the first markdown 
+underline ---[-,..] found followed by the heading: #[#,..] [specified navlink title]. If an existing 
+navigation list is not found than it will be injected below the first sub-heading (any heading which hase 
+more than one #), found in the file. E.g. The following navigation text is matched in the markdown file for 
+navlink replacement:
 
   ----                         <-- this text is not replaced
   ### Document pages           <-- replaced with same title or with the value set to --title when the --force-title flag is set
@@ -26,10 +26,9 @@ The following is matched in the markdown file for navlink replacement:
   * Some documuntation text    <-- this text is not replaced sense it is not a markdown link
   * [link](url)                <-- this and all subsequent text is not altered sense the above text was not a markdown link
 
- In the example above, only the third line (the markdown link is replaced in the file. All
- subsequent links will be removed and replaced until another markdown underline or non-link
- syntax is found. If the file does not contain an underline and the #[#,..] [specified navlink title]
- string than one will be ceeated underneath the sub-heading found above.
+In the example above, only the third line (the markdown link syntax), is altered in the document. If the 
+file does not contain an underline and the #[#,..] [specified navlink title] string than one will be created
+underneath the sub-heading found above using the default title (which can be set with --title), of "Document pages".
 -------------------------------------------------------------------------------------------------------`)
 .option("-u, --url <string>", "This is the url of the repository server. The default is to either use the git remote origin url of the current project.") 
 .option("-t, --title <string>", "The title of the navlink heading to use when one is not found. This is also used when the force title flag is set. ") 

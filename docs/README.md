@@ -21,7 +21,9 @@
 * Idempotent design runs safely from anywhere on the system in modules or from the command line.
 * Fully asynchronous design for non-blocking run-time use.
 * Well commented, professional code
-* Thoroughly unit tested
+
+**Caveat:**
+* Not thoroughly unit tested
 
 This module provides an idempotent script/shell command that injects navigation list syntax into markdown pages. The pages are collected from a directory in the git project and link urls are created which reference them.
 

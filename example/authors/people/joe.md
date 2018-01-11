@@ -3,14 +3,12 @@
 
 
 ----
-### Document pages
-* [The main page](https://github.com/restarian/brace_navlink/blob/master/doc/README.md)
-* [License information](https://github.com/restarian/brace_navlink/blob/master/doc/license.md)
-* [Document pages](https://github.com/restarian/brace_navlink/blob/master/doc/usage.md)
+### Cool joes
+* authors
+  * [License information](https://github.com/restarian/brace_navlink/blob/master/example/contributing.md)
+  * people
+    * **The todo list**
+    * [The todo list](https://github.com/restarian/brace_navlink/blob/master/example/robert.md)
+* [The todo list](https://github.com/restarian/brace_navlink/blob/master/example/todo.md)
+* [Command usage](https://github.com/restarian/brace_navlink/blob/master/example/usage.md)
 
-----
-
-* Create appropriate documentation files
-* Add recursive file processing
-* Add the option to create separate copies of the document pages instead of overwriting them.
-* Add mercurial to the repository identification process

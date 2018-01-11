@@ -3,7 +3,14 @@
 
 
 ----
-### Document pages
+### Cool joes
+* authors
+  * **License information**
+  * people
+    * [The todo list](https://github.com/restarian/brace_navlink/blob/master/example/joe.md)
+    * [The todo list](https://github.com/restarian/brace_navlink/blob/master/example/robert.md)
+* [The todo list](https://github.com/restarian/brace_navlink/blob/master/example/todo.md)
+* [Command usage](https://github.com/restarian/brace_navlink/blob/master/example/usage.md)
 
 ----
 

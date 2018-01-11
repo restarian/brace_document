@@ -18,12 +18,15 @@
 **License: MIT**
 
 **Bonuses:**
-* Fully asynchronous design for non-blocking run-time use.
-* Idempotent design runs safely from anywhere on the system in modules or from the command line.
+* A beautiful showpiece of fully asynchronous non-blocking run-time program/script.
+* Incorporates many asynchronous functional programming techniques.
+* Idempotent design runs safely from anywhere on the system in scripts or from the command line.
+* Uses asynchronous module definition syntax.
+* Runs in Linux and/or Windows environments.
 * Well commented, professional code
 
 **Caveat:**
-* Not thoroughly unit tested
+* Not unit tested yet
 
 This module provides an idempotent script/shell command that injects navigation list syntax into markdown pages. The pages are collected from a directory in the git project and link urls are created which reference them.
 

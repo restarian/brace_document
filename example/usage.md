@@ -2,12 +2,14 @@
 ### Command usage
 
 ----
-### Document pages
-* [The main page](https://github.com/restarian/brace_navlink/blob/master/doc/README.md)
-* [License information](https://github.com/restarian/brace_navlink/blob/master/doc/license.md)
-* [The todo list](https://github.com/restarian/brace_navlink/blob/master/doc/todo.md)
-
-----
+### Cool joes
+* authors
+  * [License information](https://github.com/restarian/brace_navlink/blob/master/example/contributing.md)
+  * people
+    * [The todo list](https://github.com/restarian/brace_navlink/blob/master/example/joe.md)
+    * [The todo list](https://github.com/restarian/brace_navlink/blob/master/example/robert.md)
+* [The todo list](https://github.com/restarian/brace_navlink/blob/master/example/todo.md)
+* **Command usage**
 
 ```navlink ./path/to/docs```
 

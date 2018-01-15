@@ -1,6 +1,5 @@
 let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
 argglobal
-edit ~/Restarian/brace_navlink/bin/navlink.js
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -11,7 +10,7 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 1,27fold
-let s:l = 28 - ((27 * winheight(0) + 20) / 40)
+let s:l = 28 - ((27 * winheight(0) + 20) / 41)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt

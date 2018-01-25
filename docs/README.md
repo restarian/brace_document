@@ -8,8 +8,13 @@
 | ![Brace](https://raw.githubusercontent.com/restarian/restarian/master/brace/doc/image/brace_logo_small.png) | [![Ubuntu on Windows](https://raw.githubusercontent.com/restarian/restarian/master/doc/image/ubuntu_windows_logo.png)](https://github.com/Microsoft/BashOnWindows) | 
 
 ----
-### Document pages
-
+### Brace
+* [Synopsis ](/home/nickali/Restarian/brace_navlink/docs_raw/README.md)
+* development
+  * [The todo list](/home/nickali/Restarian/brace_navlink/docs_raw/README.md)
+* specification
+  * [License information](/home/nickali/Restarian/brace_navlink/docs_raw/README.md)
+* [Command usage](/home/nickali/Restarian/brace_navlink/docs_raw/README.md)
 
 ----
 
@@ -20,15 +25,20 @@
 **Bonuses:**
 * A beautiful showpiece of fully asynchronous non-blocking run-time program/script.
 * Incorporates many asynchronous functional programming techniques.
-* Idempotent design runs safely from anywhere on the system in scripts or from the command line.
-* Uses asynchronous module definition syntax.
+* Idempotent API design runs safely from anywhere on the system in scripts or from the command line.
+* Uses AMD (asynchronous module definition) syntax.
 * Runs in Linux and/or Windows environments.
 * Well commented, professional code
 
 **Caveat:**
 * Not unit tested yet
+* The entire parser API can not be set to operate synchronously or asynchronously with one option setting.
 
 This module provides an idempotent script/shell command that injects navigation list syntax into markdown pages. The pages are collected from a directory in the git project and link urls are created which reference them.
+
+
+The command below is used to create these very docs.
+navlink -v -r -t Brace Navlink -b docs doc/
 
 Below is the markdown page before and after mutation:
 

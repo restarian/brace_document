@@ -3,11 +3,7 @@
 
 
 ----
-### Brace
-* [Synopsis ](/home/nickali/Restarian/brace_navlink/doc/license.md)
-* [License information](/home/nickali/Restarian/brace_navlink/doc/license.md)
-* [The todo list](/home/nickali/Restarian/brace_navlink/doc/license.md)
-* [Command usage](/home/nickali/Restarian/brace_navlink/doc/license.md)
+### Document pages
 
 ----
 

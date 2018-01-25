@@ -66,6 +66,7 @@ underneath the sub-heading found above using the default title (which can be set
 .option("-b, --backup <directory>", "This will create separate files and directories for the mutations and keep the originals intact.")
 .option("-s, --sort", "The program will arrange the navlinks list in alphanumeric order (which is how ls and dir show them), by default." +
 "Sorting by depth (which will place all page links before sub-pages/directory page links), can be enabled with this flag.")
+.option("-c, --synchronous", "All functions used in the document parser will happen synchronously (default is asynchronous).")
 .parse(process.argv)
 
 // The directory is optional and will be the last process argument if provided from the command line.

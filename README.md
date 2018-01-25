@@ -8,8 +8,13 @@
 | ![Brace](https://raw.githubusercontent.com/restarian/restarian/master/brace/doc/image/brace_logo_small.png) | [![Ubuntu on Windows](https://raw.githubusercontent.com/restarian/restarian/master/doc/image/ubuntu_windows_logo.png)](https://github.com/Microsoft/BashOnWindows) | 
 
 ----
-### Document pages
-
+### Brace
+* [Synopsis ](/home/nickali/Restarian/brace_navlink/docs_raw/README.md)
+* development
+  * [The todo list](/home/nickali/Restarian/brace_navlink/docs_raw/README.md)
+* [Command usage](/home/nickali/Restarian/brace_navlink/docs_raw/README.md)
+* specification
+  * [License information](/home/nickali/Restarian/brace_navlink/docs_raw/README.md)
 
 ----
 

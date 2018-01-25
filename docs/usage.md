@@ -6,9 +6,9 @@
 * [Synopsis ](/home/nickali/Restarian/brace_navlink/docs_raw/usage.md)
 * development
   * [The todo list](/home/nickali/Restarian/brace_navlink/docs_raw/usage.md)
+* [Command usage](/home/nickali/Restarian/brace_navlink/docs_raw/usage.md)
 * specification
   * [License information](/home/nickali/Restarian/brace_navlink/docs_raw/usage.md)
-* [Command usage](/home/nickali/Restarian/brace_navlink/docs_raw/usage.md)
 
 ```navlink ./path/to/docs```
 

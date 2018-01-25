@@ -12,9 +12,9 @@
 * [Synopsis ](/home/nickali/Restarian/brace_navlink/docs_raw/README.md)
 * development
   * [The todo list](/home/nickali/Restarian/brace_navlink/docs_raw/README.md)
+* [Command usage](/home/nickali/Restarian/brace_navlink/docs_raw/README.md)
 * specification
   * [License information](/home/nickali/Restarian/brace_navlink/docs_raw/README.md)
-* [Command usage](/home/nickali/Restarian/brace_navlink/docs_raw/README.md)
 
 ----
 
@@ -37,8 +37,10 @@
 This module provides an idempotent script/shell command that injects navigation list syntax into markdown pages. The pages are collected from a directory in the git project and link urls are created which reference them.
 
 
-The command below is used to create these very docs.
-navlink -v -r -t Brace Navlink -b docs doc/
+The command below is used to create these very docs:
+```bash 
+node bin/navlink.js -vrf -t Brace Navlink -b docs docs_raw
+```
 
 Below is the markdown page before and after mutation:
 

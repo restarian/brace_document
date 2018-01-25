@@ -7,9 +7,9 @@
 * [Synopsis ](/home/nickali/Restarian/brace_navlink/docs_raw/specification/license.md)
 * development
   * [The todo list](/home/nickali/Restarian/brace_navlink/docs_raw/specification/license.md)
+* [Command usage](/home/nickali/Restarian/brace_navlink/docs_raw/specification/license.md)
 * specification
   * [License information](/home/nickali/Restarian/brace_navlink/docs_raw/specification/license.md)
-* [Command usage](/home/nickali/Restarian/brace_navlink/docs_raw/specification/license.md)
 
 ----
 

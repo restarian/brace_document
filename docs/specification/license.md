@@ -3,13 +3,13 @@
 
 
 ----
-### Brace
-* [Synopsis ](/home/nickali/Restarian/brace_navlink/docs_raw/specification/license.md)
+### Brace Navlink
+* [Synopsis ](https://github.com/restarian/brace_navlink/blob/master/docs_raw/license.md)
 * development
-  * [The todo list](/home/nickali/Restarian/brace_navlink/docs_raw/specification/license.md)
-* [Command usage](/home/nickali/Restarian/brace_navlink/docs_raw/specification/license.md)
+  * [The todo list](https://github.com/restarian/brace_navlink/blob/master/docs_raw/license.md)
+* [Command usage](https://github.com/restarian/brace_navlink/blob/master/docs_raw/license.md)
 * specification
-  * [License information](/home/nickali/Restarian/brace_navlink/docs_raw/specification/license.md)
+  * **License information**
 
 ----
 

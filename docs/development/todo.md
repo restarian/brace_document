@@ -3,11 +3,11 @@
 
 
 ----
-### Brace
-* [Synopsis ](/home/nickali/Restarian/brace_navlink/docs_raw/development/todo.md)
+### Brace Navlink
+* [Synopsis ](https://github.com/restarian/brace_navlink/blob/master/docs_raw/todo.md)
 * development
-  * [The todo list](/home/nickali/Restarian/brace_navlink/docs_raw/development/todo.md)
-* [Command usage](/home/nickali/Restarian/brace_navlink/docs_raw/development/todo.md)
+  * **The todo list**
+* [Command usage](https://github.com/restarian/brace_navlink/blob/master/docs_raw/todo.md)
 * specification
-  * [License information](/home/nickali/Restarian/brace_navlink/docs_raw/development/todo.md)
+  * [License information](https://github.com/restarian/brace_navlink/blob/master/docs_raw/todo.md)
 

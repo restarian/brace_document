@@ -20,7 +20,8 @@
 **Bonuses:**
 * A beautiful showpiece of fully asynchronous non-blocking run-time program/script.
 * Incorporates many asynchronous functional programming techniques.
-* Idempotent API design runs safely from anywhere on the system in scripts or from the command line.
+* Idempotent API design runs safely from anywhere on the system.
+* Operates as a system program from the command line or an import library.
 * Uses AMD (asynchronous module definition) syntax.
 * Runs in Linux and/or Windows environments.
 * Well commented, professional code
@@ -34,7 +35,7 @@ This module provides an idempotent script/shell command that injects navigation 
 
 The command below is used to create these very docs:
 ```bash 
-node bin/navlink.js -vrf -t Brace Navlink -b docs docs_raw
+node bin/navlink.js -vrf -t "Brace Navlink" -b docs docs_raw
 ```
 
 Below is the markdown page before and after mutation:

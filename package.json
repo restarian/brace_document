@@ -1,6 +1,6 @@
 {
   "name": "brace_navlink",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "A project documentation mutation device to auto-add page navigation to markdown files",
   "main": "lib/brace_navlink.js",
   "bin": {

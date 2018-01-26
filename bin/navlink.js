@@ -67,6 +67,9 @@ underneath the sub-heading found above using the default title (which can be set
 .option("-s, --sort", "The program will arrange the navlinks list in alphanumeric order (which is how ls and dir show them), by default." +
 "Sorting by depth (which will place all page links before sub-pages/directory page links), can be enabled with this flag.")
 .option("-c, --synchronous", "All functions used in the document parser will happen synchronously (default is asynchronous).")
+.option("-m, --make-specification", "Create a specifications paged using the package.json file located at repository root.")
+.option("-P, --commonjs-json", "(Relies on make-specification). Use the provided file for the specification page createion instead of the one found " +
+"in the repository root.")
 .parse(process.argv)
 
 // The directory is optional and will be the last process argument if provided from the command line.

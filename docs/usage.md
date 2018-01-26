@@ -2,13 +2,13 @@
 ### Command usage
 
 ----
-### Brace Navlink
-* [Synopsis ](https:/github.com/restarian/brace_navlink/blob/master/README.md)
+### Brace Navlinkdd
+* [Synopsis ](https:/github.com/restarian/brace_navlink/blob/master/docs/README.md)
 * development
-  * [The todo list](https:/github.com/restarian/brace_navlink/blob/master/development/todo.md)
+  * [The todo list](https:/github.com/restarian/brace_navlink/blob/master/docs/development/todo.md)
 **Command usage**
 * specification
-  * [License information](https:/github.com/restarian/brace_navlink/blob/master/specification/license.md)
+  * [License information](https:/github.com/restarian/brace_navlink/blob/master/docs/specification/license.md)
 
 ```navlink ./path/to/docs```
 

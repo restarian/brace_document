@@ -8,13 +8,13 @@
 | ![Brace](https://raw.githubusercontent.com/restarian/restarian/master/brace/doc/image/brace_logo_small.png) | [![Ubuntu on Windows](https://raw.githubusercontent.com/restarian/restarian/master/doc/image/ubuntu_windows_logo.png)](https://github.com/Microsoft/BashOnWindows) | 
 
 ----
-### Brace Navlink
+### Brace Navlinkdd
 **Synopsis**
 * development
-  * [The todo list](https:/github.com/restarian/brace_navlink/blob/master/development/todo.md)
-* [Command usage](https:/github.com/restarian/brace_navlink/blob/master/usage.md)
+  * [The todo list](https:/github.com/restarian/brace_navlink/blob/master/docs/development/todo.md)
+* [Command usage](https:/github.com/restarian/brace_navlink/blob/master/docs/usage.md)
 * specification
-  * [License information](https:/github.com/restarian/brace_navlink/blob/master/specification/license.md)
+  * [License information](https:/github.com/restarian/brace_navlink/blob/master/docs/specification/license.md)
 
 ----
 

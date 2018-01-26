@@ -64,7 +64,7 @@ underneath the sub-heading found above using the default title (which can be set
 .option("-v, --verbose", "Print any superfluous information from the run-time.")
 .option("-r, --recursive", "Descend into all sub-directories to find markdown files.")
 .option("-b, --backup <directory>", "This will create separate files and directories for the mutations and keep the originals intact.")
-.option("-s, --sort", "The program will arrange the navlinks list in alphanumeric order (which is how ls and dir show them), by default." +
+.option("-s, --sort", "The program will arrange the navlinks list in alphanumeric order (which is how ls and dir show them by default)." +
 "Sorting by depth (which will place all page links before sub-pages/directory page links), can be enabled with this flag.")
 .option("-c, --synchronous", "All functions used in the document parser will happen synchronously (default is asynchronous).")
 .option("-m, --make-specification", "Create a specifications paged using the package.json file located at repository root.")

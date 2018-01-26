@@ -23,7 +23,11 @@
     "url": "https://github.com/restarian/brace_navlink/issues"
   },
   "homepage": "https://github.com/restarian/brace_navlink#readme",
-  "devDependencies": {},
+  "devDependencies": {
+    "brace_maybe": "0.0.3",
+    "chai": "^4.1.2",
+    "requirejs": "^2.3.5"
+  },
   "dependencies": {
     "bracket_print": "^0.9.5",
     "commander": "^2.11.0"

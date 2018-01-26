@@ -3,12 +3,12 @@
 
 ----
 ### Brace Navlink
-* [Synopsis ](https://github.com/restarian/brace_navlink/blob/master/docs_raw/usage.md)
+* [Synopsis ](https:/github.com/restarian/brace_navlink/blob/master/README.md)
 * development
-  * [The todo list](https://github.com/restarian/brace_navlink/blob/master/docs_raw/usage.md)
-* **Command usage**
+  * [The todo list](https:/github.com/restarian/brace_navlink/blob/master/development/todo.md)
+**Command usage**
 * specification
-  * [License information](https://github.com/restarian/brace_navlink/blob/master/docs_raw/usage.md)
+  * [License information](https:/github.com/restarian/brace_navlink/blob/master/specification/license.md)
 
 ```navlink ./path/to/docs```
 

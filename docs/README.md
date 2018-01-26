@@ -9,12 +9,12 @@
 
 ----
 ### Brace Navlink
-* **Synopsis **
+**Synopsis**
 * development
-  * [The todo list](https://github.com/restarian/brace_navlink/blob/master/docs_raw/README.md)
-* [Command usage](https://github.com/restarian/brace_navlink/blob/master/docs_raw/README.md)
+  * [The todo list](https:/github.com/restarian/brace_navlink/blob/master/development/todo.md)
+* [Command usage](https:/github.com/restarian/brace_navlink/blob/master/usage.md)
 * specification
-  * [License information](https://github.com/restarian/brace_navlink/blob/master/docs_raw/README.md)
+  * [License information](https:/github.com/restarian/brace_navlink/blob/master/specification/license.md)
 
 ----
 

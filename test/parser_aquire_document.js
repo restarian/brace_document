@@ -52,7 +52,7 @@ describe("Using stop further progression methodology for dependencies in: "+path
 		})
 	})
 
-	describe("Checking parser.aquire_document in asynchronous mode to", function() {
+	describe("Checking parser.aquire_data in asynchronous mode to", function() {
 
 		var requirejs, example_dir = path.join(__dirname, "/example")
 		beforeEach(function() {
@@ -64,7 +64,7 @@ describe("Using stop further progression methodology for dependencies in: "+path
 
 		describe("Using the testing example directory -> example/no_direcories", function() {
 
-			describe("Creates the proper structure", function() {
+			describe("Creates the proper document object from a structure", function() {
 
 				it_might("with no flags set", function(done) {
 
@@ -81,34 +81,21 @@ describe("Using stop further progression methodology for dependencies in: "+path
 								path.join(example_dir, "/", "no_directories", "/", "tools.md"),
 								path.join(example_dir, "/", "no_directories", "/", "wages.md") 
 							])
-							done()
 
-						}, function(error) {
-							expect(true, error).to.be.false
-							done()
-						})
 
-					})
-				})
+							parser.aquire_document(structure, function(document_data) {
+								Object.keys(document_data).forEach(function(value, index, proto) {
+									var doc = document_data[value]
+									// These are the same sense no_directories does not contain any sub-directories.
+									expect(doc.dir).to.equal(doc.working_dir)
 
-				it_might("with the sort flag set to alphanumeric", function(done) {
+									// End the test at the end of the iteration.
+									if ( index === proto.length-1 )
+										done()
+										
+								}, document_data)
 
-					requirejs(["require", "document_parse"], function(req, document_parse) { 
-
-						var parser = document_parse()
-						parser.sort = "alphanumeric"
-
-						parser.aquire_structure(path.join(example_dir, "/", "no_directories"), function(structure) {
-
-							expect(structure).to.be.a("array")
-							// these should be in alphanumerical order.
-							expect(structure).to.deep.equal([
-								path.join(example_dir, "/", "no_directories", "/", "0wood.md"),
-								path.join(example_dir, "/", "no_directories", "/", "framers.md"), 
-								path.join(example_dir, "/", "no_directories", "/", "tools.md"),
-								path.join(example_dir, "/", "no_directories", "/", "wages.md")
-							])
-							done()
+							})
 
 						}, function(error) {
 							expect(true, error).to.be.false
@@ -116,65 +103,8 @@ describe("Using stop further progression methodology for dependencies in: "+path
 						})
 					})
 				})
-
-				it_might("with the reverse flag set and the sort flag set to alphanumeric", function(done) {
-
-					requirejs(["require", "document_parse"], function(req, document_parse) { 
-
-						var parser = document_parse()
-						parser.sort = "alphanumeric"
-						parser.reverse_sort = true
-
-						parser.aquire_structure(path.join(example_dir, "/", "no_directories"), function(structure) {
-
-							expect(structure).to.be.a("array")
-							// these should be in alphanumerical order.
-							expect(structure).to.deep.equal([
-								path.join(example_dir, "/", "no_directories", "/", "wages.md"),
-								path.join(example_dir, "/", "no_directories", "/", "tools.md"),
-								path.join(example_dir, "/", "no_directories", "/", "framers.md"),
-								path.join(example_dir, "/", "no_directories", "/", "0wood.md"),
-							])
-							done()
-
-						}, function(error) {
-							expect(true, error).to.be.false
-							done()
-						})
-					})
-				})
-
-				it_might.skip("with the synchronous flag set", function(done) {
-
-					requirejs(["require", "document_parse"], function(req, document_parse) { 
-
-						var parser = document_parse()
-						parser.sort = "alphanumeric"
-
-						parser.aquire_structure(path.join(example_dir, "/", "no_directories"), function(structure) {
-
-							expect(structure).to.be.a("array")
-							// These should be in alphanumerical order.
-							expect(structure).to.deep.equal([
-								path.join(example_dir, "/", "no_directories", "/", "wages.md"),
-								path.join(example_dir, "/", "no_directories", "/", "tools.md"),
-								path.join(example_dir, "/", "no_directories", "/", "framers.md"), 
-								path.join(example_dir, "/", "no_directories", "/", "0wood.md") 
-							])
-							done()
-
-						}, function(error) {
-							expect(true, error).to.be.false
-							done()
-						})
-					})
-				})
-
-
 			})
 		})
-
 	})
-
 })
 

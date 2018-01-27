@@ -25,9 +25,9 @@
 * Uses AMD (asynchronous module definition) syntax.
 * Runs in Linux and/or Windows environments.
 * Well commented, professional code
+* Unit tested 
 
 **Caveat:**
-* Not unit tested yet
 * The entire parser API can not be set to operate synchronously or asynchronously with one option setting.
 
 This module provides an idempotent script/shell command that injects navigation list syntax into markdown pages. The pages are collected from a directory in the git project and link urls are created which reference them.

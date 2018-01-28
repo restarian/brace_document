@@ -6,10 +6,10 @@
 ### Brace Navlink
 * [Synopsis ](https://github.com/restarian/brace_navlink/blob/master/docs/README.md)
 * [Command usage](https://github.com/restarian/brace_navlink/blob/master/docs/usage.md)
-* development
+* Development
   * [The todo list](https://github.com/restarian/brace_navlink/blob/master/docs/development/todo.md)
-* specification
-**License information**
+* Specification
+  * **License information**
 
 ----
 

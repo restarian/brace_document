@@ -1,7 +1,7 @@
 # Brace Navlink 
 ## Synopsis 
 
-[![Build status](https://ci.appveyor.com/api/projects/status//branch/master?svg=true)](https://ci.appveyor.com/project/restarian/brace-navlink/branch/master) [![Build Status](https://travis-ci.org/restarian/brace_navlink.svg?branch=master)](https://travis-ci.org/restarian/brace_navlink) [![Downloads](https://img.shields.io/npm/dm/brace_navlink.svg?svg=true)](https://npmjs.org/package/brace_navlink)
+[![Build status](https://ci.appveyor.com/api/projects/status/pwl5j7ou42q8q9hb/branch/master?svg=true)](https://ci.appveyor.com/project/restarian/brace-navlink/branch/master) [![Build Status](https://travis-ci.org/restarian/brace_navlink.svg?branch=master)](https://travis-ci.org/restarian/brace_navlink) [![Downloads](https://img.shields.io/npm/dm/brace_navlink.svg?svg=true)](https://npmjs.org/package/brace_navlink)
 
 | A part of the [Brace suite](https://github.com/restarian/restarian/blob/master/brace/README.md)| Developed with Windows 10 and Ubuntu 16 
 | ---- | ----
@@ -19,13 +19,11 @@
 
 **Bonuses:**
 * A beautiful showpiece of fully asynchronous non-blocking run-time program/script.
-* Incorporates many asynchronous functional programming techniques.
 * Idempotent API design runs safely from anywhere on the system.
 * Operates as a system program from the command line or an import library.
 * Uses AMD (asynchronous module definition) syntax.
 * Runs in Linux and/or Windows environments.
-* Well commented, professional code
-* Unit tested 
+* Well commented, unit tested, professional code
 
 **Caveat:**
 * The entire parser API can not be set to operate synchronously or asynchronously with one option setting.

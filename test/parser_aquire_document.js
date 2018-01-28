@@ -39,20 +39,21 @@ module.paths.unshift(path.join(__dirname, "/..", "/../"))
 describe("Using stop further progression methodology for dependencies in: "+path.basename(__filename), function() { 
 
 	// The stop property of the first describe enclosure is used to control test skipping.
-	this.stop = false
-	var it_might = maybe(this)	
+	var it_will = this
+	it_will.stop = false
+	var it_might = maybe(it_will)	
 
 	describe("Checking for dependencies..", function() { 
 
 		it_might("r_js in the system as a program", function(done) {
-			this.stop = true 
+			it_will.stop = true 
 			expect(fs.existsSync(rjs_path = require.resolve("requirejs")), "could not find r.js dependency").to.be.true
-			this.stop = false 
+			it_will.stop = false 
 			done()
 		})
 	})
 
-	describe("Checking parser.aquire_data in asynchronous mode to", function() {
+	describe("Checking parser.aquire_document in asynchronous mode to", function() {
 
 		var requirejs, example_dir = path.join(__dirname, "/example")
 		beforeEach(function() {

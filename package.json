@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": "mocha",
-		"make_self": "node bin/navlink.js -vrf -s 'alphanumeric' -t 'Brace Navlink' -b docs docs_raw"
+    "make_self": "node bin/navlink.js -vrf -s 'alphanumeric' -t 'Brace Navlink' -b docs docs_raw"
   },
   "repository": {
     "type": "git",
@@ -31,6 +31,7 @@
     "requirejs": "^2.3.5"
   },
   "dependencies": {
+    "amdefine": "^1.0.1",
     "bracket_print": "^0.9.5",
     "commander": "^2.11.0"
   }

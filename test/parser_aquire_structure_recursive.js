@@ -62,22 +62,25 @@ describe("Using stop further progression methodology for dependencies in: "+path
 
 		})
 
-		describe("Using the testing example directory -> example/no_direcories", function() {
+		describe("Using the testing example directory -> example/direcories", function() {
 
 			describe("Creates the proper structure", function() {
 
+				// Note: it is not possible to asynchronously test the structure output without the sort flag set to something sense it can end 
+				// up in any order. This is because the callback to any one particular fs command is based on many external factors (like drive IO).
 				it_might("with no flags set", function(done) {
 
 					requirejs(["document_parse"], function(document_parse) { 
 
 						var parser = document_parse()
 
-						parser.aquire_structure(path.join(example_dir, "/no_directories"), function(structure) {
+						parser.aquire_structure(path.join(example_dir, "/directories"), function(structure) {
 
 							expect(structure).to.be.a("array")
-							// Note: it is not possible to asynchronously test the structure output without the sort flag set to something sense it can end 
-							// up in any order. This is because the callback to any one particular fs command is based on many external factors (like drive IO).
-							expect(structure.length).to.equal(4)
+							// This can still be checked in asynchronous mode sense there should only be one entry in the structure here.
+							expect(structure).to.deep.equal([
+								path.join(example_dir, "/directories", "/framers.md"), 
+							])
 							done()
 
 						}, function(error) {
@@ -88,22 +91,29 @@ describe("Using stop further progression methodology for dependencies in: "+path
 					})
 				})
 
-				it_might("with the sort flag set to alphanumeric", function(done) {
+				it_might("with the sort flag set to alphanumeric and recursive flag set", function(done) {
 
 					requirejs(["document_parse"], function(document_parse) { 
 
 						var parser = document_parse()
-						parser.sort = "alphanumeric"
+						parser.recursive = true
+						parser.sort = "alphanumeric" 
 
-						parser.aquire_structure(path.join(example_dir, "/no_directories"), function(structure) {
+					 	parser.aquire_structure(path.join(example_dir, "/directories"), function(structure) {
 
 							expect(structure).to.be.a("array")
 							// these should be in alphanumerical order.
 							expect(structure).to.deep.equal([
-								path.join(example_dir, "/no_directories", "/0wood.md"),
-								path.join(example_dir, "/no_directories", "/framers.md"), 
-								path.join(example_dir, "/no_directories", "/tools.md"),
-								path.join(example_dir, "/no_directories", "/wages.md")
+								path.join(example_dir, "/directories", "/framers.md"),
+								{ 
+									"logistics": [ path.join(example_dir, "/directories", "/logistics", "/wages.md") ]
+								},
+								{ 
+									"resorces": [
+										 path.join(example_dir, "/directories", "/resorces", "/0wood.md"), 
+										 path.join(example_dir, "/directories", "/resorces", "/tools.md")
+									]
+								},
 							])
 							done()
 
@@ -114,49 +124,63 @@ describe("Using stop further progression methodology for dependencies in: "+path
 					})
 				})
 
-				it_might("with the reverse flag set and the sort flag set to alphanumeric", function(done) {
+				it_might("with the recursive flag set and the sort option set to alphanumeric", function(done) {
 
 					requirejs(["document_parse"], function(document_parse) { 
 
 						var parser = document_parse()
 						parser.sort = "alphanumeric"
+						parser.recursive = true
+
+					 	parser.aquire_structure(path.join(example_dir, "/directories"), function(structure) {
+
+							expect(structure).to.be.a("array")
+							// these should be in alphanumerical order.
+							expect(structure).to.deep.equal([
+								path.join(example_dir, "/directories", "/framers.md"),
+								{ 
+									"logistics": [ path.join(example_dir, "/directories", "/logistics", "/wages.md") ]
+								},
+								{ 
+									"resorces": [
+										 path.join(example_dir, "/directories", "/resorces", "/0wood.md"), 
+										 path.join(example_dir, "/directories", "/resorces", "/tools.md")
+									]
+								}
+							])
+							done()
+
+						}, function(error) {
+							expect(true, error).to.be.false
+							done()
+						})
+					})
+				})
+
+				it_might("with the recursive flag set and the sort option set to alphanumeric and the reverse-sort flag set", function(done) {
+
+					requirejs(["document_parse"], function(document_parse) { 
+
+						var parser = document_parse()
+						parser.sort = "alphanumeric"
+						parser.recursive = true
 						parser.reverse_sort = true
 
-						parser.aquire_structure(path.join(example_dir, "/no_directories"), function(structure) {
+					 	parser.aquire_structure(path.join(example_dir, "/directories"), function(structure) {
 
 							expect(structure).to.be.a("array")
 							// these should be in alphanumerical order.
 							expect(structure).to.deep.equal([
-								path.join(example_dir, "/no_directories", "/wages.md"),
-								path.join(example_dir, "/no_directories", "/tools.md"),
-								path.join(example_dir, "/no_directories", "/framers.md"),
-								path.join(example_dir, "/no_directories", "/0wood.md"),
-							])
-							done()
-
-						}, function(error) {
-							expect(true, error).to.be.false
-							done()
-						})
-					})
-				})
-
-				it_might.skip("with the synchronous flag set", function(done) {
-
-					requirejs(["document_parse"], function(document_parse) { 
-
-						var parser = document_parse()
-						parser.sort = "alphanumeric"
-
-						parser.aquire_structure(path.join(example_dir, "/no_directories"), function(structure) {
-
-							expect(structure).to.be.a("array")
-							// These should be in alphanumerical order.
-							expect(structure).to.deep.equal([
-								path.join(example_dir, "/no_directories", "/wages.md"),
-								path.join(example_dir, "/no_directories", "/tools.md"),
-								path.join(example_dir, "/no_directories", "/framers.md"), 
-								path.join(example_dir, "/no_directories", "/0wood.md") 
+								{ 
+									"resorces": [
+										 path.join(example_dir, "/directories", "/resorces", "/tools.md"),
+										 path.join(example_dir, "/directories", "/resorces", "/0wood.md"), 
+									]
+								},
+								{ 
+									"logistics": [ path.join(example_dir, "/directories", "/logistics", "/wages.md") ]
+								},
+								path.join(example_dir, "/directories", "/framers.md"),
 							])
 							done()
 

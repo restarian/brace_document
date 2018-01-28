@@ -67,9 +67,9 @@ underneath the sub-heading found above using the default title (which can be set
 .option("-s, --sort <string>", "alphanumeric: The links will be arranged for navigation links list in alphanumeric order. depth: All of the sub-directories" +
 " and links will be arranged at the top of the directory list.")
 .option("-R, --reverse-sort", "Reverse the sorting operation specified via the --sort option.")
-.option("-c, --synchronous", "All functions used in the document parser will happen synchronously (default is asynchronous).")
-.option("-m, --make-specification [location]", "Create a specifications paged using the package.json file located at repository root or optionally" +
-" use the file specified.")
+//.option("-c, --synchronous", "All functions used in the document parser will happen synchronously (default is asynchronous).")
+//.option("-m, --make-specification [location]", "Create a specifications paged using the package.json file located at repository root or optionally" +
+//" use the file specified.")
 .parse(process.argv)
 
 // The directory is optional and will be the last process argument if provided from the command line.

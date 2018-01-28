@@ -62,25 +62,28 @@ describe("Using stop further progression methodology for dependencies in: "+path
 
 		})
 
-		describe("Using the testing example directory -> example/no_direcories", function() {
+		describe("Using the testing example directory -> example/direcories", function() {
 
 			describe("Creates the proper document object from a structure", function() {
 
+				// Note: it is not possible to asynchronously test the structure output without the sort flag set to something sense it can end 
+				// up in any order. This is because the callback to any one particular fs command is based on many external factors (like drive IO).
 				it_might("with no flags set", function(done) {
 
 					requirejs(["document_parse"], function(document_parse) { 
 
 						var parser = document_parse()
 
-						parser.aquire_structure(path.join(example_dir, "/no_directories"), function(structure) {
+						parser.aquire_structure(path.join(example_dir, "/", "directories"), function(structure) {
 
 							expect(structure).to.be.a("array")
-							// Note: it is not possible to asynchronously test the structure output without the sort flag set to something sense it can end 
-							// up in any order. This is because the callback to any one particular fs command is based on many external factors (like drive IO).
-							expect(structure.length).to.equal(4)
+							// This can still be checked in asynchronous mode sense there should only be one entry in the structure here.
+							expect(structure).to.deep.equal([
+								path.join(example_dir, "/", "directories", "/", "framers.md"), 
+							])
 
 							parser.aquire_document(structure, function(document_data) {
-								expect(Object.keys(document_data).length).to.equal(4)
+								expect(Object.keys(document_data).length).to.equal(1)
 								Object.keys(document_data).forEach(function(value, index, proto) {
 
 									var doc = this[value]
@@ -103,6 +106,63 @@ describe("Using stop further progression methodology for dependencies in: "+path
 						})
 					})
 				})
+
+				it_might("with the sort option set to alphanumeric and the recursive flag set", function(done) {
+
+					requirejs(["document_parse"], function(document_parse) { 
+
+						var parser = document_parse()
+						parser.recursive = true
+						parser.sort = "alphanumeric" 
+
+						parser.aquire_structure(path.join(example_dir, "/", "directories"), function(structure) {
+
+							expect(structure).to.be.a("array")
+							expect(structure).to.deep.equal([
+								path.join(example_dir, "/", "directories", "/framers.md"),
+								{ 
+									"logistics": [ path.join(example_dir, "/", "directories", "/logistics", "/wages.md") ]
+								},
+								{ 
+									"resorces": [
+										 path.join(example_dir, "/", "directories", "/resorces", "/0wood.md"), 
+										 path.join(example_dir, "/", "directories", "/resorces", "/tools.md"),
+									]
+								},
+							])
+
+							parser.aquire_document(structure, function(document_data) {
+								expect(Object.keys(document_data).length).to.equal(4)
+								Object.keys(document_data).forEach(function(value, index, proto) {
+
+									var doc = this[value]
+									// These are the same sense no_directories does not contain any sub-directories.
+									if ( typeof doc !== "object" ) {
+										expect(doc.dir).to.equal(doc.working_dir)
+										expect(doc.relative_dir).to.be.empty
+										expect(doc.file_name).to.equal(path.basename(value))
+									}
+									else {
+
+										//expect(path.parse(doc.relative_dir).base).to.equal(value)
+
+									}
+									// End the test at the end of the iteration.
+									if ( index === proto.length-1 )
+										done()
+										
+								}, document_data)
+
+							})
+
+						}, function(error) {
+							expect(true, error).to.be.false
+							done()
+						})
+					})
+				})
+
+
 			})
 		})
 	})

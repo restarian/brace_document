@@ -7,6 +7,8 @@
 
 ----
 
+#### All works, media and writings contained within this project are licensed under the Brace navlink license unless it is explicitly specified otherwise.
+
 Brace Navlink resides under the MIT license
 
 Copyright (c) 2018 Robert Steckroth <RobertSteckroth@gmail.com>

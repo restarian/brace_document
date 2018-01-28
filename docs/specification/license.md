@@ -3,15 +3,17 @@
 
 
 ----
-### Brace Navlink
+### Document pages
 * [Synopsis ](https://github.com/restarian/brace_navlink/blob/master/docs/README.md)
-* [Command usage](https://github.com/restarian/brace_navlink/blob/master/docs/usage.md)
+* [Program usage](https://github.com/restarian/brace_navlink/blob/master/docs/usage.md)
 * Development
-  * [The todo list](https://github.com/restarian/brace_navlink/blob/master/docs/development/todo.md)
+  * [The todo sheet ](https://github.com/restarian/brace_navlink/blob/master/docs/development/todo.md)
 * Specification
   * **License information**
 
 ----
+
+#### All works, media and writings contained within this project are licensed under the Brace navlink license unless it is explicitly specified otherwise.
 
 Brace Navlink resides under the MIT license
 

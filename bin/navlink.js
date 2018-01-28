@@ -34,12 +34,13 @@ var dir = "", repo_url = ""
 program.version(info.name + " " + info.version)
 .usage(`[options] [directory]
 ----------------------------------------------------------------------------------------------------
-The last parameter is the base directory where the markdown files are found. The directory where the 
-script was started is used when not supplied. This directory must be at or below a project root directory
-structure in order to use the associated information. The project root is the directory which contains
-the .git repository. The backup directory can be an absolute path or a relative path and does not need
-to be contained in a project. The project root directory will be used as the base directory (the same way
-the last parameter is), if it is supplied as relative.
+The last argument is the directory where the markdown files are located. This directory does not need to 
+be contained within the project repository structure. The last parameter is the base directory where the 
+markdown files are found. The directory where the script was started is used when not supplied. This 
+directory must be at or below a project root directory structure in order to use the associated information.
+The project root is the directory which contains the .git repository. The backup directory can be an 
+absolute path or a relative path and does not need to be contained in a project. The project root directory 
+will be used as the base directory (the same way the last parameter is), if it is supplied as relative.
 
 The first sub-heading of the markdown file found will be used for the link title which is the first ##[#,..]
 found in the document. The page navagation list will be inserted (or replaced), at the first markdown 
@@ -60,16 +61,15 @@ underneath the sub-heading found above using the default title (which can be set
 -------------------------------------------------------------------------------------------------------`)
 .option("-u, --url <string>", "This is the url of the repository server. The default is to either use the git remote origin url of the current project.") 
 .option("-t, --title <string>", "The title of the navlink heading to use when one is not found. This is also used when the force title flag is set. ") 
-.option("-f, --force-title", "The title found in the current page markdown will be used if this is not set.") 
+.option("-f, --force-title", "The title found in the current page markdown will be used if this is not set. All of the navlink titles will be replaced with the value of the title option if it is set.") 
 .option("-v, --verbose", "Print any superfluous information from the run-time.")
 .option("-r, --recursive", "Descend into all sub-directories to find markdown files.")
-.option("-b, --backup <directory>", "This will create separate files and directories for the mutations and keep the originals intact.")
-.option("-s, --sort <string>", "alphanumeric: The links will be arranged for navigation links list in alphanumeric order. depth: All of the sub-directories" +
-" and links will be arranged at the top of the directory list.")
+.option("-b, --backup <directory>", "This will create separate files and directories for the mutations and keep the originals intact. The directory path" +
+" must be contained within the project repository so that proper links can be created relative to it.")
+.option("-s, --sort <alphanumeric, depth>", "alphanumeric: The links will be arranged for navigation links list in alphanumeric order. depth: All"+
+" of the sub-directories and links will be arranged at the top of the directory list.")
 .option("-R, --reverse-sort", "Reverse the sorting operation specified via the --sort option.")
-//.option("-c, --synchronous", "All functions used in the document parser will happen synchronously (default is asynchronous).")
-//.option("-m, --make-specification [location]", "Create a specifications paged using the package.json file located at repository root or optionally" +
-//" use the file specified.")
+//.option("-S, --synchronous", "All functions used in the document parser will happen synchronously (default is asynchronous).")
 .parse(process.argv)
 
 // The directory is optional and will be the last process argument if provided from the command line.
@@ -78,4 +78,5 @@ if ( process.argv.length <= 2 ) {
 	process.exit(0)
 }
 
-require("../../brace_navlink")(program, print({title_stamp: false, log_title: "navlink bin"}), function(exit_code) { process.exit(exit_code) })
+// The process exit code is maintained for unit testing via the cli.
+require("../../brace_navlink")(program, print({title_stamp: false, log_title: "bin"}), function(exit_code) { process.exit(exit_code) })

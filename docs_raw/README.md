@@ -10,7 +10,6 @@
 ----
 ### Document pages
 
-
 ----
 
 **Author: Robert Steckroth, Bustout**
@@ -23,21 +22,17 @@
 * Operates as a system program from the command line or an import library.
 * Uses AMD (asynchronous module definition) syntax.
 * Runs in Linux and/or Windows environments.
-* Well commented, unit tested, professional code
+* Well commented, unit tested and professional code
 
-**Caveat:**
-* The entire parser API can not be set to operate synchronously or asynchronously with one option setting.
+This program provides an idempotent script/shell command that injects navigation list syntax into markdown pages. The pages are collected from a directory in the git project and link urls are created which reference them.
 
-This module provides an idempotent script/shell command that injects navigation list syntax into markdown pages. The pages are collected from a directory in the git project and link urls are created which reference them.
+### The Brace Navlink document pages were processed with Brace navlink too.
+This is the command used to create the document pages you are reading now: ```bash > node bin/navlink.js -vr -t "Brace Navlink" -b docs docs_raw```
 
+### Below is a simple example of a markdown page before and after processing with Brace navlink. 
+---- 
 
-The command below is used to create these very docs:
-```bash 
-node bin/navlink.js -vrf -t "Brace Navlink" -b docs docs_raw
-```
-
-Below is the markdown page before and after mutation:
-
+#### Before using the navlink program a markdown page would look like this:
 ```javascript
 
 # My module
@@ -45,8 +40,8 @@ Below is the markdown page before and after mutation:
 
 Some text about the project here
 ```
-After running the *navbar* command/script the navigation links are add like below.
 
+#### After processing with Brace navlink the navigation links would be added like below:
 ```javascript
 
 # My module
@@ -54,6 +49,14 @@ After running the *navbar* command/script the navigation links are add like belo
 
 ----
 ### Document pages
+* **Synopsis**
+* [Command usage](https://github.com/yourcompany/my_module/blob/master/docs/usage.md)
+* Development
+  * [The todo sheet ](https://github.com/yourcompany/my_module/blob/master/docs/development/todo.md)
+* Specification
+  * [License information](https://github.com/yourcompany/my_module/blob/master/docs/specification/license.md)
+  * [Project Specs](https://github.com/yourcompany/my_module/blob/master/docs/specification/specification.md)
+
 ----
 
 Some text about the project here

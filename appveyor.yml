@@ -1,12 +1,12 @@
 version: 1.0.{build}
 
 clone_depth: 1
-clone_folder: c:\projects\brace_navlink
+clone_folder: c:\projects\brace_document
 notifications:
 - provider: Email
   to:
   - robertsteckroth@gmail.com
-  subject: A Brace_navlink build has failed.
+  subject: A Brace_document build has failed.
   on_build_success: false
   on_build_failure: true
   on_build_status_changed: false

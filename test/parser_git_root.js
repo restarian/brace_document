@@ -24,7 +24,7 @@ SOFTWARE.
 
   this file is a part of Brace Document 
 
- Author: Robert Edward Steckroth II, BustOut, <RobertSteckroth@gmail.com> */
+ Author: Robert Edward Steckroth, BustOut, <RobertSteckroth@gmail.com> */
 
 var expect = require("chai").expect,
 	path = require("path"),
@@ -44,7 +44,7 @@ describe("Using stop further progression methodology for dependencies in: "+path
 
 	describe("Checking for dependencies..", function() { 
 
-		it.skip("r_js in the system as a program", function(done) {
+		it("r_js in the system as a program", function(done) {
 			stop = true 
 			expect(fs.existsSync(rjs_path = require.resolve("requirejs")), "could not find r.js dependency").to.be.true
 			stop = false 

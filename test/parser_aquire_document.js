@@ -29,23 +29,24 @@ SOFTWARE.
 var expect = require("chai").expect,
 	path = require("path"),
 	fs = require("fs"),
-	test_help = require("test_help"),
+	utils = require("bracket_utils"),
 	maybe = require("brace_maybe")
 
-var remove_cache = test_help.remove_cache.bind(null, "r.js", "document_parse.js")
+var remove_cache = utils.remove_cache.bind(null, "r.js", "document_parse.js")
 
 module.paths.unshift(path.join(__dirname, "/..", "/../"))
 
+var it_will = global
+
 describe("Using stop further progression methodology for dependencies in: "+path.basename(__filename), function() { 
 
-	// The stop property of the first describe enclosure is used to control test skipping.
-	var it_will = this
-	it_will.stop = false
-	var it_might = maybe(it_will)	
+	var it = maybe(it_will)	
+	it_will.stop = !!process.env.DRY_RUN  
+	it_will.quiet = !!process.env.QUIET
 
 	describe("Checking for dependencies..", function() { 
 
-		it_might("r_js in the system as a program", function(done) {
+		it("r_js in the system as a program", function(done) {
 			it_will.stop = true 
 			expect(fs.existsSync(rjs_path = require.resolve("requirejs")), "could not find r.js dependency").to.be.true
 			it_will.stop = false 
@@ -67,7 +68,7 @@ describe("Using stop further progression methodology for dependencies in: "+path
 
 			describe("Creates the proper document object from a structure", function() {
 
-				it_might("with no flags set", function(done) {
+				it("with no flags set", function(done) {
 
 					requirejs(["document_parse"], function(document_parse) { 
 

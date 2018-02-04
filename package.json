@@ -1,18 +1,18 @@
 {
-  "name": "brace_navlink",
-  "version": "0.3.3",
-  "description": "A project documentation mutation device to auto-add page navigation to markdown files",
-  "main": "lib/brace_navlink.js",
+  "name": "brace_document",
+  "version": "0.0.1",
+  "description": "A shell program which creates base data for plugin utilization.",
+  "main": "lib/brace_document.js",
   "bin": {
-    "navlink": "./bin/navlink.js"
+    "document": "./bin/document.js"
   },
   "scripts": {
     "test": "mocha",
-    "make_docs": "node bin/navlink.js -vr -s 'alphanumeric' -t 'Brace Navlink' -b docs docs_raw && rm README.md && ln docs/README.md ."
+    "make_document": "npm run document -- -vr -s 'alphanumeric' -t 'Brace Document' -b docs docs_raw; rm README.md; ln docs/README.md ."
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/restarian/brace_navlink.git"
+    "url": "git+https://github.com/restarian/brace_document.git"
   },
   "keywords": [
     "markdown",
@@ -21,18 +21,18 @@
   "author": "Robert Steckroth",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/restarian/brace_navlink/issues"
+    "url": "https://github.com/restarian/brace_document/issues"
   },
-  "homepage": "https://github.com/restarian/brace_navlink#readme",
+  "homepage": "https://github.com/restarian/brace_document#readme",
   "devDependencies": {
-    "brace_maybe": "0.0.3",
-    "chai": "^4.1.2",
+    "brace_maybe": "^0.0.4",
     "mocha": "^5.0.0",
+    "chai": "^4.1.2",
     "requirejs": "^2.3.5"
   },
   "dependencies": {
     "amdefine": "^1.0.1",
-    "bracket_print": "^0.9.5",
+    "bracket_print": "file:../bracket_print",
     "commander": "^2.11.0"
   }
 }

@@ -1,6 +1,6 @@
 /* Copyright (c) 2018 Robert Steckroth <RobertSteckroth@gmail.com>
 
-	Brace Navlink resides under the MIT licensed.
+	Brace Document resides under the MIT licensed.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -20,32 +20,31 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-  Brace Navlink is module to automatically add markdown page navigation links.
+  Brace Document is module to automatically add markdown page navigation links.
 
-  this file is a part of Brace Navlink 
+  this file is a part of Brace Document 
 
  Author: Robert Edward Steckroth II, BustOut, <RobertSteckroth@gmail.com> */
 
 var expect = require("chai").expect,
 	path = require("path"),
 	fs = require("fs"),
-	test_help = require("test_help"),
+	utils = require("bracket_utils"),
 	maybe = require("brace_maybe")
 
-var remove_cache = test_help.remove_cache.bind(null, "r.js", "document_parse.js")
-
+var remove_cache = utils.remove_cache.bind(null, "r.js", "document_parse.js")
 module.paths.unshift(path.join(__dirname, "/..", "/../"))
+var it_will = global
 
 describe("Using stop further progression methodology for dependencies in: "+path.basename(__filename), function() { 
 
-	// The stop property of the first describe enclosure is used to control test skipping.
-	var it_will = this
-	it_will.stop = false
-	var it_might = maybe(it_will)	
+	var it = maybe(it_will)	
+	it_will.stop = !!process.env.DRY_RUN  
+	it_will.quiet = !!process.env.QUIET
 
 	describe("Checking for dependencies..", function() { 
 
-		it_might("r_js in the system as a program", function(done) {
+		it("r_js in the system as a program", function(done) {
 			it_will.stop = true 
 			expect(fs.existsSync(rjs_path = require.resolve("requirejs")), "could not find r.js dependency").to.be.true
 			it_will.stop = false 
@@ -69,7 +68,7 @@ describe("Using stop further progression methodology for dependencies in: "+path
 
 				// Note: it is not possible to asynchronously test the structure output without the sort flag set to something sense it can end 
 				// up in any order. This is because the callback to any one particular fs command is based on many external factors (like drive IO).
-				it_might("with no flags set", function(done) {
+				it("with no flags set", function(done) {
 
 					requirejs(["document_parse"], function(document_parse) { 
 
@@ -92,7 +91,7 @@ describe("Using stop further progression methodology for dependencies in: "+path
 					})
 				})
 
-				it_might("with the sort flag set to alphanumeric and recursive flag set", function(done) {
+				it("with the sort flag set to alphanumeric and recursive flag set", function(done) {
 
 					requirejs(["document_parse"], function(document_parse) { 
 
@@ -125,7 +124,7 @@ describe("Using stop further progression methodology for dependencies in: "+path
 					})
 				})
 
-				it_might("with the recursive flag set and the sort option set to alphanumeric", function(done) {
+				it("with the recursive flag set and the sort option set to alphanumeric", function(done) {
 
 					requirejs(["document_parse"], function(document_parse) { 
 
@@ -158,7 +157,7 @@ describe("Using stop further progression methodology for dependencies in: "+path
 					})
 				})
 
-				it_might("with the recursive flag set and the sort option set to alphanumeric and the reverse-sort flag set", function(done) {
+				it("with the recursive flag set and the sort option set to alphanumeric and the reverse-sort flag set", function(done) {
 
 					requirejs(["document_parse"], function(document_parse) { 
 

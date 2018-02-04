@@ -1,6 +1,7 @@
+#!/usr/bin/env node
 /* Copyright (c) 2018 Robert Steckroth <RobertSteckroth@gmail.com>
 
-	Brace Navlink resides under the MIT licensed.
+	Brace Document resides under the MIT licensed.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -20,14 +21,15 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-  Brace Navlink is module to automatically add markdown page navigation links.
+  Brace Document is module to automatically add markdown page navigation links.
 
-  this file is a part of Brace Navlink 
+  this file is a part of Brace Document 
 
  Author: Robert Edward Steckroth II, BustOut, <RobertSteckroth@gmail.com> */
 
 var info = require("../package.json"),
 	program = require("commander"),
+	fs = require("fs"),
 	print = require("bracket_print")
 
 var dir = "", repo_url = ""
@@ -42,41 +44,21 @@ The project root is the directory which contains the .git repository. The backup
 absolute path or a relative path and does not need to be contained in a project. The project root directory 
 will be used as the base directory (the same way the last parameter is), if it is supplied as relative.
 
-The first sub-heading of the markdown file found will be used for the link title which is the first ##[#,..]
-found in the document. The page navagation list will be inserted (or replaced), at the first markdown 
-underline ---[-,..] found followed by the heading: #[#,..] [specified navlink title]. If an existing 
-navigation list is not found than it will be injected below the first sub-heading (any heading which hase 
-more than one #), found in the file. E.g. The following navigation text is matched in the markdown file for 
-navlink replacement:
-
-  ----                         <-- this text is not replaced
-  ### Document pages           <-- replaced with same title or with the value set to --title when the --force-title flag is set
-  * [link](url)                <-- replaced with the configured url.
-  * Some documuntation text    <-- this text is not replaced sense it is not a markdown link
-  * [link](url)                <-- this and all subsequent text is not altered sense the above text was not a markdown link
-
-In the example above, only the third line (the markdown link syntax), is altered in the document. If the 
-file does not contain an underline and the #[#,..] [specified navlink title] string than one will be created
-underneath the sub-heading found above using the default title (which can be set with --title), of "Document pages".
+Any plugins found will have the options specified the lib/option.json program added to this list.
 -------------------------------------------------------------------------------------------------------`)
-.option("-u, --url <string>", "This is the url of the repository server. The default is to either use the git remote origin url of the current project.") 
-.option("-t, --title <string>", "The title of the navlink heading to use when one is not found. This is also used when the force title flag is set. ") 
-.option("-f, --force-title", "The title found in the current page markdown will be used if this is not set. All of the navlink titles will be replaced with the value of the title option if it is set.") 
 .option("-v, --verbose", "Print any superfluous information from the run-time.")
+.option("-q, --quiet", "No not output any log messages (including errors). This option supersedes the verbose flag.")
 .option("-r, --recursive", "Descend into all sub-directories to find markdown files.")
+.option("-p, --plugins", "Print all of the available plugins.")
 .option("-b, --backup <directory>", "This will create separate files and directories for the mutations and keep the originals intact. The directory path" +
 " must be contained within the project repository so that proper links can be created relative to it.")
-.option("-s, --sort <alphanumeric, depth>", "alphanumeric: The links will be arranged for navigation links list in alphanumeric order. depth: All"+
-" of the sub-directories and links will be arranged at the top of the directory list.")
+.option("-s, --sort <alphanumeric, depth>", "alphanumeric: The documents and directory structure be arranged in alphanumeric order. depth: All"+
+	" of the sub-directories will be arranged at the top of the directory list with the document pages below.")
 .option("-R, --reverse-sort", "Reverse the sorting operation specified via the --sort option.")
+.option("-u, --url <string>", "This is the url of the repository server. The default is to use the git remote origin url of the current project if this"+ 
+" is not set.") 
 //.option("-S, --synchronous", "All functions used in the document parser will happen synchronously (default is asynchronous).")
-.parse(process.argv)
-
-// The directory is optional and will be the last process argument if provided from the command line.
-if ( process.argv.length <= 2 ) {
-	program.outputHelp()
-	process.exit(0)
-}
+//.parse(process.argv)
 
 // The process exit code is maintained for unit testing via the cli.
-require("../../brace_navlink")(program, print({title_stamp: false, log_title: "bin"}), function(exit_code) { process.exit(exit_code) })
+require("../../brace_document")(program, print({title_stamp: false, log_title: "bin/document.js"}), function(exit_code) { process.exit(exit_code) })

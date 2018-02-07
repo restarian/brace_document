@@ -27,7 +27,7 @@ SOFTWARE.
  Author: Robert Edward Steckroth, BustOut, <RobertSteckroth@gmail.com> */
 
 var expect = require("chai").expect,
-	path = require("path"),
+	path = require("path").posix,
 	fs = require("fs"),
 	utils = require("bracket_utils"),
 	maybe = require("brace_maybe")

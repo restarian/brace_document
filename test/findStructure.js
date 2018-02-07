@@ -76,6 +76,17 @@ describe("Using stop further progression methodology for dependencies in: "+path
 
 		})
 
+		it("is able to create a git repository in the example directory if their is not one already", function(done) {
+
+			utils.Spawn("git", ["init"], {cwd: cwd}, (code, stdout, stderr) => {
+				expect(true, stdout+"  "+stderr).to.be.true	
+				done()
+			}, function(error) {
+				expect(false, error).to.be.true	
+				done()
+			})
+		})
+
 		describe("with no flags set to the document_parser", function(done) {
 
 			describe("creates the proper document structure using the directory: "+ path.join("example", "no_directories"), function() {

@@ -25,3 +25,6 @@
 * Runs in Linux and/or Windows environments.
 * Well commented, unit tested and professional code
 
+**Caveats:**
+* Only works git repositories.
+* Only works with github hosting as of now.

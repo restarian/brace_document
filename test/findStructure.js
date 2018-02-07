@@ -34,7 +34,7 @@ var expect = require("chai").expect,
 
 var remove_cache = utils.remove_cache.bind(null, "r.js", "document_parse.js")
 
-module.paths.unshift(path.join(__dirname, "/..", "/../"))
+module.paths.unshift(path.join(__dirname, "..", ".."))
 var it_will = global
 
 describe("Using stop further progression methodology for dependencies in: "+path.basename(__filename), function() { 
@@ -66,26 +66,26 @@ describe("Using stop further progression methodology for dependencies in: "+path
 
 	})
 
-	describe("using the testing example directory -> " + path.join("test", "/example"), function() {
+	describe("using the testing example directory -> " + path.join("test", "example"), function() {
 
-		var cwd = path.join(__dirname, "/example"), requirejs
+		var cwd = path.join(__dirname, "example"), requirejs
 		beforeEach(function() {
 			remove_cache()
 			requirejs = require("requirejs")
-			requirejs.config({baseUrl: path.join(__dirname, "/../lib"), nodeRequire: require})
+			requirejs.config({baseUrl: path.join(__dirname, "..", "lib"), nodeRequire: require})
 
 		})
 
 		describe("with no flags set to the document_parser", function(done) {
 
-			describe("creates the proper document structure using the directory: "+ path.join("example", "/no_directories"), function() {
+			describe("creates the proper document structure using the directory: "+ path.join("example", "no_directories"), function() {
 
 				it("with no flags set", function(done) {
 
 					requirejs(["document_parse"], function(document_parse) { 
 
 						var parser = document_parse()
-						parser.relative_docs_dir = path.join(__dirname, "/example", "/no_directories")
+						parser.relative_docs_dir = path.join(__dirname, "example", "no_directories")
 
 						parser.findPath(cwd, function() {
 
@@ -95,10 +95,10 @@ describe("Using stop further progression methodology for dependencies in: "+path
 								// Note: it is not possible to asynchronously test the structure output without the sort flag set to something sense it can end 
 								// up in any order. This is because the callback to any one particular fs command is based on many external factors (like drive IO).
 								expect(structure.length).to.equal(4)
-								expect(structure[0]).to.include(path.join(__dirname, "/example", "/no_directories"))
-								expect(structure[1]).to.include(path.join(__dirname, "/example", "/no_directories"))
-								expect(structure[2]).to.include(path.join(__dirname, "/example", "/no_directories"))
-								expect(structure[3]).to.include(path.join(__dirname, "/example", "/no_directories"))
+								expect(structure[0]).to.include(path.join(__dirname, "example", "no_directories"))
+								expect(structure[1]).to.include(path.join(__dirname, "example", "no_directories"))
+								expect(structure[2]).to.include(path.join(__dirname, "example", "no_directories"))
+								expect(structure[3]).to.include(path.join(__dirname, "example", "no_directories"))
 								done()
 
 							}, function(error) {
@@ -118,7 +118,7 @@ describe("Using stop further progression methodology for dependencies in: "+path
 
 						var parser = document_parse()
 						parser.sort = "alphanumeric"
-						parser.relative_docs_dir = path.join(__dirname, "/example", "/no_directories")
+						parser.relative_docs_dir = path.join(__dirname, "example", "no_directories")
 
 						parser.findPath(cwd, function() {
 							parser.findStructure(function(structure) {
@@ -126,10 +126,10 @@ describe("Using stop further progression methodology for dependencies in: "+path
 								expect(structure).to.be.a("array")
 								// these should be in alphanumerical order.
 								expect(structure).to.deep.equal([
-									path.join(__dirname, "/example", "/no_directories", "/0wood.md"),
-									path.join(__dirname, "/example", "/no_directories", "/framers.md"), 
-									path.join(__dirname, "/example", "/no_directories", "/tools.md"),
-									path.join(__dirname, "/example", "/no_directories", "/wages.md")
+									path.join(__dirname, "example", "no_directories", "0wood.md"),
+									path.join(__dirname, "example", "no_directories", "framers.md"), 
+									path.join(__dirname, "example", "no_directories", "tools.md"),
+									path.join(__dirname, "example", "no_directories", "wages.md")
 								])
 								done()
 
@@ -151,7 +151,7 @@ describe("Using stop further progression methodology for dependencies in: "+path
 						var parser = document_parse()
 						parser.sort = "alphanumeric"
 						parser.reverse_sort = true
-						parser.relative_docs_dir = path.join(__dirname, "/example", "/no_directories")
+						parser.relative_docs_dir = path.join(__dirname, "example", "no_directories")
 
 						parser.findPath(cwd, function() {
 							parser.findStructure(function(structure) {
@@ -159,10 +159,10 @@ describe("Using stop further progression methodology for dependencies in: "+path
 								expect(structure).to.be.a("array")
 								// these should be in alphanumerical order.
 								expect(structure).to.deep.equal([
-									path.join(__dirname, "/example", "/no_directories", "/wages.md"),
-									path.join(__dirname, "/example", "/no_directories", "/tools.md"),
-									path.join(__dirname, "/example", "/no_directories", "/framers.md"), 
-									path.join(__dirname, "/example", "/no_directories", "/0wood.md")
+									path.join(__dirname, "example", "no_directories", "wages.md"),
+									path.join(__dirname, "example", "no_directories", "tools.md"),
+									path.join(__dirname, "example", "no_directories", "framers.md"), 
+									path.join(__dirname, "example", "no_directories", "0wood.md")
 								])
 								done()
 

@@ -13,12 +13,13 @@ silent! normal! zE
 2,26fold
 2
 normal! zo
-let s:l = 53 - ((52 * winheight(0) + 20) / 40)
+let s:l = 53 - ((51 * winheight(0) + 20) / 41)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
 53
 normal! 010|
+lcd ~/Restarian/brace_document
 let &so = s:so_save | let &siso = s:siso_save
 doautoall SessionLoadPost
 " vim: set ft=vim :

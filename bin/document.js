@@ -35,17 +35,16 @@ var info = require("../package.json"),
 var dir = "", repo_url = ""
 program.version(info.name + " " + info.version)
 .usage(`[options] [directory]
-----------------------------------------------------------------------------------------------------
-The last argument is the directory where the markdown files are located. This directory does not need to 
-be contained within the project repository structure. The last parameter is the base directory where the 
-markdown files are found. The directory where the script was started is used when not supplied. This 
-directory must be at or below a project root directory structure in order to use the associated information.
-The project root is the directory which contains the .git repository. The backup directory can be an 
-absolute path or a relative path and does not need to be contained in a project. The project root directory 
-will be used as the base directory (the same way the last parameter is), if it is supplied as relative.
 
-Any plugins found will have the options specified the lib/option.json program added to this list.
--------------------------------------------------------------------------------------------------------`)
+-- Brace Document  ----------------------------------------------------------------------------------------------------
+The last argument is the directory where the markdown files are located. This directory does not need to be contained 
+within the project repository structure. The last parameter is the base directory where the markdown files are found.
+The directory where the script was started is used when not supplied. This directory must be at or below a project 
+root directory structure in order to use the associated information. The project root is the directory which contains 
+the .git repository. The backup directory can be an absolute path or a relative path and does not need to be contained 
+in a project. The project root directory will be used as the base directory (the same way the last parameter is), if 
+it is supplied as relative.
+All plugins found with the commonjs structure to this program will have the its options appended to this menu.`)
 .option("-v, --verbose", "Print any superfluous information from the run-time.")
 .option("-q, --quiet", "No not output any log messages (including errors). This option supersedes the verbose flag.")
 .option("-r, --recursive", "Descend into all sub-directories to find markdown files.")
@@ -58,7 +57,6 @@ Any plugins found will have the options specified the lib/option.json program ad
 .option("-u, --url <string>", "This is the url of the repository server. The default is to use the git remote origin url of the current project if this"+ 
 " is not set.") 
 //.option("-S, --synchronous", "All functions used in the document parser will happen synchronously (default is asynchronous).")
-//.parse(process.argv)
 
 // The process exit code is maintained for unit testing via the cli.
 require("../../brace_document")(program, print({title_stamp: false, log_title: "bin/document.js"}), function(exit_code) { process.exit(exit_code) })

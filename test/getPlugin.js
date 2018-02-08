@@ -65,15 +65,16 @@ describe("Using stop further progression methodology for dependencies in: "+path
 		})
 
 
-		it("brace_document_navlink in the system as a program", function(done) {
+		it("brace_document_navlink is in the system as a program", function(done) {
+
 			it_will.stop = true 
-			var nav_dep = fs.existsSync(require.resolve("brace_document_navlink"))
-			if ( nav_dep ) {
+			try {
+				require("brace_document_navlink")
 				it_will.stop = false 
 				done()
-				return 
-			}
-			else {
+			} 
+			catch(error) {
+
 				utils.Spawn("npm", ["install", "brace_document_navlink"], (code, stdout, stderr) => {
 					it_will.stop = false 
 					done()

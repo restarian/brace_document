@@ -75,7 +75,7 @@ describe("Using stop further progression methodology for dependencies in: "+path
 			} 
 			catch(error) {
 
-				utils.Spawn("npm", ["install", "-g", "brace_document_navlink"], {cwd: path.join(__dirname, ".."}, (code, stdout, stderr) => {
+				utils.Spawn("npm", ["install", "brace_document_navlink"], {cwd: path.join(__dirname, "..")}, (code, stdout, stderr) => {
 					it_will.stop = false 
 					done()
 				}, function(error) {

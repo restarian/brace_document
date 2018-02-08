@@ -8,13 +8,13 @@
 
 ```bash :> node ./bin/document.js [option] [directory]``` or if set up globally: ```document [option] [directory]```
 
-This program requires a git repository to operate with. The project root is found by asking git where the top level is. The program can be ran anywhere within a git repository as all paths will be relative to the top level (project root). The process shell current working directory is used to find the git repositrywhen ran from the command line. This can be set to another value at run-time by passing in the desired working directory to the *findPath* member.
+This program requires a git repository to operate with. The project root is determined by asking git what the top level directory is. The command line program should be started from within a git repository as all paths will then be relative to the project root (top level). The process shell current working directory is used to find the git repositry when ran from the command line. This can be set to another value at run-time by passing in the desired working directory to the *findPath* member.
 
 All document options are available via the command line script or by setting them directly to the document_parser script (except the *help*, *version* and *plugins* options). The names of the options have the hyphens replaced with underscores when setti them to the module itself.
 
 #### Below is an example of how to set option data directly to the document_parse module:
 ```javascript
-// Note: The bracket print module is optional.
+// Note: The bracket print module instance parameter is optional as it is also loaded automatically if not included.
 var parser = document_parse([Bracket print])
 
 // Notice that the hyphen was replaced with a underscore in all of these
@@ -23,9 +23,9 @@ parser.sort = "depth"
 parser.reverse_sort = true
 // This can be outside the project root as long as relative_docs dir is not.
 parser.backup = ../../docs 
-// This is the only non-optional parser option. The value when ran from the commond line is set to the directory inputted as the manditory last parameter.
-// It is fine to use absolute paths when setting this value even though it is named with the word relative. This can be outside the project root as 
-// long as the backup is set to a path within the project.
+// The value set when the program is started from the command line will be set to the directory inputted as the manditory last parameter of the command.
+// It is fine to use absolute paths when setting this value even though it is named with the word relative. This directory can be outside the project root as 
+// long as the backup is set to a path within the project. The *project_root* value will be used if this is not set when calling the api programically. 
 parser.relative_docs_dir = docs_raw
 ```
 
@@ -35,7 +35,7 @@ parser.relative_docs_dir = docs_raw
 * -v, --verbose                     
 	* Print any superfluous information from the run-time.
 * -s, --sort <alphanumeric, depth>
-	* alphanumeric: The links will be arranged for navigation links list in alphanumeric order. depth: All of the sub-directories and links will be arranged at the top of the directory list.
+	* alphanumeric: The links will be arranged for navigation links list in alphanumeric order. depth: All of the sub-directories and links will be arranged at the top of the directory list. Note: the structure will be presorted in alphanumeric regardless of the reverse-sort flag when the sort option is set to *depth*.
 * -R, --reverse-sort                
 	* Reverse the sorting operation specified via the --sort option.
 * -p, --plugins

@@ -52,7 +52,8 @@ All plugins found with the commonjs structure to this program will have the its 
 .option("-b, --backup <directory>", "This will create separate files and directories for the mutations and keep the originals intact. The directory path" +
 " must be contained within the project repository so that proper links can be created relative to it.")
 .option("-s, --sort <alphanumeric, depth>", "alphanumeric: The documents and directory structure be arranged in alphanumeric order. depth: All"+
-	" of the sub-directories will be arranged at the top of the directory list with the document pages below.")
+	" of the sub-directories will be arranged at the top of the directory list with the document pages below. Note: the structure will be presorted in" +
+	" alphanumeric regardless of the reverse-sort flag when the sort option is set to *depth*.)
 .option("-R, --reverse-sort", "Reverse the sorting operation specified via the --sort option.")
 
 // The process exit code is maintained for unit testing via the cli.

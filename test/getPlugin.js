@@ -53,23 +53,35 @@ describe("Using stop further progression methodology for dependencies in: "+path
 			done()
 		})
 
-		it("brace_document_navlink in the system as a program", function(done) {
-			it_will.stop = true 
-			expect(fs.existsSync(require.resolve("brace_document_navlink")), "could not find the brace_document_navlink module").to.be.true
-			it_will.stop = false 
-			done()
-		})
-
 		it("npm is available in the system as a program", function(done) {
 			it_will.stop = true 
 			utils.Spawner("npm", [], function() {
-				expect(true).to.be.true
 				it_will.stop = false 
 				done()
 			}, function() {
 				expect(false, "npm is not available as a system program").to.be.true
 				done()
 			})
+		})
+
+
+		it("brace_document_navlink in the system as a program", function(done) {
+			it_will.stop = true 
+			var nav_dep = fs.existsSync(require.resolve("brace_document_navlink"))
+			if ( nav_dep ) {
+				it_will.stop = false 
+				done()
+				return 
+			}
+			else {
+				utils.Spawn("npm", ["install", "brace_document_navlink"], (code, stdout, stderr) => {
+					it_will.stop = false 
+					done()
+				}, function(error) {
+					expect(false, error).to.be.true	
+					done()
+				})
+			}
 		})
 
 	})

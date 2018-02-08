@@ -33,7 +33,6 @@ var expect = require("chai").expect,
 	maybe = require("brace_maybe")
 
 var remove_cache = utils.remove_cache.bind(null, "r.js", "document_parse.js")
-
 module.paths.unshift(path.join(__dirname, "..", ".."))
 var it_will = global
 
@@ -78,7 +77,6 @@ describe("Using stop further progression methodology for dependencies in: "+path
 		it("is able to create a git repository in the example directory if there is not one already", function(done) {
 
 			utils.Spawn("git", ["init"], {cwd: cwd}, (code, stdout, stderr) => {
-				expect(true, stdout+"  "+stderr).to.be.true	
 				done()
 			}, function(error) {
 				expect(false, error).to.be.true	

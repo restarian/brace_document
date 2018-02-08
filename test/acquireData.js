@@ -55,7 +55,6 @@ describe("Using stop further progression methodology for dependencies in: "+path
 		it("git is available in the system as a program", function(done) {
 			it_will.stop = true 
 			utils.Spawner("git", [], function() {
-				expect(true).to.be.true
 				it_will.stop = false 
 				done()
 			}, function() {

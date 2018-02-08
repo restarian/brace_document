@@ -44,6 +44,7 @@ describe("Using stop further progression methodology for dependencies in: "+path
 	it_will.quiet = !!process.env.QUIET
 
 	describe("Checking for dependencies..", function() { 
+
 		it("r_js in the system as a program", function(done) {
 			it_will.stop = true 
 			expect(fs.existsSync(rjs_path = require.resolve("requirejs")), "could not find r.js dependency").to.be.true
@@ -52,7 +53,7 @@ describe("Using stop further progression methodology for dependencies in: "+path
 		})
 
 		it("git is available in the system as a program", function(done) {
-			stop = true 
+			it_will.stop = true 
 			utils.Spawner("git", [], function() {
 				expect(true).to.be.true
 				it_will.stop = false 
@@ -75,7 +76,7 @@ describe("Using stop further progression methodology for dependencies in: "+path
 
 		})
 
-		it("is able to create a git repository in the example directory if their is not one already", function(done) {
+		it("is able to create a git repository in the example directory if there is not one already", function(done) {
 
 			utils.Spawn("git", ["init"], {cwd: cwd}, (code, stdout, stderr) => {
 				expect(true, stdout+"  "+stderr).to.be.true	

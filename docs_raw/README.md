@@ -20,11 +20,11 @@
 * A beautiful showpiece of fully asynchronous non-blocking run-time program/script.
 * Idempotent API design runs safely from anywhere on the system.
 * Uses a extensible design which incorporates the commonjs system via npm
-* Operates as a system program from the command line or an import library.
-* Uses AMD (asynchronous module definition) syntax.
-* Runs in Linux and/or Windows environments.
-* Well commented, unit tested and professional code
+* Operates as a system program from the command line or an import module script.
+* Uses AMD (asynchronous module definition), syntax.
+* Tested and working in Linux and/or Windows environments.
+* Well commented, thoroughly unit tested and professional code
 
 **Caveats:**
-* Only works git repositories.
-* Only works with github hosting as of now.
+* Only works with git repositories.
+* Only works with github.com hosting as of now.

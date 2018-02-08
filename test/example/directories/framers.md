@@ -1,5 +1,5 @@
-# Directories Example 
-### Carpentry
+# Directories Example Page 
+##### Carpentry is for people 
 
 ----
 ### 

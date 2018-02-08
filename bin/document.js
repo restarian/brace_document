@@ -54,7 +54,6 @@ All plugins found with the commonjs structure to this program will have the its 
 .option("-s, --sort <alphanumeric, depth>", "alphanumeric: The documents and directory structure be arranged in alphanumeric order. depth: All"+
 	" of the sub-directories will be arranged at the top of the directory list with the document pages below.")
 .option("-R, --reverse-sort", "Reverse the sorting operation specified via the --sort option.")
-//.option("-S, --synchronous", "All functions used in the document parser will happen synchronously (default is asynchronous).")
 
 // The process exit code is maintained for unit testing via the cli.
 require("../../brace_document")(program, print({title_stamp: false, log_title: "bin/document.js"}), function(exit_code) { process.exit(exit_code) })

@@ -33,7 +33,6 @@ var expect = require("chai").expect,
 	maybe = require("brace_maybe")
 
 var remove_cache = utils.remove_cache.bind(null, "r.js", "document_parse.js")
-
 module.paths.unshift(path.join(__dirname, "..", ".."))
 var it_will = global
 
@@ -47,14 +46,14 @@ describe("Using stop further progression methodology for dependencies in: "+path
 
 		it("r_js in the system as a program", function(done) {
 			it_will.stop = true 
-			expect(fs.existsSync(rjs_path = require.resolve("requirejs")), "could not find r.js dependency").to.be.true
+			expect((function() {try { require("requirejs"); return true; } catch(e) { return e;}})(), "could not find r.js dependency").to.be.true
 			it_will.stop = false 
 			done()
 		})
 
 		it("git is available in the system as a program", function(done) {
 			it_will.stop = true 
-			utils.Spawner("git", [], function() {
+			utils.Spawn("git", [], function() {
 				it_will.stop = false 
 				done()
 			}, function() {
@@ -108,8 +107,8 @@ describe("Using stop further progression methodology for dependencies in: "+path
 								expect(Object.keys(data).length).to.equal(5)
 								expect(data[path.join(test_path, "framers.md")]).to.be.a("object").that.includes({
 									file_name: "framers.md",
-									secondary_heading: `##### Carpentry is for people \n`,
-									primary_heading: `# Directories Example Page \n`,
+									secondary_heading: "##### Carpentry is for people \n",
+									primary_heading: "# Directories Example Page \n",
 								})
 
 								var all = Object.keys(data), key

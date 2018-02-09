@@ -30,7 +30,8 @@ var expect = require("chai").expect,
 	path = require("path"),
 	fs = require("fs"),
 	utils = require("bracket_utils"),
-	maybe = require("brace_maybe")
+	maybe = require("brace_maybe"),
+	EOL = require("os").EOL
 
 var remove_cache = utils.remove_cache.bind(null, "r.js", "document_parse.js")
 global.module = module
@@ -55,15 +56,14 @@ describe("Using stop further progression methodology for dependencies in: "+path
 
 		it("npm is available in the system as a program", function(done) {
 			it_will.stop = true 
-			utils.Spawner("npm", [], function() {
+			utils.Exec("npm help", [], function(code, stderr, stdout) {
 				it_will.stop = false 
 				done()
-			}, function() {
-				expect(false, "npm is not available as a system program").to.be.true
+			}, function(error) {
+				expect(false, error + EOL + "npm is not available as a system program").to.be.true
 				done()
 			})
 		})
-
 
 		it("brace_document_navlink is in the system as a program", function(done) {
 
@@ -75,7 +75,7 @@ describe("Using stop further progression methodology for dependencies in: "+path
 			} 
 			catch(error) {
 
-				utils.Spawn("npm", ["install", "brace_document_navlink"], {cwd: path.join(__dirname, "..")}, (code, stdout, stderr) => {
+				utils.Exec("npm", ["install", "brace_document_navlink"], {cwd: path.join(__dirname, "..")}, (code, stdout, stderr) => {
 					it_will.stop = false 
 					done()
 				}, function(error) {
@@ -90,7 +90,9 @@ describe("Using stop further progression methodology for dependencies in: "+path
 	describe("using the testing example directory -> " + path.join("test", "example"), function() {
 
 		var cwd = path.join(__dirname, "example"), requirejs
-		beforeEach(function() {
+
+		beforeEach(function(done) {
+
 			remove_cache()
 			requirejs = require("requirejs")
 			requirejs.config({baseUrl: path.join(__dirname, "..", "lib"), nodeRequire: require})

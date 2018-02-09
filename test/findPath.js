@@ -47,7 +47,7 @@ describe("using stop further progression methodology for dependencies in: "+path
 
 		it("r_js in the system as a program", function(done) {
 			it_will.stop = true 
-			expect(fs.existsSync(rjs_path = require.resolve("requirejs")), "could not find r.js dependency").to.be.true
+			expect((function() {try { require("requirejs"); return true; } catch(e) { return e;}})(), "could not find r.js dependency").to.be.true
 			it_will.stop = false 
 			done()
 		})

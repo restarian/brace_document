@@ -33,10 +33,9 @@ var expect = require("chai").expect,
 	maybe = require("brace_maybe"),
 	EOL = require("os").EOL
 
-// Needed because mocha does not use the nodejs function wrapper for modules.
+var remove_cache = utils.remove_cache.bind(null, "r.js", "document_parse.js")
 global.module = module
 
-var remove_cache = utils.remove_cache.bind(null, "r.js", "document_parse.js")
 module.paths.unshift(path.join(__dirname, "..", ".."))
 var it_will = global
 
@@ -47,16 +46,17 @@ describe("Using stop further progression methodology for dependencies in: "+path
 	it_will.quiet = !!process.env.QUIET
 
 	describe("Checking for dependencies..", function() { 
+
 		it("r_js in the system as a program", function(done) {
 			it_will.stop = true 
-			expect((function() {try { require("requirejs"); return true; } catch(e) { return e;}})(), "could not find r.js dependency").to.be.true
+			expect(fs.existsSync(rjs_path = require.resolve("requirejs")), "could not find r.js dependency").to.be.true
 			it_will.stop = false 
 			done()
 		})
 
 		it("npm is available in the system as a program", function(done) {
 			it_will.stop = true 
-			utils.Exec("npm", ["help"], function(code, stderr, stdout) {
+			utils.Exec("npm help", [], function(code, stderr, stdout) {
 				it_will.stop = false 
 				done()
 			}, function(error) {
@@ -75,7 +75,7 @@ describe("Using stop further progression methodology for dependencies in: "+path
 			} 
 			catch(error) {
 
-				utils.Exec("npm", ["install", "brace_document_navlink", "--silent"], {cwd: path.join(__dirname, "..")}, (code, stdout, stderr) => {
+				utils.Exec("npm", ["install", "brace_document_navlink"], {cwd: path.join(__dirname, "..")}, (code, stdout, stderr) => {
 					it_will.stop = false 
 					done()
 				}, function(error) {
@@ -84,6 +84,7 @@ describe("Using stop further progression methodology for dependencies in: "+path
 				})
 			}
 		})
+
 	})
 
 	describe("using the testing example directory -> " + path.join("test", "example"), function() {

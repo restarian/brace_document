@@ -46,14 +46,14 @@ describe("Using stop further progression methodology for dependencies in: "+path
 
 		it("r_js in the system as a program", function(done) {
 			it_will.stop = true 
-			expect(fs.existsSync(rjs_path = require.resolve("requirejs")), "could not find r.js dependency").to.be.true
+			expect((function() {try { require("requirejs"); return true; } catch(e) { return e;}})(), "could not find r.js dependency").to.be.true
 			it_will.stop = false 
 			done()
 		})
 
 		it("git is available in the system as a program", function(done) {
 			it_will.stop = true 
-			utils.Spawner("git", [], function() {
+			utils.Spawn("git", [], function() {
 				expect(true).to.be.true
 				it_will.stop = false 
 				done()
@@ -66,12 +66,11 @@ describe("Using stop further progression methodology for dependencies in: "+path
 
 	describe("using the testing example directory -> " + path.join("test", "example"), function() {
 
-		var cwd = path.join(__dirname, "example"), requirejs
+		var cwd = path.join(__dirname, "example")
 		beforeEach(function() {
 			remove_cache()
 			requirejs = require("requirejs")
 			requirejs.config({baseUrl: path.join(__dirname, "..", "lib"), nodeRequire: require})
-
 		})
 
 		it("is able to create a git repository in the example directory if there is not one already", function(done) {
@@ -84,282 +83,248 @@ describe("Using stop further progression methodology for dependencies in: "+path
 			})
 		})
 
-		describe("with no flags set to the document_parser", function(done) {
+		describe("creates the proper document structure using the directory: "+ path.join("example", "directories"), function() {
 
-			describe("creates the proper document structure using the directory: "+ path.join("example", "directories"), function() {
+			it("with the sort flag set to alphanumeric", function(done) {
 
-				it("with no flags set", function(done) {
+				requirejs(["document_parse"], function(document_parse) { 
 
-					requirejs(["document_parse"], function(document_parse) { 
+					var parser = document_parse()
+					parser.sort = "alphanumeric"
+					parser.relative_docs_dir = path.join(__dirname, "example", "directories")
 
-						var parser = document_parse()
-						parser.relative_docs_dir = path.join(__dirname, "example", "directories")
+					parser.findPath(cwd, function() {
+						
+						parser.findStructure(function(structure) {
 
-						parser.findPath(cwd, function() {
+							expect(structure).to.be.an("array")
+							expect(structure.length).to.equal(2)
+							expect(structure).to.deep.equal([ 
+								path.join(__dirname, "example", "directories", "framers.md"),
+								path.join(__dirname, "example", "directories", "theCompany.md"),
+							])
+							done()
 
-							parser.findStructure(function(structure) {
-
-								expect(structure).to.be.an("array")
-								expect(structure.length).to.equal(2)
-								// Will not have any directories sense the recursive flag was not set.
-								expect(structure).to.deep.equal([ 
-									path.join(__dirname, "example", "directories", "framers.md"),
-									path.join(__dirname, "example", "directories", "theCompany.md")
-								])
-
-								done()
-
-							}, function(error) {
-								expect(true, error).to.be.false
-								done()
-							})
 						}, function(error) {
 							expect(true, error).to.be.false
 							done()
 						})
+					}, function(error) {
+						expect(true, error).to.be.false
+						done()
 					})
 				})
+			})
 
-				it("with the sort flag set to alphanumeric", function(done) {
+			it("with the sort flag set to alphanumeric and the reverse-sort flag set", function(done) {
 
-					requirejs(["document_parse"], function(document_parse) { 
+				requirejs(["document_parse"], function(document_parse) { 
 
-						var parser = document_parse()
-						parser.sort = "alphanumeric"
-						parser.relative_docs_dir = path.join(__dirname, "example", "directories")
+					var parser = document_parse()
+					parser.sort = "alphanumeric"
+					parser.reverse_sort = true 
+					parser.relative_docs_dir = path.join(__dirname, "example", "directories")
 
-						parser.findPath(cwd, function() {
-							
-							parser.findStructure(function(structure) {
+					parser.findPath(cwd, function() {
+						
+						parser.findStructure(function(structure) {
 
-								expect(structure).to.be.an("array")
-								expect(structure.length).to.equal(2)
-								expect(structure).to.deep.equal([ 
-									path.join(__dirname, "example", "directories", "framers.md"),
-									path.join(__dirname, "example", "directories", "theCompany.md"),
-								])
-								done()
+							expect(structure).to.be.an("array")
+							expect(structure.length).to.equal(2)
+							expect(structure).to.deep.equal([ 
+								path.join(__dirname, "example", "directories", "theCompany.md"),
+								path.join(__dirname, "example", "directories", "framers.md"),
+							])
+							done()
 
-							}, function(error) {
-								expect(true, error).to.be.false
-								done()
-							})
 						}, function(error) {
 							expect(true, error).to.be.false
 							done()
 						})
+					}, function(error) {
+						expect(true, error).to.be.false
+						done()
 					})
 				})
+			})
 
-				it("with the sort flag set to alphanumeric and the reverse-sort flag set", function(done) {
+			it("with the recursive flag set and the sort flag set to alphanumeric", function(done) {
 
-					requirejs(["document_parse"], function(document_parse) { 
+				requirejs(["document_parse"], function(document_parse) { 
 
-						var parser = document_parse()
-						parser.sort = "alphanumeric"
-						parser.reverse_sort = true 
-						parser.relative_docs_dir = path.join(__dirname, "example", "directories")
+					var parser = document_parse()
+					parser.sort = "alphanumeric"
+					parser.recursive = true
+					parser.relative_docs_dir = path.join(__dirname, "example", "directories")
 
-						parser.findPath(cwd, function() {
-							
-							parser.findStructure(function(structure) {
+					parser.findPath(cwd, function() {
+						parser.findStructure(function(structure) {
 
-								expect(structure).to.be.an("array")
-								expect(structure.length).to.equal(2)
-								expect(structure).to.deep.equal([ 
-									path.join(__dirname, "example", "directories", "theCompany.md"),
-									path.join(__dirname, "example", "directories", "framers.md"),
-								])
-								done()
+							expect(structure).to.be.a("array")
+							expect(structure.length).to.equal(4)
+							expect(structure[0]).to.be.an("string")
+							expect(structure[1]).to.be.an("object")
+							// These should be in alphanumerical order.
+							expect(structure).to.deep.equal(
+							[
+								path.join(__dirname, "example", "directories", "framers.md"), 
+								{ 
+									"logistics": [
+										path.join(__dirname, "example", "directories", "logistics", "wages.md"),
+									] 
+								}, 
+								{ 
+									"resorces": [
+										path.join(__dirname, "example", "directories", "resorces", "0wood.md"),
+										path.join(__dirname, "example", "directories", "resorces", "tools.md"),
+									] 
+								}, 
+								path.join(__dirname, "example", "directories", "theCompany.md"), 
+							])
+							done()
 
-							}, function(error) {
-								expect(true, error).to.be.false
-								done()
-							})
 						}, function(error) {
 							expect(true, error).to.be.false
 							done()
 						})
+					}, function(error) {
+						expect(true, error).to.be.false
+						done()
 					})
 				})
+			})
 
-				it("with the recursive flag set and the sort flag set to alphanumeric", function(done) {
+			it("with the recursive flag set and the sort flag set to alphanumeric and the reverse-sort flag set", function(done) {
 
-					requirejs(["document_parse"], function(document_parse) { 
+				requirejs(["document_parse"], function(document_parse) { 
 
-						var parser = document_parse()
-						parser.sort = "alphanumeric"
-						parser.recursive = true
-						parser.relative_docs_dir = path.join(__dirname, "example", "directories")
+					var parser = document_parse()
+					parser.sort = "alphanumeric"
+					parser.recursive = true
+					parser.reverse_sort = true
+					parser.relative_docs_dir = path.join(__dirname, "example", "directories")
 
-						parser.findPath(cwd, function() {
-							parser.findStructure(function(structure) {
+					parser.findPath(cwd, function() {
+						parser.findStructure(function(structure) {
 
-								expect(structure).to.be.a("array")
-								expect(structure.length).to.equal(4)
-								expect(structure[0]).to.be.an("string")
-								expect(structure[1]).to.be.an("object")
-								// These should be in alphanumerical order.
-								expect(structure).to.deep.equal(
-								[
-									path.join(__dirname, "example", "directories", "framers.md"), 
-									{ 
-										"logistics": [
-											path.join(__dirname, "example", "directories", "logistics", "wages.md"),
-										] 
-									}, 
-									{ 
-										"resorces": [
-											path.join(__dirname, "example", "directories", "resorces", "0wood.md"),
-											path.join(__dirname, "example", "directories", "resorces", "tools.md"),
-										] 
-									}, 
-									path.join(__dirname, "example", "directories", "theCompany.md"), 
-								])
-								done()
+							expect(structure).to.be.a("array")
+							expect(structure.length).to.equal(4)
+							// These should be in alphanumerical order.
+							expect(structure).to.deep.equal(
+							[
+								path.join(__dirname, "example", "directories", "theCompany.md"), 
+								{ 
+									"resorces": [
+										path.join(__dirname, "example", "directories", "resorces", "tools.md"),
+										path.join(__dirname, "example", "directories", "resorces", "0wood.md"),
+									] 
+								}, 
+								{ 
+									"logistics": [
+										path.join(__dirname, "example", "directories", "logistics", "wages.md"),
+									] 
+								}, 
+								path.join(__dirname, "example", "directories", "framers.md"), 
+							])
+							done()
 
-							}, function(error) {
-								expect(true, error).to.be.false
-								done()
-							})
 						}, function(error) {
 							expect(true, error).to.be.false
 							done()
 						})
+					}, function(error) {
+						expect(true, error).to.be.false
+						done()
 					})
 				})
+			})
 
-				it("with the recursive flag set and the sort flag set to alphanumeric and the reverse-sort flag set", function(done) {
+			it("with the recursive flag set, the sort flag set to depth", function(done) {
 
-					requirejs(["document_parse"], function(document_parse) { 
+				requirejs(["document_parse"], function(document_parse) { 
 
-						var parser = document_parse()
-						parser.sort = "alphanumeric"
-						parser.recursive = true
-						parser.reverse_sort = true
-						parser.relative_docs_dir = path.join(__dirname, "example", "directories")
+					var parser = document_parse()
+					parser.sort = "depth"
+					parser.recursive = true
+					parser.relative_docs_dir = path.join(__dirname, "example", "directories")
 
-						parser.findPath(cwd, function() {
-							parser.findStructure(function(structure) {
+					parser.findPath(cwd, function() {
+						parser.findStructure(function(structure) {
 
-								expect(structure).to.be.a("array")
-								expect(structure.length).to.equal(4)
-								// These should be in alphanumerical order.
-								expect(structure).to.deep.equal(
-								[
-									path.join(__dirname, "example", "directories", "theCompany.md"), 
-									{ 
-										"resorces": [
-											path.join(__dirname, "example", "directories", "resorces", "tools.md"),
-											path.join(__dirname, "example", "directories", "resorces", "0wood.md"),
-										] 
-									}, 
-									{ 
-										"logistics": [
-											path.join(__dirname, "example", "directories", "logistics", "wages.md"),
-										] 
-									}, 
-									path.join(__dirname, "example", "directories", "framers.md"), 
-								])
-								done()
+							expect(structure).to.be.a("array")
+							expect(structure.length).to.equal(4)
+							// These should be sorted by directory depth now.
+							expect(structure).to.deep.equal(
+							[
+								path.join(__dirname, "example", "directories", "framers.md"), 
+								path.join(__dirname, "example", "directories", "theCompany.md"), 
+								{ 
+									"logistics": [
+										path.join(__dirname, "example", "directories", "logistics", "wages.md"),
+									] 
+								}, 
+								{ 
+									"resorces": [
+										path.join(__dirname, "example", "directories", "resorces", "0wood.md"),
+										path.join(__dirname, "example", "directories", "resorces", "tools.md"),
+									] 
+								}, 
+							])
+							done()
 
-							}, function(error) {
-								expect(true, error).to.be.false
-								done()
-							})
 						}, function(error) {
 							expect(true, error).to.be.false
 							done()
 						})
+					}, function(error) {
+						expect(true, error).to.be.false
+						done()
 					})
 				})
+			})
 
-				it("with the recursive flag set, the sort flag set to depth", function(done) {
+			it("with the recursive flag set, the sort flag set to depth and the reverse-sort flag set", function(done) {
 
-					requirejs(["document_parse"], function(document_parse) { 
+				requirejs(["document_parse"], function(document_parse) { 
 
-						var parser = document_parse()
-						parser.sort = "depth"
-						parser.recursive = true
-						parser.relative_docs_dir = path.join(__dirname, "example", "directories")
+					var parser = document_parse()
+					parser.sort = "depth"
+					parser.reverse_sort = true
+					parser.recursive = true
+					parser.relative_docs_dir = path.join(__dirname, "example", "directories")
 
-						parser.findPath(cwd, function() {
-							parser.findStructure(function(structure) {
+					parser.findPath(cwd, function() {
+						parser.findStructure(function(structure) {
 
-								expect(structure).to.be.a("array")
-								expect(structure.length).to.equal(4)
-								// These should be sorted by directory depth now.
-								expect(structure).to.deep.equal(
-								[
-									path.join(__dirname, "example", "directories", "framers.md"), 
-									path.join(__dirname, "example", "directories", "theCompany.md"), 
-									{ 
-										"logistics": [
-											path.join(__dirname, "example", "directories", "logistics", "wages.md"),
-										] 
-									}, 
-									{ 
-										"resorces": [
-											path.join(__dirname, "example", "directories", "resorces", "0wood.md"),
-											path.join(__dirname, "example", "directories", "resorces", "tools.md"),
-										] 
-									}, 
-								])
-								done()
+							expect(structure).to.be.a("array")
+							expect(structure.length).to.equal(4)
+							// These should be sorted by directory depth in reverse order now.
+							expect(structure).to.deep.equal(
+							[
+								{ 
+									"logistics": [
+										path.join(__dirname, "example", "directories", "logistics", "wages.md"),
+									] 
+								}, 
+								{ 
+									"resorces": [
+										path.join(__dirname, "example", "directories", "resorces", "0wood.md"),
+										path.join(__dirname, "example", "directories", "resorces", "tools.md"),
+									] 
+								}, 
+								path.join(__dirname, "example", "directories", "framers.md"), 
+								path.join(__dirname, "example", "directories", "theCompany.md"), 
+							])
 
-							}, function(error) {
-								expect(true, error).to.be.false
-								done()
-							})
+							done()
+
 						}, function(error) {
 							expect(true, error).to.be.false
 							done()
 						})
-					})
-				})
-
-				it("with the recursive flag set, the sort flag set to depth and the reverse-sort flag set", function(done) {
-
-					requirejs(["document_parse"], function(document_parse) { 
-
-						var parser = document_parse()
-						parser.sort = "depth"
-						parser.reverse_sort = true
-						parser.recursive = true
-						parser.relative_docs_dir = path.join(__dirname, "example", "directories")
-
-						parser.findPath(cwd, function() {
-							parser.findStructure(function(structure) {
-
-								expect(structure).to.be.a("array")
-								expect(structure.length).to.equal(4)
-								// These should be sorted by directory depth in reverse order now.
-								expect(structure).to.deep.equal(
-								[
-									{ 
-										"logistics": [
-											path.join(__dirname, "example", "directories", "logistics", "wages.md"),
-										] 
-									}, 
-									{ 
-										"resorces": [
-											path.join(__dirname, "example", "directories", "resorces", "0wood.md"),
-											path.join(__dirname, "example", "directories", "resorces", "tools.md"),
-										] 
-									}, 
-									path.join(__dirname, "example", "directories", "framers.md"), 
-									path.join(__dirname, "example", "directories", "theCompany.md"), 
-								])
-								done()
-
-							}, function(error) {
-								expect(true, error).to.be.false
-								done()
-							})
-						}, function(error) {
-							expect(true, error).to.be.false
-							done()
-						})
+					}, function(error) {
+						expect(true, error).to.be.false
+						done()
 					})
 				})
 			})

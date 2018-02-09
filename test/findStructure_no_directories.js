@@ -43,10 +43,9 @@ describe("Using stop further progression methodology for dependencies in: "+path
 	it_will.quiet = !!process.env.QUIET
 
 	describe("Checking for dependencies..", function() { 
-
 		it("r_js in the system as a program", function(done) {
 			it_will.stop = true 
-			expect(fs.existsSync(rjs_path = require.resolve("requirejs")), "could not find r.js dependency").to.be.true
+			expect((function() {try { require("requirejs"); return true; } catch(e) { return e;}})(), "could not find r.js dependency").to.be.true
 			it_will.stop = false 
 			done()
 		})
@@ -61,7 +60,6 @@ describe("Using stop further progression methodology for dependencies in: "+path
 				done()
 			})
 		})
-
 	})
 
 	describe("using the testing example directory -> " + path.join("test", "example"), function() {
@@ -85,108 +83,105 @@ describe("Using stop further progression methodology for dependencies in: "+path
 			})
 		})
 
-		describe("with no flags set to the document_parser", function(done) {
+		describe("creates the proper document structure using the directory: "+ path.join("example", "no_directories"), function() {
 
-			describe("creates the proper document structure using the directory: "+ path.join("example", "no_directories"), function() {
+			it("with no flags set", function(done) {
 
-				it("with no flags set", function(done) {
+				requirejs(["document_parse"], function(document_parse) { 
 
-					requirejs(["document_parse"], function(document_parse) { 
+					var parser = document_parse()
+					parser.relative_docs_dir = path.join(__dirname, "example", "no_directories")
 
-						var parser = document_parse()
-						parser.relative_docs_dir = path.join(__dirname, "example", "no_directories")
+					parser.findPath(cwd, function() {
 
-						parser.findPath(cwd, function() {
+						parser.findStructure(function(structure) {
 
-							parser.findStructure(function(structure) {
+							expect(structure).to.be.a("array")
+							// Note: it is not possible to asynchronously test the structure output without the sort flag set to something sense it can end 
+							// up in any order. This is because the callback to any one particular fs command is based on many external factors (like drive IO).
+							expect(structure.length).to.equal(4)
+							expect(structure[0]).to.include(path.join(__dirname, "example", "no_directories"))
+							expect(structure[1]).to.include(path.join(__dirname, "example", "no_directories"))
+							expect(structure[2]).to.include(path.join(__dirname, "example", "no_directories"))
+							expect(structure[3]).to.include(path.join(__dirname, "example", "no_directories"))
+							done()
 
-								expect(structure).to.be.a("array")
-								// Note: it is not possible to asynchronously test the structure output without the sort flag set to something sense it can end 
-								// up in any order. This is because the callback to any one particular fs command is based on many external factors (like drive IO).
-								expect(structure.length).to.equal(4)
-								expect(structure[0]).to.include(path.join(__dirname, "example", "no_directories"))
-								expect(structure[1]).to.include(path.join(__dirname, "example", "no_directories"))
-								expect(structure[2]).to.include(path.join(__dirname, "example", "no_directories"))
-								expect(structure[3]).to.include(path.join(__dirname, "example", "no_directories"))
-								done()
-
-							}, function(error) {
-								expect(true, error).to.be.false
-								done()
-							})
 						}, function(error) {
 							expect(true, error).to.be.false
 							done()
 						})
+					}, function(error) {
+						expect(true, error).to.be.false
+						done()
 					})
 				})
-
-				it("with the sort flag set to alphanumeric", function(done) {
-
-					requirejs(["document_parse"], function(document_parse) { 
-
-						var parser = document_parse()
-						parser.sort = "alphanumeric"
-						parser.relative_docs_dir = path.join(__dirname, "example", "no_directories")
-
-						parser.findPath(cwd, function() {
-							parser.findStructure(function(structure) {
-
-								expect(structure).to.be.a("array")
-								// these should be in alphanumerical order.
-								expect(structure).to.deep.equal([
-									path.join(__dirname, "example", "no_directories", "0wood.md"),
-									path.join(__dirname, "example", "no_directories", "framers.md"), 
-									path.join(__dirname, "example", "no_directories", "tools.md"),
-									path.join(__dirname, "example", "no_directories", "wages.md")
-								])
-								done()
-
-							}, function(error) {
-								expect(true, error).to.be.false
-								done()
-							})
-						}, function(error) {
-							expect(true, error).to.be.false
-							done()
-						})
-					})
-				})
-
-				it("with the reverse flag set and the sort flag set to alphanumeric", function(done) {
-
-					requirejs(["document_parse"], function(document_parse) { 
-
-						var parser = document_parse()
-						parser.sort = "alphanumeric"
-						parser.reverse_sort = true
-						parser.relative_docs_dir = path.join(__dirname, "example", "no_directories")
-
-						parser.findPath(cwd, function() {
-							parser.findStructure(function(structure) {
-
-								expect(structure).to.be.a("array")
-								// these should be in alphanumerical order.
-								expect(structure).to.deep.equal([
-									path.join(__dirname, "example", "no_directories", "wages.md"),
-									path.join(__dirname, "example", "no_directories", "tools.md"),
-									path.join(__dirname, "example", "no_directories", "framers.md"), 
-									path.join(__dirname, "example", "no_directories", "0wood.md")
-								])
-								done()
-
-							}, function(error) {
-								expect(true, error).to.be.false
-								done()
-							})
-						}, function(error) {
-							expect(true, error).to.be.false
-							done()
-						})
-					})
-				})
-
 			})
+
+			it("with the sort flag set to alphanumeric", function(done) {
+
+				requirejs(["document_parse"], function(document_parse) { 
+
+					var parser = document_parse()
+					parser.sort = "alphanumeric"
+					parser.relative_docs_dir = path.join(__dirname, "example", "no_directories")
+
+					parser.findPath(cwd, function() {
+						parser.findStructure(function(structure) {
+
+							expect(structure).to.be.a("array")
+							// these should be in alphanumerical order.
+							expect(structure).to.deep.equal([
+								path.join(__dirname, "example", "no_directories", "0wood.md"),
+								path.join(__dirname, "example", "no_directories", "framers.md"), 
+								path.join(__dirname, "example", "no_directories", "tools.md"),
+								path.join(__dirname, "example", "no_directories", "wages.md")
+							])
+							done()
+
+						}, function(error) {
+							expect(true, error).to.be.false
+							done()
+						})
+					}, function(error) {
+						expect(true, error).to.be.false
+						done()
+					})
+				})
+			})
+
+			it("with the reverse flag set and the sort flag set to alphanumeric", function(done) {
+
+				requirejs(["document_parse"], function(document_parse) { 
+
+					var parser = document_parse()
+					parser.sort = "alphanumeric"
+					parser.reverse_sort = true
+					parser.relative_docs_dir = path.join(__dirname, "example", "no_directories")
+
+					parser.findPath(cwd, function() {
+						parser.findStructure(function(structure) {
+
+							expect(structure).to.be.a("array")
+							// these should be in alphanumerical order.
+							expect(structure).to.deep.equal([
+								path.join(__dirname, "example", "no_directories", "wages.md"),
+								path.join(__dirname, "example", "no_directories", "tools.md"),
+								path.join(__dirname, "example", "no_directories", "framers.md"), 
+								path.join(__dirname, "example", "no_directories", "0wood.md")
+							])
+							done()
+
+						}, function(error) {
+							expect(true, error).to.be.false
+							done()
+						})
+					}, function(error) {
+						expect(true, error).to.be.false
+						done()
+					})
+				})
+			})
+
 		})
 
 	})

@@ -11,3 +11,4 @@
 * More custom parsing data via options.
 * Plugin call handling (like express).
 * Further sorting control.
+* Plugins having a way of controlling which order they are called.

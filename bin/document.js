@@ -29,7 +29,6 @@ SOFTWARE.
 
 var info = require("../package.json"),
 	program = require("commander"),
-	fs = require("fs"),
 	print = require("bracket_print")
 
 var dir = "", repo_url = ""
@@ -53,8 +52,8 @@ All plugins found with the commonjs structure to this program will have the its 
 " must be contained within the project repository so that proper links can be created relative to it.")
 .option("-s, --sort <alphanumeric, depth>", "alphanumeric: The documents and directory structure be arranged in alphanumeric order. depth: All"+
 	" of the sub-directories will be arranged at the top of the directory list with the document pages below. Note: the structure will be presorted in" +
-	" alphanumeric regardless of the reverse-sort flag when the sort option is set to *depth*.)
+	" alphanumeric regardless of the reverse-sort flag when the sort option is set to *depth*.")
 .option("-R, --reverse-sort", "Reverse the sorting operation specified via the --sort option.")
 
 // The process exit code is maintained for unit testing via the cli.
-require("../../brace_document")(program, print({title_stamp: false, log_title: "bin/document.js"}), function(exit_code) { process.exit(exit_code) })
+require("../../brace_document")(program, print({level: 1, title_stamp: false, log_title: "bin/document"}), function(exit_code) { process.exit(exit_code) })

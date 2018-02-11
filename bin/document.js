@@ -33,23 +33,32 @@ var info = require("../package.json"),
 
 var dir = "", repo_url = ""
 program.version(info.name + " " + info.version)
-.usage(`[options] [directory]
+.usage(`[options] [docs directory]
 
 -- Brace Document  ----------------------------------------------------------------------------------------------------
-The last argument is the directory where the markdown files are located. This directory does not need to be contained 
-within the project repository structure. The last parameter is the base directory where the markdown files are found.
-The directory where the script was started is used when not supplied. This directory must be at or below a project 
-root directory structure in order to use the associated information. The project root is the directory which contains 
-the .git repository. The backup directory can be an absolute path or a relative path and does not need to be contained 
-in a project. The project root directory will be used as the base directory (the same way the last parameter is), if 
-it is supplied as relative.
-All plugins found with the commonjs structure to this program will have the its options appended to this menu.`)
+[docs directory] - The base directory where the markdown files are found. 
+  The last parameter passed into the command will be used as the "docs directory" parameter. Otherwise, the current 
+working directory of the shell is used if it is not suppied. The docs directory must be at or below a project root 
+directory structure in order to use the associated information. The project root directory is automatically set as the 
+directory which contains the first found .git repository from the current working directory of the process.
+  The "backup" option can be used to specify a directory where copies of the "docs directory" files will be created. It
+is acceptable to specify a "docs directory" which is outside (below), the project root only if the "backup" option is 
+set to a directory which is inside the project root. At least one of the "docs directory" or the "backup" directories
+must be inside the project root directory. 
+  Plugins are found using the commonjs structure created by the npm package manager. The plugin module paths are relative
+to the project root directory. Any plugins found will have its option data appended to this gateway menu and can be 
+viewed with the -h flag.`)
 .option("-v, --verbose", "Print any superfluous information from the run-time.")
 .option("-q, --quiet", "No not output any log messages (including errors). This option supersedes the verbose flag.")
 .option("-r, --recursive", "Descend into all sub-directories to find markdown files.")
 .option("-p, --plugins", "Print all of the available plugins.")
+.option("-e, --enable-all", "Use all of the plugins available.")
+//.option("-d, --dry-run", "Do not write any data out including the docs and/or backup directory.")
+.option("-x, --plugin-regex <string>", "This may be set to an ECMA complient regular expression which will be used to locate plugins by name. The entire" +
+" name must be matched. This only applies to the directory which contains the plugin. E.g. /home/brand_plugin_tester would match to -x 'brand_plugin_.*') 
 .option("-b, --backup <directory>", "This will create separate files and directories for the mutations and keep the originals intact. The directory path" +
-" must be contained within the project repository so that proper links can be created relative to it.")
+" must be contained within the project repository so that proper links can be created relative to it. It can be supplied as either absolute or relative" +
+" to the project root.")
 .option("-s, --sort <alphanumeric, depth>", "alphanumeric: The documents and directory structure be arranged in alphanumeric order. depth: All"+
 	" of the sub-directories will be arranged at the top of the directory list with the document pages below. Note: the structure will be presorted in" +
 	" alphanumeric regardless of the reverse-sort flag when the sort option is set to *depth*.")

@@ -37,7 +37,6 @@ var expect = require("chai").expect,
 global.module = module
 
 var remove_cache = utils.remove_cache.bind(null, "r.js", "document_parse.js")
-module.paths.unshift(path.join(__dirname, "..", ".."))
 var it_will = global
 
 describe("Using stop further progression methodology for dependencies in: "+path.basename(__filename), function() { 
@@ -65,11 +64,12 @@ describe("Using stop further progression methodology for dependencies in: "+path
 			})
 		})
 
+		// A large timeout is set so that the npm command can install the plugin if necessary.
+		this.timeout(30000)	
 		it("brace_document_navlink is in the system as a program", function(done) {
-
 			it_will.stop = true 
 			try {
-				require("brace_document_navlink")
+				module.require("brace_document_navlink")
 				it_will.stop = false 
 				done()
 			} 
@@ -84,6 +84,9 @@ describe("Using stop further progression methodology for dependencies in: "+path
 				})
 			}
 		})
+
+		// And set back to the original
+		this.timeout(8000)	
 	})
 
 	describe("using the testing example directory -> " + path.join("test", "example"), function() {
@@ -113,6 +116,7 @@ describe("Using stop further progression methodology for dependencies in: "+path
 		var test_path = path.join(__dirname, "example", "directories")
 		describe("Finds all of the commonjs modules which are plugins to this module: "+ test_path, function() {
 
+			this.timeout(30000)
 			it("with directories contained in the structrure", function(done) {
 
 				requirejs(["document_parse"], function(document_parse) { 

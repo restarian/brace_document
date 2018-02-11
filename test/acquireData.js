@@ -33,7 +33,6 @@ var expect = require("chai").expect,
 	maybe = require("brace_maybe")
 
 var remove_cache = utils.remove_cache.bind(null, "r.js", "document_parse.js")
-module.paths.unshift(path.join(__dirname, "..", ".."))
 var it_will = global
 
 describe("Using stop further progression methodology for dependencies in: "+path.basename(__filename), function() { 

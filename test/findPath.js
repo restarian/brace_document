@@ -32,9 +32,7 @@ var expect = require("chai").expect,
 	utils = require("bracket_utils"),
 	maybe = require("brace_maybe")
 
-
 var remove_cache = utils.remove_cache.bind(null, "r.js", "document_parse.js")
-module.paths.unshift(path.join(__dirname, "..", ".."))
 var it_will = global
 
 describe("using stop further progression methodology for dependencies in: "+path.basename(__filename), function() { 
@@ -54,7 +52,7 @@ describe("using stop further progression methodology for dependencies in: "+path
 
 		it("git is available in the system as a program", function(done) {
 			it_will.stop = true 
-			utils.Spawner("git", [], function() {
+			utils.Spawn("git", [], function() {
 				it_will.stop = false 
 				done()
 			}, function() {

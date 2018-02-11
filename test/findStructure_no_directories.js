@@ -33,7 +33,6 @@ var expect = require("chai").expect,
 	maybe = require("brace_maybe")
 
 var remove_cache = utils.remove_cache.bind(null, "r.js", "document_parse.js")
-module.paths.unshift(path.join(__dirname, "..", ".."))
 var it_will = global
 
 describe("Using stop further progression methodology for dependencies in: "+path.basename(__filename), function() { 
@@ -43,6 +42,7 @@ describe("Using stop further progression methodology for dependencies in: "+path
 	it_will.quiet = !!process.env.QUIET
 
 	describe("Checking for dependencies..", function() { 
+
 		it("r_js in the system as a program", function(done) {
 			it_will.stop = true 
 			expect((function() {try { require("requirejs"); return true; } catch(e) { return e;}})(), "could not find r.js dependency").to.be.true
@@ -52,7 +52,7 @@ describe("Using stop further progression methodology for dependencies in: "+path
 
 		it("git is available in the system as a program", function(done) {
 			it_will.stop = true 
-			utils.Spawner("git", [], function() {
+			utils.Spawn("git", [], function() {
 				it_will.stop = false 
 				done()
 			}, function() {
@@ -60,6 +60,7 @@ describe("Using stop further progression methodology for dependencies in: "+path
 				done()
 			})
 		})
+
 	})
 
 	describe("using the testing example directory -> " + path.join("test", "example"), function() {

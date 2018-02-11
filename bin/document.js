@@ -55,7 +55,7 @@ viewed with the -h flag.`)
 .option("-e, --enable-all", "Use all of the plugins available.")
 //.option("-d, --dry-run", "Do not write any data out including the docs and/or backup directory.")
 .option("-x, --plugin-regex <string>", "This may be set to an ECMA complient regular expression which will be used to locate plugins by name. The entire" +
-" name must be matched. This only applies to the directory which contains the plugin. E.g. /home/brand_plugin_tester would match to -x 'brand_plugin_.*') 
+" name must be matched. This only applies to the directory which contains the plugin. E.g. /home/brand_plugin_tester would match to -x 'brand_plugin_.*'") 
 .option("-b, --backup <directory>", "This will create separate files and directories for the mutations and keep the originals intact. The directory path" +
 " must be contained within the project repository so that proper links can be created relative to it. It can be supplied as either absolute or relative" +
 " to the project root.")

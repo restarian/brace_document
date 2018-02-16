@@ -30,11 +30,7 @@ var expect = require("chai").expect,
 	path = require("path"),
 	fs = require("fs"),
 	utils = require("bracket_utils"),
-	maybe = require("brace_maybe"),
-	EOL = require("os").EOL
-
-// Needed because mocha does not use the nodejs function wrapper for modules.
-global.module = module
+	maybe = require("brace_maybe")
 
 var remove_cache = utils.remove_cache.bind(null, "r.js", "document_parse.js")
 var it_will = global
@@ -54,55 +50,30 @@ describe("Using stop further progression methodology for dependencies in: "+path
 			done()
 		})
 
-		it("npm is available in the system as a program", function(done) {
+		it("git is available in the system as a program", function(done) {
 			it_will.stop = true 
-			utils.Exec("npm", ["help"], function(code, stderr, stdout) {
+			utils.Spawn("git", [], function() {
 				it_will.stop = false 
 				done()
-			}, function(error) {
-				expect(false, error + EOL + "npm is not available as a system program").to.be.true
+			}, function() {
+				expect(false, "git is not available as a system program").to.be.true
 				done()
 			})
 		})
 
-		// A large timeout is set so that the npm command can install the plugin if necessary.
-		this.timeout(30000)	
-		it("brace_document_navlink is in the system as a program", function(done) {
-			it_will.stop = true 
-			try {
-				module.require("brace_document_navlink")
-				it_will.stop = false 
-				done()
-			} 
-			catch(error) {
-
-				utils.Exec("npm", ["install", "brace_document_navlink", "--silent"], {cwd: path.join(__dirname, "..")}, (code, stdout, stderr) => {
-					it_will.stop = false 
-					done()
-				}, function(error) {
-					expect(false, error).to.be.true	
-					done()
-				})
-			}
-		})
-
-		// And set back to the original
-		this.timeout(8000)	
 	})
 
 	describe("using the testing example directory -> " + path.join("test", "example"), function() {
 
 		var cwd = path.join(__dirname, "example"), requirejs
-
 		beforeEach(function() {
-
 			remove_cache()
 			requirejs = require("requirejs")
 			requirejs.config({baseUrl: path.join(__dirname, "..", "lib"), nodeRequire: require})
 
 		})
 
-/* it("is able to create a git repository in the example directory if there is not one already", function(done) {
+		it("is able to create a git repository in the example directory if their is not one already", function(done) {
 
 			utils.Spawn("git", ["init"], {cwd: cwd}, (code, stdout, stderr) => {
 				expect(true, stdout+"  "+stderr).to.be.true	
@@ -112,12 +83,11 @@ describe("Using stop further progression methodology for dependencies in: "+path
 				done()
 			})
 		})
-*/
 
 		var test_path = path.join(__dirname, "example", "directories")
-		describe("Finds all of the commonjs modules which are plugins to this module: "+ test_path, function() {
 
-			this.timeout(30000)
+		describe("creates the proper document data object using the directory: "+ test_path, function() {
+
 			it("with directories contained in the structrure", function(done) {
 
 				requirejs(["document_parse"], function(document_parse) { 
@@ -126,13 +96,30 @@ describe("Using stop further progression methodology for dependencies in: "+path
 					parser.relative_docs_dir = test_path
 					parser.recursive = true
 
-					parser.getPlugin(test_path, function(data) {
+					parser.findPath(cwd, function() {
+						parser.findStructure(function(structure) {
+							parser.acquireData(structure, function(data) {
 
-						expect(data).to.be.a("array")
-						expect(data.length > 0, "There is a least one module installed in the system").to.be.true
-						console.log(data)
-						done()
+								expect(data).to.be.a("object")
+								// Note: it is not possible to asynchronously test the structure output without the sort flag set to something sense it can end 
+								// up in any order. This is because the callback to any one particular fs command is based on many external factors (like drive IO).
+								expect(Object.keys(data).length).to.equal(5)
+								expect(data[path.join(test_path, "framers.md")]).to.be.a("object").that.includes({
+									file_name: "framers.md",
+									secondary_heading: "##### Carpentry is for people \n",
+									primary_heading: "# Directories Example Page \n",
+								})
 
+								var all = Object.keys(data), key
+								expect(data[key = all.pop()].content).to.include(data[key].primary_heading).that.include(data[key].secondary_heading)
+								expect(data[key = all.pop()].content).to.include(data[key].primary_heading).that.include(data[key].secondary_heading)
+								expect(data[key = all.pop()].content).to.include(data[key].primary_heading).that.include(data[key].secondary_heading)
+								expect(data[key = all.pop()].content).to.include(data[key].primary_heading).that.include(data[key].secondary_heading)
+								expect(data[key = all.pop()].content).to.include(data[key].primary_heading).that.include(data[key].secondary_heading)
+								done()
+
+							}, function(error) { expect(true, error).to.be.false; done() })
+						}, function(error) { expect(true, error).to.be.false; done() })
 					}, function(error) { expect(true, error).to.be.false; done() })
 				})
 			})

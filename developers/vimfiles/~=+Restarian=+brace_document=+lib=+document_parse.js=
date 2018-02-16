@@ -9,51 +9,74 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-49,57fold
-81,89fold
-143,152fold
-190,191fold
-184,193fold
-292,300fold
-292,300fold
-370,378fold
-465,473fold
-464,473fold
-532,540fold
-49
-normal! zc
-81
-normal! zc
-143
-normal! zc
-184
+51,59fold
+51,59fold
+83,91fold
+83,91fold
+144,152fold
+144,152fold
+191,200fold
+191,201fold
+299,307fold
+299,307fold
+299,307fold
+298,307fold
+376,384fold
+376,384fold
+376,384fold
+468,475fold
+467,475fold
+515,523fold
+515,523fold
+597,605fold
+51
 normal! zo
-190
+51
 normal! zc
-184
+51
 normal! zc
-292
+83
 normal! zo
-292
-normal! zc
-292
-normal! zc
-370
-normal! zc
-464
+144
 normal! zo
-465
+144
 normal! zc
-464
+144
 normal! zc
-532
+191
+normal! zo
+191
 normal! zc
-let s:l = 511 - ((24 * winheight(0) + 20) / 40)
+298
+normal! zo
+299
+normal! zo
+299
+normal! zo
+376
+normal! zo
+376
+normal! zo
+467
+normal! zo
+468
+normal! zc
+467
+normal! zc
+515
+normal! zo
+515
+normal! zc
+515
+normal! zc
+597
+normal! zc
+let s:l = 10 - ((9 * winheight(0) + 20) / 40)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-511
-normal! 052|
+10
+normal! 0107|
 let &so = s:so_save | let &siso = s:siso_save
 doautoall SessionLoadPost
 " vim: set ft=vim :

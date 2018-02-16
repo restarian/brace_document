@@ -1,7 +1,7 @@
 # Brace Document
 ## Making a difference with Brace document?? 
 
-#### Unit Testing:
+### Unit Testing:
 
 It would be nice to know that the unit tests are also working remotely. This project uses [Appveyor](https://www.appveyor.com) and [TravisCI](https://travis-ci.org) which are free for open source projects.
 
@@ -9,17 +9,20 @@ Unit tests are the nuts and bolts of javascript engineering. The entire API has 
 
 **The rule of thumb: the unit tests themselves are important to a project, not the looks and design.**
 
-#### Only some ES6 features are tolerated: 
+### Only some ES6 features are used: 
+
 **Below is a list if things you should **NOT** use from ES6:**
 
-* The range operator *[...Array(10)]*
+* The range operator *[ ...Array(10) ]*
+	* tends not to work in older environments which still support ES6
+	* is accomplished otherwise with minimal coding 
+* The classes methodology is not used within this project. E.g. built-ins such as: *class*, *super* and *extends*.
 
-	* This tends not to work in older environments which still support ES6
-	* This is accomplished otherwise with minimal coding length anyways
+### Always exit the program with a unique exit code integer:
+**It is easier to unit test API calls which exit with a specific code.**
 
-* The classes methodology is not used within this project. E.g. built-ins such as: class, super, extends
+### IDE - If the project comes with special files which aid editors:
 
-#### IDE - If the project comes with special files which aid editors:
 **None of the content in the *developers* directory should be required to load the project.* It is there to keep things like: bookmarks, command history, page marks, search history, work station environment settings, etc..**
 
 * It is acceptable to allow your IDE to alter these files.
@@ -30,8 +33,9 @@ Unit tests are the nuts and bolts of javascript engineering. The entire API has 
 
 Note: Older commits contain your config files if they get changed in a way you do not like.
 
-#### Syntactical practices:
-**Do it how you feel most comfortable. Things like hyphens, underscores, double quotes, single quotes, camel case and pluralization are all available for a good reason.**
+### Syntactical practices:
+
+**Program how you feel most comfortable. Things like hyphens, underscores, double quotes, single quotes, camel case and pluralization are all available for a good reason.**
 
 Only a few rules are needed otherwise.
 
@@ -39,7 +43,8 @@ Only a few rules are needed otherwise.
 * API qualifiers designed for the end-user should be in camel case syntax. This is pretty too. 
 
 
-#### Source code commenting:
+### Source code commenting:
+
 **Commments make the the source code cozy and human freindly.**
 
 * Add many comments for the code you write.
@@ -49,8 +54,9 @@ Only a few rules are needed otherwise.
 * It is annoying to work with comments which are placed on the same line as source code. E.g. var maker // This property is global
 
 
-#### Some tips you may want to consider anyways:
-**This is just for informaitve purposes and is not expected for this project.**
+### Some tips you might want to consider anyways:
+
+**These is just for informaitve purposes and is not expected for this project.**
 
 * Pluralization is confusing. All things are more than one in programming.
 * Capitalization makes some variables feel more important than others. This is exactly how "the man" wants you to be, tisk, tisk..

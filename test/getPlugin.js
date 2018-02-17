@@ -75,14 +75,8 @@ describe("Using stop further progression methodology for dependencies in: "+path
 				done()
 			} 
 			catch(error) {
-
-				utils.Exec("npm", ["install", "brace_document_navlink", "--silent"], {cwd: path.join(__dirname, "..")}, (code, stdout, stderr) => {
-					it_will.stop = false 
-					done()
-				}, function(error) {
-					expect(false, error).to.be.true	
-					done()
-				})
+				expect(false, "Brace_document_navlink is installed in the system").to.be.true
+				done()
 			}
 		})
 
@@ -130,6 +124,7 @@ describe("Using stop further progression methodology for dependencies in: "+path
 
 						expect(data).to.be.a("array")
 						expect(data.length > 0, "There is a least one module installed in the system").to.be.true
+						expect(data).to
 						console.log(data)
 						done()
 

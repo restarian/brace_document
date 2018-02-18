@@ -84,52 +84,34 @@ describe("Using stop further progression methodology for dependencies in: "+path
 		this.timeout(8000)	
 	})
 
-	describe("using the testing example directory -> " + path.join("test", "example"), function() {
 
-		var cwd = path.join(__dirname, "example"), requirejs
+	var test_path = path.join(__dirname, "example", "directories")
+	describe("finds all of the commonjs modules which are plugins to this module: "+ test_path, function() {
 
-		beforeEach(function() {
+	var cwd = path.join(__dirname, "example"), requirejs
+	beforeEach(function() {
 
-			remove_cache()
-			requirejs = require("requirejs")
-			requirejs.config({baseUrl: path.join(__dirname, "..", "lib"), nodeRequire: require})
+		remove_cache()
+		requirejs = require("requirejs")
+		requirejs.config({baseUrl: path.join(__dirname, "..", "lib"), nodeRequire: require})
 
-		})
+	})
+		this.timeout(30000)
+		it("with directories contained in the structrure", function(done) {
 
-/* it("is able to create a git repository in the example directory if there is not one already", function(done) {
+			requirejs(["document_parse"], function(document_parse) { 
 
-			utils.Spawn("git", ["init"], {cwd: cwd}, (code, stdout, stderr) => {
-				expect(true, stdout+"  "+stderr).to.be.true	
-				done()
-			}, function(error) {
-				expect(false, error).to.be.true	
-				done()
-			})
-		})
-*/
+				var parser = document_parse()
+				parser.relative_docs_dir = test_path
+				parser.recursive = true
 
-		var test_path = path.join(__dirname, "example", "directories")
-		describe("Finds all of the commonjs modules which are plugins to this module: "+ test_path, function() {
+				parser.getPlugin(test_path, function(data) {
 
-			this.timeout(30000)
-			it("with directories contained in the structrure", function(done) {
+					expect(data).to.be.a("array")
+					expect(data.length > 0, "There is a least one module installed in the system").to.be.true
+					done()
 
-				requirejs(["document_parse"], function(document_parse) { 
-
-					var parser = document_parse()
-					parser.relative_docs_dir = test_path
-					parser.recursive = true
-
-					parser.getPlugin(test_path, function(data) {
-
-						expect(data).to.be.a("array")
-						expect(data.length > 0, "There is a least one module installed in the system").to.be.true
-						expect(data).to
-						console.log(data)
-						done()
-
-					}, function(error) { expect(true, error).to.be.false; done() })
-				})
+				}, function(error) { expect(true, error).to.be.false; done() })
 			})
 		})
 	})

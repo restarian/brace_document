@@ -51,6 +51,9 @@ viewed with the -h flag.`)
 .option("-v, --verbose", "Print any superfluous information from the run-time.")
 .option("-q, --quiet", "No not output any log messages (including errors). This option supersedes the verbose flag.")
 .option("-r, --recursive", "Descend into all sub-directories to find markdown files.")
+.option("-d, --project-root <string>", "The directory which is at or inside the repository to work with. If not supplied this will be set to the" +
+" current working directory of the shell process that started this program. Therefore, it is easiest to omit this parameter while running this command" +
+" from within the project which is being operated on.")
 .option("-p, --plugins", "Print all of the available plugins.")
 .option("-P, --plugin-path <string>", "Add a path to the module lookups when searching for plugins. The directory should contain a node_modules sub-directory.")
 .option("-e, --enable-all", "Use all of the plugins found by the program. Plugins will only e called once.")

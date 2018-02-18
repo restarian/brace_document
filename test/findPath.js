@@ -35,6 +35,8 @@ var expect = require("chai").expect,
 var remove_cache = utils.remove_cache.bind(null, "r.js", "document_parse.js")
 var it_will = global
 
+global.module = module
+
 describe("using stop further progression methodology for dependencies in: "+path.basename(__filename), function() { 
 
 	var it = maybe(it_will)	
@@ -84,7 +86,25 @@ describe("using stop further progression methodology for dependencies in: "+path
 			})
 		})
 
+
 		describe("with no flags set to the document_parser", function(done) {
+
+			it("complains if the project root directory is not inside a git repository", function(done) {
+				requirejs(["document_parse"], function(document_parse) { 
+
+					var parser = document_parse()
+					parser.relative_docs_dir = "docs"
+
+					parser.findPath(path.join("..", ".."), function() {
+						expect(false, "The error callback should have been called instead of this").to.be.true
+						done()
+
+					}, function(error) {
+						expect(error.toString()).to.include("Not a git repository")
+						done()
+					})
+				})
+			})
 
 			it("finds the correct path data for the project", function(done) {
 
@@ -149,7 +169,8 @@ describe("using stop further progression methodology for dependencies in: "+path
 					parser.backup = path.join("..", "..", "brace_document", "docs_temp")
 
 					parser.findPath(cwd, function() {
-					expect(false, "The error callback should have been called instead of this").to.be.true
+						expect(false, "The error callback should have been called instead of this").to.be.true
+						done()
 
 					}, function(error) {
 						expect(error.toString()).to.include("The directory to use for the documents:")

@@ -50,6 +50,7 @@ describe("Using stop further progression methodology for dependencies in: "+path
 			done()
 		})
 
+		/*
 		it("git is available in the system as a program", function(done) {
 			it_will.stop = true 
 			utils.Spawn("git", [], function() {
@@ -60,10 +61,11 @@ describe("Using stop further progression methodology for dependencies in: "+path
 				done()
 			})
 		})
+		*/
 
 	})
 
-	describe("using the testing example directory -> " + path.join("test", "example"), function() {
+	describe("the runPlugin API member in document_parse.js", function() {
 
 		var cwd = path.join(__dirname, "example"), requirejs
 		beforeEach(function() {
@@ -73,55 +75,16 @@ describe("Using stop further progression methodology for dependencies in: "+path
 
 		})
 
-		it("is able to create a git repository in the example directory if their is not one already", function(done) {
+		it("runs with all empty data passed in", function(done) {
 
-			utils.Spawn("git", ["init"], {cwd: cwd}, (code, stdout, stderr) => {
-				expect(true, stdout+"  "+stderr).to.be.true	
-				done()
-			}, function(error) {
-				expect(false, error).to.be.true	
-				done()
-			})
-		})
+			requirejs(["document_parse"], function(document_parse) { 
+				var parser = document_parse()
+				parser.runPlugin([], [], {}, function() {
 
-		var test_path = path.join(__dirname, "example", "directories")
+					expect(true).to.be.true
+					done()
 
-		describe("creates the proper document data object using the directory: "+ test_path, function() {
-
-			it("with directories contained in the structrure", function(done) {
-
-				requirejs(["document_parse"], function(document_parse) { 
-
-					var parser = document_parse()
-					parser.relative_docs_dir = test_path
-					parser.recursive = true
-
-					parser.findPath(cwd, function() {
-						parser.findStructure(function(structure) {
-							parser.acquireData(structure, function(data) {
-
-								expect(data).to.be.a("object")
-								// Note: it is not possible to asynchronously test the structure output without the sort flag set to something sense it can end 
-								// up in any order. This is because the callback to any one particular fs command is based on many external factors (like drive IO).
-								expect(Object.keys(data).length).to.equal(5)
-								expect(data[path.join(test_path, "framers.md")]).to.be.a("object").that.includes({
-									file_name: "framers.md",
-									secondary_heading: "##### Carpentry is for people \n",
-									primary_heading: "# Directories Example Page \n",
-								})
-
-								var all = Object.keys(data), key
-								expect(data[key = all.pop()].content).to.include(data[key].primary_heading).that.include(data[key].secondary_heading)
-								expect(data[key = all.pop()].content).to.include(data[key].primary_heading).that.include(data[key].secondary_heading)
-								expect(data[key = all.pop()].content).to.include(data[key].primary_heading).that.include(data[key].secondary_heading)
-								expect(data[key = all.pop()].content).to.include(data[key].primary_heading).that.include(data[key].secondary_heading)
-								expect(data[key = all.pop()].content).to.include(data[key].primary_heading).that.include(data[key].secondary_heading)
-								done()
-
-							}, function(error) { expect(true, error).to.be.false; done() })
-						}, function(error) { expect(true, error).to.be.false; done() })
-					}, function(error) { expect(true, error).to.be.false; done() })
-				})
+				}, function(error) { expect(true, error).to.be.false; done() })
 			})
 		})
 	})

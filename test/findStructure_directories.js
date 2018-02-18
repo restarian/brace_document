@@ -28,12 +28,12 @@ SOFTWARE.
 
 var expect = require("chai").expect,
 	path = require("path"),
-	fs = require("fs"),
 	utils = require("bracket_utils"),
 	maybe = require("brace_maybe")
 
 var remove_cache = utils.remove_cache.bind(null, "r.js", "document_parse.js")
 var it_will = global
+global.module = module
 
 describe("Using stop further progression methodology for dependencies in: "+path.basename(__filename), function() { 
 
@@ -66,12 +66,6 @@ describe("Using stop further progression methodology for dependencies in: "+path
 	describe("using the testing example directory -> " + path.join("test", "example"), function() {
 
 		var cwd = path.join(__dirname, "example")
-		beforeEach(function() {
-			remove_cache()
-			requirejs = require("requirejs")
-			requirejs.config({baseUrl: path.join(__dirname, "..", "lib"), nodeRequire: require})
-		})
-
 		it("is able to create a git repository in the example directory if there is not one already", function(done) {
 
 			utils.Spawn("git", ["init"], {cwd: cwd}, (code, stdout, stderr) => {
@@ -84,6 +78,12 @@ describe("Using stop further progression methodology for dependencies in: "+path
 
 		describe("creates the proper document structure using the directory: "+ path.join("example", "directories"), function() {
 
+			beforeEach(function() {
+				remove_cache()
+				requirejs = require("requirejs")
+				requirejs.config({baseUrl: path.join(__dirname, "..", "lib"), nodeRequire: require})
+			})
+
 			it("with the sort flag set to alphanumeric", function(done) {
 
 				requirejs(["document_parse"], function(document_parse) { 
@@ -93,7 +93,6 @@ describe("Using stop further progression methodology for dependencies in: "+path
 					parser.relative_docs_dir = path.join(__dirname, "example", "directories")
 
 					parser.findPath(cwd, function() {
-						
 						parser.findStructure(function(structure) {
 
 							expect(structure).to.be.an("array")
@@ -104,14 +103,8 @@ describe("Using stop further progression methodology for dependencies in: "+path
 							])
 							done()
 
-						}, function(error) {
-							expect(true, error).to.be.false
-							done()
-						})
-					}, function(error) {
-						expect(true, error).to.be.false
-						done()
-					})
+						}, function(error) { expect(true, error).to.be.false; done() })
+					}, function(error) { expect(true, error).to.be.false; done() })
 				})
 			})
 
@@ -125,7 +118,6 @@ describe("Using stop further progression methodology for dependencies in: "+path
 					parser.relative_docs_dir = path.join(__dirname, "example", "directories")
 
 					parser.findPath(cwd, function() {
-						
 						parser.findStructure(function(structure) {
 
 							expect(structure).to.be.an("array")
@@ -136,14 +128,8 @@ describe("Using stop further progression methodology for dependencies in: "+path
 							])
 							done()
 
-						}, function(error) {
-							expect(true, error).to.be.false
-							done()
-						})
-					}, function(error) {
-						expect(true, error).to.be.false
-						done()
-					})
+						}, function(error) { expect(true, error).to.be.false; done() })
+					}, function(error) { expect(true, error).to.be.false; done() })
 				})
 			})
 
@@ -182,14 +168,8 @@ describe("Using stop further progression methodology for dependencies in: "+path
 							])
 							done()
 
-						}, function(error) {
-							expect(true, error).to.be.false
-							done()
-						})
-					}, function(error) {
-						expect(true, error).to.be.false
-						done()
-					})
+						}, function(error) { expect(true, error).to.be.false; done() })
+					}, function(error) { expect(true, error).to.be.false; done() })
 				})
 			})
 
@@ -227,14 +207,8 @@ describe("Using stop further progression methodology for dependencies in: "+path
 							])
 							done()
 
-						}, function(error) {
-							expect(true, error).to.be.false
-							done()
-						})
-					}, function(error) {
-						expect(true, error).to.be.false
-						done()
-					})
+						}, function(error) { expect(true, error).to.be.false; done() })
+					}, function(error) { expect(true, error).to.be.false; done() })
 				})
 			})
 
@@ -271,14 +245,8 @@ describe("Using stop further progression methodology for dependencies in: "+path
 							])
 							done()
 
-						}, function(error) {
-							expect(true, error).to.be.false
-							done()
-						})
-					}, function(error) {
-						expect(true, error).to.be.false
-						done()
-					})
+						}, function(error) { expect(true, error).to.be.false; done() })
+					}, function(error) { expect(true, error).to.be.false; done() })
 				})
 			})
 
@@ -317,14 +285,8 @@ describe("Using stop further progression methodology for dependencies in: "+path
 
 							done()
 
-						}, function(error) {
-							expect(true, error).to.be.false
-							done()
-						})
-					}, function(error) {
-						expect(true, error).to.be.false
-						done()
-					})
+						}, function(error) { expect(true, error).to.be.false; done() })
+					}, function(error) { expect(true, error).to.be.false; done() })
 				})
 			})
 		})

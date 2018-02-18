@@ -35,6 +35,8 @@ var expect = require("chai").expect,
 var remove_cache = utils.remove_cache.bind(null, "r.js", "document_parse.js")
 var it_will = global
 
+global.module = module
+
 describe("Using stop further progression methodology for dependencies in: "+path.basename(__filename), function() { 
 
 	var it = maybe(it_will)	
@@ -107,14 +109,8 @@ describe("Using stop further progression methodology for dependencies in: "+path
 							expect(structure[3]).to.include(path.join(__dirname, "example", "no_directories"))
 							done()
 
-						}, function(error) {
-							expect(true, error).to.be.false
-							done()
-						})
-					}, function(error) {
-						expect(true, error).to.be.false
-						done()
-					})
+						}, function(error) { expect(true, error).to.be.false; done() })
+					}, function(error) { expect(true, error).to.be.false; done() })
 				})
 			})
 
@@ -139,14 +135,8 @@ describe("Using stop further progression methodology for dependencies in: "+path
 							])
 							done()
 
-						}, function(error) {
-							expect(true, error).to.be.false
-							done()
-						})
-					}, function(error) {
-						expect(true, error).to.be.false
-						done()
-					})
+						}, function(error) { expect(true, error).to.be.false; done() })
+					}, function(error) { expect(true, error).to.be.false; done() })
 				})
 			})
 
@@ -172,14 +162,8 @@ describe("Using stop further progression methodology for dependencies in: "+path
 							])
 							done()
 
-						}, function(error) {
-							expect(true, error).to.be.false
-							done()
-						})
-					}, function(error) {
-						expect(true, error).to.be.false
-						done()
-					})
+						}, function(error) { expect(true, error).to.be.false; done() })
+					}, function(error) { expect(true, error).to.be.false; done() })
 				})
 			})
 

@@ -34,6 +34,7 @@ var expect = require("chai").expect,
 
 var remove_cache = utils.remove_cache.bind(null, "r.js", "document_parse.js")
 var it_will = global
+global.module = module
 
 describe("Using stop further progression methodology for dependencies in: "+path.basename(__filename), function() { 
 
@@ -106,7 +107,7 @@ describe("Using stop further progression methodology for dependencies in: "+path
 								expect(Object.keys(data).length).to.equal(5)
 								expect(data[path.join(test_path, "framers.md")]).to.be.a("object").that.includes({
 									file_name: "framers.md",
-									secondary_heading: "##### Carpentry is for people \n",
+									secondary_heading: "##### Carpentry is for people \n\n",
 									primary_heading: "# Directories Example Page \n",
 								})
 

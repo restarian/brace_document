@@ -9,6 +9,12 @@
 
 ----
 ### Document pages
+* **/**
+* [](https://github.com/restarian/brace_document/blob/master//code_of_conduct.md)
+* [](https://github.com/restarian/brace_document/blob/master//contributing.md)
+* [](https://github.com/restarian/brace_document/blob/master//usage.md)
+* Specification
+  * [](https://github.com/restarian/brace_document/blob/master//specification/license.md)
 
 ----
 

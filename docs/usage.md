@@ -3,12 +3,12 @@
 
 ----
 ### Brace document
-* [](https://github.com/restarian/brace_document/blob/master//README.md)
-* [](https://github.com/restarian/brace_document/blob/master//code_of_conduct.md)
-* [](https://github.com/restarian/brace_document/blob/master//contributing.md)
-* **/**
+* [Synopsis](https://github.com/restarian/brace_document/blob/master/docs/README.md)
+* [Making a difference with Brace document??](https://github.com/restarian/brace_document/blob/master/docs/contributing.md)
+* [Contributor code of conduct](https://github.com/restarian/brace_document/blob/master/docs/code_of_conduct.md)
+* **Using the program script**
 * Specification
-  * [](https://github.com/restarian/brace_document/blob/master//specification/license.md)
+  * [License information](https://github.com/restarian/brace_document/blob/master/docs/specification/license.md)
 
 ----
 

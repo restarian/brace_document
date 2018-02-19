@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": "mocha",
-    "make_document": "npm run document -- -vr -s 'depth' -t 'Brace document' -b docs docs_raw; rm README.md; ln docs/README.md ."
+    "make_document": "npm run document -- -vr --navlink -s 'depth' -t 'Brace document' -b docs docs_raw; rm README.md; ln docs/README.md ."
   },
   "repository": {
     "type": "git",

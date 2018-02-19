@@ -94,8 +94,8 @@ describe("Using stop further progression methodology for dependencies in: "+path
 				requirejs(["document_parse"], function(document_parse) { 
 
 					var parser = document_parse()
+					parser.option.recursive = true
 					parser.relative_docs_dir = test_path
-					parser.recursive = true
 
 					parser.findPath(cwd, function() {
 						parser.findStructure(function(structure) {

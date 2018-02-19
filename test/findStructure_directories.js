@@ -89,7 +89,7 @@ describe("Using stop further progression methodology for dependencies in: "+path
 				requirejs(["document_parse"], function(document_parse) { 
 
 					var parser = document_parse()
-					parser.sort = "alphanumeric"
+					parser.option.sort = "alphanumeric"
 					parser.relative_docs_dir = path.join(__dirname, "example", "directories")
 
 					parser.findPath(cwd, function() {
@@ -113,8 +113,8 @@ describe("Using stop further progression methodology for dependencies in: "+path
 				requirejs(["document_parse"], function(document_parse) { 
 
 					var parser = document_parse()
-					parser.sort = "alphanumeric"
-					parser.reverse_sort = true 
+					parser.option.sort = "alphanumeric"
+					parser.option.reverseSort = true 
 					parser.relative_docs_dir = path.join(__dirname, "example", "directories")
 
 					parser.findPath(cwd, function() {
@@ -138,8 +138,8 @@ describe("Using stop further progression methodology for dependencies in: "+path
 				requirejs(["document_parse"], function(document_parse) { 
 
 					var parser = document_parse()
-					parser.sort = "alphanumeric"
-					parser.recursive = true
+					parser.option.sort = "alphanumeric"
+					parser.option.recursive = true
 					parser.relative_docs_dir = path.join(__dirname, "example", "directories")
 
 					parser.findPath(cwd, function() {
@@ -178,9 +178,9 @@ describe("Using stop further progression methodology for dependencies in: "+path
 				requirejs(["document_parse"], function(document_parse) { 
 
 					var parser = document_parse()
-					parser.sort = "alphanumeric"
-					parser.recursive = true
-					parser.reverse_sort = true
+					parser.option.sort = "alphanumeric"
+					parser.option.recursive = true
+					parser.option.reverseSort = true
 					parser.relative_docs_dir = path.join(__dirname, "example", "directories")
 
 					parser.findPath(cwd, function() {
@@ -217,8 +217,8 @@ describe("Using stop further progression methodology for dependencies in: "+path
 				requirejs(["document_parse"], function(document_parse) { 
 
 					var parser = document_parse()
-					parser.sort = "depth"
-					parser.recursive = true
+					parser.option.sort = "depth"
+					parser.option.recursive = true
 					parser.relative_docs_dir = path.join(__dirname, "example", "directories")
 
 					parser.findPath(cwd, function() {
@@ -255,9 +255,9 @@ describe("Using stop further progression methodology for dependencies in: "+path
 				requirejs(["document_parse"], function(document_parse) { 
 
 					var parser = document_parse()
-					parser.sort = "depth"
-					parser.reverse_sort = true
-					parser.recursive = true
+					parser.option.sort = "depth"
+					parser.option.reverseSort = true
+					parser.option.recursive = true
 					parser.relative_docs_dir = path.join(__dirname, "example", "directories")
 
 					parser.findPath(cwd, function() {

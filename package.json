@@ -4,11 +4,11 @@
   "description": "A shell program which creates base data for plugin utilization.",
   "main": "lib/brace_document.js",
   "bin": {
-    "document": "./bin/document.js"
+    "make_document": "./bin/document.js"
   },
   "scripts": {
     "test": "mocha",
-    "make_document": "npm run document -- -vr --navlink -s 'depth' -t 'Brace document' -b docs docs_raw; rm README.md; ln docs/README.md ."
+    "make_document": "node ./bin/document.js -vr --navlink -s 'depth' -t 'Brace document' -b docs docs_raw; rm README.md; ln docs/README.md ."
   },
   "repository": {
     "type": "git",

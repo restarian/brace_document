@@ -141,7 +141,7 @@ describe("using stop further progression methodology for dependencies in: "+path
 
 					var parser = document_parse()
 					parser.relative_docs_dir = path.join("..", "example")
-					parser.backup = path.join("..", "example", "backup_docs")
+					parser.option.backup = path.join("..", "example", "backup_docs")
 
 					parser.findPath(cwd, function() {
 
@@ -166,7 +166,7 @@ describe("using stop further progression methodology for dependencies in: "+path
 
 					var parser = document_parse()
 					parser.relative_docs_dir = "docs"
-					parser.backup = path.join("..", "..", "brace_document", "docs_temp")
+					parser.option.backup = path.join("..", "..", "brace_document", "docs_temp")
 
 					parser.findPath(cwd, function() {
 						expect(false, "The error callback should have been called instead of this").to.be.true
@@ -186,10 +186,9 @@ describe("using stop further progression methodology for dependencies in: "+path
 				requirejs(["document_parse"], function(document_parse) { 
 
 					var parser = document_parse()
-					parser.verbose = true
 					parser.relative_docs_dir = path.join("..", "..")
 					// This will pass sense the backup directory is inside the project root.
-					parser.backup = "docs_temp"
+					parser.option.backup = "docs_temp"
 					parser.findPath(cwd, function() {
 
 						// Not going to test for normal logging output so this means everything worked correctly.

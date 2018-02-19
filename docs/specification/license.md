@@ -5,8 +5,8 @@
 ----
 ### Document pages
 * [Synopsis](https://github.com/restarian/brace_document/blob/master/docs/README.md)
-* [Making a difference with Brace document??](https://github.com/restarian/brace_document/blob/master/docs/contributing.md)
 * [Contributor code of conduct](https://github.com/restarian/brace_document/blob/master/docs/code_of_conduct.md)
+* [Making a difference with Brace document??](https://github.com/restarian/brace_document/blob/master/docs/contributing.md)
 * [Using the program script](https://github.com/restarian/brace_document/blob/master/docs/usage.md)
 * Specification
   * **License information**

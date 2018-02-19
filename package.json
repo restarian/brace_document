@@ -37,6 +37,6 @@
     "commander": "^2.11.0"
   },
   "optionalDependencies": {
-    "brace_document_navlink": "^0.2.0"
+    "brace_document_navlink": "^0.3.0"
   }
 }

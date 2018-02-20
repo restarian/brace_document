@@ -1,8 +1,9 @@
-# Brace Navlink
+# Brace Document 
 ### License information
 
-----
-### Document pages
+
+---
+### Brace document
 * [Synopsis](https://github.com/restarian/brace_document/blob/master/docs/README.md)
 * [Contributor code of conduct](https://github.com/restarian/brace_document/blob/master/docs/code_of_conduct.md)
 * [Making a difference with brace document ](https://github.com/restarian/brace_document/blob/master/docs/contributing.md)
@@ -15,11 +16,10 @@
   * [Using the program script](https://github.com/restarian/brace_document/blob/master/docs/using_brace_document/command_line_usage.md)
   * [Using the module directly](https://github.com/restarian/brace_document/blob/master/docs/using_brace_document/module_import_usage.md)
 
-----
-
+---
 #### All works, media and writings contained within this project are licensed under the Brace navlink license unless it is explicitly specified otherwise.
 
-Brace Navlink resides under the MIT license
+Brace document resides under the MIT license
 
 Copyright (c) 2018 Robert Steckroth [<RobertSteckroth@gmail.com>](mailto:RobertSteckroth@gmail.com)
 
@@ -41,9 +41,9 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-  Brace Navlink is module to automatically add markdown page navigation links.
+  Brace document is module to automatically add markdown page navigation links.
 
-  this file is a part of Brace Navlink 
+  this file is a part of Brace document 
 
  Author: Robert Edward Steckroth II, BustOut, [<RobertSteckroth@gmail.com>](mailto:RobertSteckroth@gmail.com)
 

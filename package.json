@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": "mocha",
-    "make_document": "node ./bin/document.js -vr --navlink -s 'depth' -t 'Brace document' -b docs docs_raw; rm README.md; ln docs/README.md ."
+    "make_document": "node ./bin/document.js -vre -s 'depth' -t 'Brace document' -b docs docs_raw; rm README.md; ln docs/README.md ."
   },
   "repository": {
     "type": "git",
@@ -18,7 +18,10 @@
     "markdown",
     "documentation"
   ],
-  "author": "Robert Steckroth",
+	"author": {
+		"name": "Robert Steckroth",
+		"email": "RobertSteckroth@gmail.com"
+	},
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/restarian/brace_document/issues"
@@ -37,6 +40,44 @@
     "commander": "^2.11.0"
   },
   "optionalDependencies": {
-    "brace_document_navlink": "^0.3.0"
-  }
+    "brace_document_navlink": "^0.3.0",
+    "batten_document_specification": "*"
+  },
+	"technologies": [
+		{
+			"name": "VIM",
+			"description": "As an IDE",
+			"url": "https://vim.org"
+		},
+		{
+			"name": "Windows 10",
+			"description": "For unit testing and as the base operating system",
+			"url": "https://www.microsoft.com/en-us/software-download/windows10"
+		},
+		{
+			"name": "Ubuntu on Windows",
+			"description": "As the development operating environment",
+			"url": "https://www.microsoft.com/en-us/store/p/ubuntu/9nblggh4msv6"
+		},
+		{
+			"name": "Git",
+			"description": "For repository management",
+			"url": "https://git-scm.com"
+		},
+		{
+			"name": "Github",
+			"description": "For repository storage",
+			"url": "https://github.com"
+		},
+		{
+			"name": "NPM",
+			"description": "For module storage",
+			"url": "https://npmjs.org"
+		},
+		{
+			"name": "Blender",
+			"description": "For logo design and rendering",
+			"url": "https://blender.org"
+		}
+	]
 }

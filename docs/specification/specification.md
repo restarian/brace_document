@@ -18,9 +18,9 @@
   * [Using the module directly](https://github.com/restarian/brace_document/blob/master/docs/using_brace_document/module_import_usage.md)
 
 ---
-####  A module and program which creates base data for plugin utilization regarding document generation.
+###  A module and program which creates base data for plugin utilization regarding document generation.
 
-**Version**: 0.5.2
+**Version**: 0.5.3
 
 **Author**: [Robert Steckroth](mailto:RobertSteckroth@gmail.com)
 
@@ -39,7 +39,7 @@
 
 **Development dependencies**: [brace_maybe](https://npmjs.org/package/brace_maybe) [bracket_utils](https://npmjs.org/package/bracket_utils) [chai](https://npmjs.org/package/chai) [mocha](https://npmjs.org/package/mocha) [requirejs](https://npmjs.org/package/requirejs)
 
-**Dependencies**: [brace_document_navlink](https://npmjs.org/package/brace_document_navlink) [batten_document_specification](https://npmjs.org/package/batten_document_specification)
+**Optional Dependencies**: [brace_document_navlink](https://npmjs.org/package/brace_document_navlink) [batten_document_specification](https://npmjs.org/package/batten_document_specification)
 
 **Package scripts**:
 

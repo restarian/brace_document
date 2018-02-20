@@ -1,48 +1,48 @@
 {
-  "name": "brace_document",
-  "version": "0.4.1",
-  "description": "A shell program which creates base data for plugin utilization.",
-  "main": "lib/brace_document.js",
-  "bin": {
-    "make_document": "./bin/document.js"
-  },
-  "scripts": {
-    "test": "mocha",
-    "make_document": "node ./bin/document.js -vre -s 'depth' -t 'Brace document' -b docs docs_raw; rm README.md; ln docs/README.md ."
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/restarian/brace_document.git"
-  },
-  "keywords": [
-    "markdown",
-    "documentation"
-  ],
+	"name": "brace_document",
+	"version": "0.5.0",
+	"description": "A shell program which creates base data for plugin utilization.",
+	"main": "lib/brace_document.js",
+	"bin": {
+		"make_document": "./bin/document.js"
+	},
+	"scripts": {
+		"test": "mocha",
+		"make_document": "node ./bin/document.js -vre -s 'depth' -t 'Brace document' -b docs docs_raw; rm README.md; ln docs/README.md ."
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/restarian/brace_document.git"
+	},
+	"keywords": [
+		"markdown",
+		"documentation"
+	],
 	"author": {
 		"name": "Robert Steckroth",
 		"email": "RobertSteckroth@gmail.com"
 	},
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/restarian/brace_document/issues"
-  },
-  "homepage": "https://github.com/restarian/brace_document#readme",
-  "devDependencies": {
-    "brace_maybe": "^0.1.0",
-    "bracket_utils": "^0.2.4",
-    "chai": "^4.1.2",
-    "mocha": "^5.0.0",
-    "requirejs": "^2.3.5"
-  },
-  "dependencies": {
-    "amdefine": "^1.0.1",
-    "bracket_print": "^0.9.10",
-    "commander": "^2.11.0"
-  },
-  "optionalDependencies": {
-    "brace_document_navlink": "^0.3.0",
-    "batten_document_specification": "*"
-  },
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/restarian/brace_document/issues"
+	},
+	"homepage": "https://github.com/restarian/brace_document#readme",
+	"devDependencies": {
+		"brace_maybe": "^0.1.0",
+		"bracket_utils": "^0.2.4",
+		"chai": "^4.1.2",
+		"mocha": "^5.0.0",
+		"requirejs": "^2.3.5"
+	},
+	"dependencies": {
+		"amdefine": "^1.0.1",
+		"bracket_print": "^0.9.10",
+		"commander": "^2.11.0"
+	},
+	"optionalDependencies": {
+		"brace_document_navlink": "^0.3.0",
+		"batten_document_specification": "*"
+	},
 	"technologies": [
 		{
 			"name": "VIM",

@@ -20,7 +20,7 @@
 ---
 ####  A shell program which creates base data for plugin utilization.
 
-**Version**: 0.5.0
+**Version**: 0.5.1
 
 **Author**: [Robert Steckroth](mailto:RobertSteckroth@gmail.com)
 
@@ -41,6 +41,9 @@
 
 **Dependencies**: [brace_document_navlink](https://npmjs.org/package/brace_document_navlink) [batten_document_specification](https://npmjs.org/package/batten_document_specification)
 
-**Scripts**:
-   test -> ```mocha```
-   make_document -> ```node ./bin/document.js -vre -s 'depth' -t 'Brace document' -b docs docs_raw; rm README.md; ln docs/README.md .```
+**Package scripts**:
+
+| Name | Action |
+| ---- | ------ |
+ | test | mocha |
+ | make_document | node ./bin/document.js -vre -s 'depth' -t 'Brace document' -b docs docs_raw; rm README.md; ln docs/README.md . |

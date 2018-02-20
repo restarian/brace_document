@@ -1,7 +1,7 @@
 {
 	"name": "brace_document",
 	"version": "0.5.2",
-	"description": "A shell program which creates base data for plugin utilization.",
+	"description": "A module and program which creates base data for plugin utilization regarding document generation.",
 	"main": "lib/brace_document.js",
 	"bin": {
 		"make_document": "./bin/document.js"
@@ -15,8 +15,10 @@
 		"url": "git+https://github.com/restarian/brace_document.git"
 	},
 	"keywords": [
+		"brace",
 		"markdown",
-		"documentation"
+		"documentation",
+		"generation"
 	],
 	"author": {
 		"name": "Robert Steckroth",

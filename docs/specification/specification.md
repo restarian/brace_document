@@ -18,9 +18,9 @@
   * [Using the module directly](https://github.com/restarian/brace_document/blob/master/docs/using_brace_document/module_import_usage.md)
 
 ---
-####  A shell program which creates base data for plugin utilization.
+####  A module and program which creates base data for plugin utilization regarding document generation.
 
-**Version**: 0.5.1
+**Version**: 0.5.2
 
 **Author**: [Robert Steckroth](mailto:RobertSteckroth@gmail.com)
 

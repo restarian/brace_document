@@ -6,10 +6,15 @@
 ### Document pages
 * [Synopsis](https://github.com/restarian/brace_document/blob/master/docs/README.md)
 * **Contributor code of conduct**
-* [Making a difference with Brace document??](https://github.com/restarian/brace_document/blob/master/docs/contributing.md)
-* [Using the program script](https://github.com/restarian/brace_document/blob/master/docs/usage.md)
+* [Making a difference with brace document ](https://github.com/restarian/brace_document/blob/master/docs/contributing.md)
 * Specification
   * [License information](https://github.com/restarian/brace_document/blob/master/docs/specification/license.md)
+* The plugin system
+  * [Allocating plugins on the system](https://github.com/restarian/brace_document/blob/master/docs/the_plugin_system/allocating_plugins.md)
+  * [Creating plugins](https://github.com/restarian/brace_document/blob/master/docs/the_plugin_system/creating_plugins.md)
+* Using brace document
+  * [Using the program script](https://github.com/restarian/brace_document/blob/master/docs/using_brace_document/command_line_usage.md)
+  * [Using the module directly](https://github.com/restarian/brace_document/blob/master/docs/using_brace_document/module_import_usage.md)
 
 ---
 ## Our Pledge

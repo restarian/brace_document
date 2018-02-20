@@ -1,15 +1,19 @@
 # Brace Navlink
 ### License information
 
-
 ----
 ### Document pages
 * [Synopsis](https://github.com/restarian/brace_document/blob/master/docs/README.md)
 * [Contributor code of conduct](https://github.com/restarian/brace_document/blob/master/docs/code_of_conduct.md)
-* [Making a difference with Brace document??](https://github.com/restarian/brace_document/blob/master/docs/contributing.md)
-* [Using the program script](https://github.com/restarian/brace_document/blob/master/docs/usage.md)
+* [Making a difference with brace document ](https://github.com/restarian/brace_document/blob/master/docs/contributing.md)
 * Specification
   * **License information**
+* The plugin system
+  * [Allocating plugins on the system](https://github.com/restarian/brace_document/blob/master/docs/the_plugin_system/allocating_plugins.md)
+  * [Creating plugins](https://github.com/restarian/brace_document/blob/master/docs/the_plugin_system/creating_plugins.md)
+* Using brace document
+  * [Using the program script](https://github.com/restarian/brace_document/blob/master/docs/using_brace_document/command_line_usage.md)
+  * [Using the module directly](https://github.com/restarian/brace_document/blob/master/docs/using_brace_document/module_import_usage.md)
 
 ----
 
@@ -17,7 +21,7 @@
 
 Brace Navlink resides under the MIT license
 
-Copyright (c) 2018 Robert Steckroth <RobertSteckroth@gmail.com>
+Copyright (c) 2018 Robert Steckroth [<RobertSteckroth@gmail.com>](mailto:RobertSteckroth@gmail.com)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -41,5 +45,5 @@ SOFTWARE.
 
   this file is a part of Brace Navlink 
 
- Author: Robert Edward Steckroth II, BustOut, <RobertSteckroth@gmail.com>
+ Author: Robert Edward Steckroth II, BustOut, [<RobertSteckroth@gmail.com>](mailto:RobertSteckroth@gmail.com)
 

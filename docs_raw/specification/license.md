@@ -1,7 +1,6 @@
 # Brace Navlink
 ### License information
 
-
 ----
 ### Document pages
 * [](https://github.com/restarian/brace_document/blob/master//README.md)
@@ -17,7 +16,7 @@
 
 Brace Navlink resides under the MIT license
 
-Copyright (c) 2018 Robert Steckroth <RobertSteckroth@gmail.com>
+Copyright (c) 2018 Robert Steckroth [<RobertSteckroth@gmail.com>](mailto:RobertSteckroth@gmail.com)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -41,5 +40,5 @@ SOFTWARE.
 
   this file is a part of Brace Navlink 
 
- Author: Robert Edward Steckroth II, BustOut, <RobertSteckroth@gmail.com>
+ Author: Robert Edward Steckroth II, BustOut, [<RobertSteckroth@gmail.com>](mailto:RobertSteckroth@gmail.com)
 

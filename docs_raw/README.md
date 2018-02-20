@@ -24,13 +24,18 @@
 
 **Bonuses:**
 * A beautiful showpiece of fully asynchronous non-blocking run-time program/script.
-* Idempotent API design runs safely from anywhere on the system.
-* Uses a extensible design which incorporates the commonjs system via npm
+* A versatile and idempotent API design runs safely from anywhere on the system.
+* Uses a extensible design which incorporates the commonjs system to create a plugin platform.
 * Operates as a system program from the command line or an import module script.
 * Uses AMD (asynchronous module definition), syntax.
-* Tested and working in Linux and/or Windows environments.
+* Tested in Linux and/or Windows environments.
 * Well commented, thoroughly unit tested and professional code
 
 **Caveats:**
 * Only works with git repositories.
-* Only works with github.com hosting as of now.
+
+Brace document serves as a platform to generate/modify document pages. It creates and stores a structure object which is representative of the document pages hierarchy. It also creates a data object which contains the individual document meta data and text content of all of the found documents. The structure and data objects are then passed to any available plugins found to be further modified.
+
+### Idempotent versatility
+All of the commands within the Brace document API are idempotent so that any of the plugins can call any of the module API members to generate different results. For example: the *document_parse.createStructure* ALI member can be called again in any of the plugins using the optional directory argument to create another a copy of the documents directory structure.
+

@@ -1,9 +1,26 @@
 #  Brace Document
 ## Project Specification Data
 
+
+---
+### Brace document
+* [Synopsis](https://github.com/restarian/brace_document/blob/master/docs/README.md)
+* [Contributor code of conduct](https://github.com/restarian/brace_document/blob/master/docs/code_of_conduct.md)
+* [Making a difference with brace document ](https://github.com/restarian/brace_document/blob/master/docs/contributing.md)
+* Specification
+  * [License information](https://github.com/restarian/brace_document/blob/master/docs/specification/license.md)
+  * **Project specification data**
+* The plugin system
+  * [Allocating plugins on the system](https://github.com/restarian/brace_document/blob/master/docs/the_plugin_system/allocating_plugins.md)
+  * [Creating plugins](https://github.com/restarian/brace_document/blob/master/docs/the_plugin_system/creating_plugins.md)
+* Using brace document
+  * [Using the program script](https://github.com/restarian/brace_document/blob/master/docs/using_brace_document/command_line_usage.md)
+  * [Using the module directly](https://github.com/restarian/brace_document/blob/master/docs/using_brace_document/module_import_usage.md)
+
+---
 ####  A shell program which creates base data for plugin utilization.
 
-**Version**: 0.4.1
+**Version**: 0.5.0
 
 **Author**: [Robert Steckroth](mailto:RobertSteckroth@gmail.com)
 

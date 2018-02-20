@@ -10,6 +10,7 @@
 * [Making a difference with brace document ](https://github.com/restarian/brace_document/blob/master/docs/contributing.md)
 * Specification
   * [License information](https://github.com/restarian/brace_document/blob/master/docs/specification/license.md)
+  * [Project specification data](https://github.com/restarian/brace_document/blob/master/docs/specification/specification.md)
 * The plugin system
   * **Allocating plugins on the system**
   * [Creating plugins](https://github.com/restarian/brace_document/blob/master/docs/the_plugin_system/creating_plugins.md)

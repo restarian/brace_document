@@ -28,14 +28,10 @@ SOFTWARE.
 
 var expect = require("chai").expect,
 	path = require("path"),
-	fs = require("fs"),
 	utils = require("bracket_utils"),
-	maybe = require("brace_maybe"),
-	EOL = require("os").EOL
+	maybe = require("brace_maybe")
 
-// Needed because mocha does not use the nodejs function wrapper for modules.
-global.module = module
-
+module.paths.unshift(path.join(__dirname, "..", ".."))
 var remove_cache = utils.remove_cache.bind(null, "r.js", "document_parse.js")
 var it_will = global
 
@@ -47,13 +43,14 @@ describe("Using stop further progression methodology for dependencies in: "+path
 
 	describe("Checking for dependencies..", function() { 
 
+		/*
 		it("r_js in the system as a program", function(done) {
 			it_will.stop = true 
 			expect((function() {try { require("requirejs"); return true; } catch(e) { return e;}})(), "could not find r.js dependency").to.be.true
 			it_will.stop = false 
 			done()
 		})
-
+		*/
 
 		it("brace_document_navlink is in the system as a program", function(done) {
 			it_will.stop = true 
@@ -68,69 +65,71 @@ describe("Using stop further progression methodology for dependencies in: "+path
 			}
 		})
 
+		/*
+		it("git is available in the system as a program", function(done) {
+			it_will.stop = true 
+			utils.Spawn("git", [], function() {
+				expect(true).to.be.true
+				it_will.stop = false 
+				done()
+			}, function() {
+				expect(false, "git is not available as a system program").to.be.true
+				done()
+			})
+		})
+		*/
+
 	})
 
+	describe("the CLI returns the proper codes and string output when using", function() {
 
-	describe("finds all of the commonjs modules which are plugins to this module with the", function() {
-
-		var cwd = path.join(__dirname, "example"), requirejs
+		var captured_text, cwd = path.join(__dirname, "..", "bin")
 		beforeEach(function() {
-
 			remove_cache()
 			requirejs = require("requirejs")
 			requirejs.config({baseUrl: path.join(__dirname, "..", "lib"), nodeRequire: require})
+		})
+
+		it("the help option", function(done) {
+			utils.Spawn("node", ["document.js", "-h"], {cwd: cwd}, function(exit_code, stdout, stderr) { 
+				
+				// commander exits 0 on help exit
+				expect(exit_code).to.equal(0)
+				expect(stdout).to.include("-- Brace Document "+ require("brace_document/package.json").version + "  --------------")
+				done()
+			}, function(error) { expect(false, error).to.be.true; done() })
 
 		})
 
-		it("getPlugin with only callbacks as parameters", function(done) {
-			requirejs(["document_parse"], function(document_parse) { 
+		it("the plugins option", function(done) {
+			utils.Spawn("node", ["document.js", "--plugins"], {cwd: cwd}, function(exit_code, stdout, stderr) { 
+				
+				expect(exit_code).to.equal(2)
+				expect(stdout).to.include("Available plugins:\nbrace_document_navlink ->")
+				done()
+			}, function(error) { expect(false, error).to.be.true; done() })
 
-				var parser = document_parse()
-				parser.getPlugin(function(data) {
-
-					expect(data).to.be.a("array")
-					expect(data.length > 0, "There is a least one module installed in the system").to.be.true
-					done()
-
-				}, function(error) { expect(true, error).to.be.false; done() })
-			})
 		})
 
-		it("passing in a path to getPlugin", function(done) {
-			requirejs(["document_parse"], function(document_parse) { 
+		it("only the dryRun option", function(done) {
+			utils.Spawn("node", ["document.js", "-v", "--dry-run", "--no-color"], {cwd: cwd}, function(exit_code, stdout, stderr) { 
+				
+				expect(exit_code).to.equal(7)
+				expect(stdout).to.include("Using git repository at "+ path.join(__dirname, ".."))
+				done()
+			}, function(error) { expect(false, error).to.be.true; done() })
 
-				var test_path = path.join(__dirname, "example")
-				var parser = document_parse()
-
-				parser.getPlugin(test_path, function(data) {
-
-					expect(data).to.be.an("array")
-					expect(data.length > 1, "There bracket_document_testplugin was not found at " + test_path).to.be.true
-					expect(data[0]).to.include({name: "bracket_document_testplugin"})
-					done()
-
-				}, function(error) { expect(true, error).to.be.false; done() })
-			})
 		})
 
-		it("passing in a path to getPlugin and setting a pluginRegex", function(done) {
-			requirejs(["document_parse"], function(document_parse) { 
+		it("a non-available option set", function(done) {
+			utils.Spawn("node", ["document.js", "-v", "--dry-run", "--bad-option"], {cwd: cwd}, function(exit_code, stdout, stderr) { 
+				
+				expect(exit_code).to.equal(1)
+				done()
+			}, function(error) { expect(false, error).to.be.true; done() })
 
-				var test_path = path.join(__dirname, "example")
-				var parser = document_parse()
-				parser.option.pluginRegex = "^test_plug"
-
-				parser.getPlugin(test_path, function(data) {
-
-					expect(data).to.be.an("array")
-					expect(data.length === 1, "The test_plugin module was not found at " + test_path).to.be.true
-					expect(data[0]).to.include({name: "test_plugin"})
-					done()
-
-				}, function(error) { expect(true, error).to.be.false; done() })
-			})
 		})
-
 	})
+
 })
 

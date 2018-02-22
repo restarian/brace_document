@@ -29,13 +29,13 @@ SOFTWARE.
 
 var info = require("../package.json"),
 	program = require("commander"),
-	print = require("bracket_print")
+	print = require("bracket_print"),
+	path = require("path")
 
-var dir = "", repo_url = ""
 program.version(info.name + " " + info.version)
-.usage(`[options] [docs directory]
+.usage(`[options] <docs directory>
 
--- Brace Document  ----------------------------------------------------------------------------------------------------
+-- Brace Document `+info.version+`  ----------------------------------------------------------------------------------------------------
 [docs directory] - The base directory where the markdown files are found. 
   The last parameter passed into the command will be used as the "docs directory" parameter. Otherwise, the current 
 working directory of the shell is used if it is not suppied. The docs directory must be at or below a project root 
@@ -48,15 +48,16 @@ must be inside the project root directory.
   Plugins are found using the commonjs structure created by the npm package manager. The plugin module paths are relative
 to the project root directory. Any plugins found will have its option data appended to this gateway menu and can be 
 viewed with the -h flag.`)
-.option("-v, --verbose", "Print any superfluous information from the run-time.")
+.option("-v, --verbose", print().s("Print any superfluous information from the run-time."))
 .option("-q, --quiet", "No not output any log messages (including errors). This option supersedes the verbose flag.")
+.option("--no-color", "Print everthing in black and white (is more efficient).")
 .option("-r, --recursive", "Descend into all sub-directories to find markdown files.")
 .option("-d, --project-location <string>", "The directory which is at or inside the repository to work with. If not supplied this will be the" +
 " current working directory of the shell process that started this program. Therefore, it is easiest to omit this parameter while running this command" +
 " from within the project which is being operated on.", process.cwd())
 .option("-p, --plugins", "Print all of the available plugins and return without further action.")
-//.option("-P, --plugin-path <string>", "Add a path to the module lookups when searching for plugins. The directory should contain a node_modules" +
-//" sub-directory.", "")
+.option("-P, --plugin-path <string>", "Add a path to the module lookups when searching for plugins. The directory should contain a node_modules" +
+" sub-directory.", "")
 .option("-e, --enable-all", "Use all of the plugins found by the program. Plugins will only e called once.")
 .option("--dry-run", "Do not write any data out to the docs and/or backup directory.")
 .option("-x, --plugin-regex <string>", "This may be set to an ECMA complient regular expression which will be used to locate plugins by name. The entire" +
@@ -72,4 +73,4 @@ viewed with the -h flag.`)
 .option("-R, --reverse-sort", "Reverse the sorting operation specified via the --sort option.")
 
 // The process exit code is maintained for unit testing via the cli.
-require("../../brace_document")(program, print({level: 1, title_stamp: false, log_title: "bin/document"}), function(exit_code) { process.exit(exit_code) })
+require("../../brace_document")(program, print({level: 1, title_stamp: false, log_title: path.join("bin", "document")}), function(exit_code) { process.exit(exit_code) })

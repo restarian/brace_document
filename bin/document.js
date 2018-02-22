@@ -55,13 +55,13 @@ viewed with the -h flag.`)
 " current working directory of the shell process that started this program. Therefore, it is easiest to omit this parameter while running this command" +
 " from within the project which is being operated on.", process.cwd())
 .option("-p, --plugins", "Print all of the available plugins and return without further action.")
-.option("-P, --plugin-path <string>", "Add a path to the module lookups when searching for plugins. The directory should contain a node_modules" +
-" sub-directory.", "")
+//.option("-P, --plugin-path <string>", "Add a path to the module lookups when searching for plugins. The directory should contain a node_modules" +
+//" sub-directory.", "")
 .option("-e, --enable-all", "Use all of the plugins found by the program. Plugins will only e called once.")
 .option("--dry-run", "Do not write any data out to the docs and/or backup directory.")
-//.option("-x, --plugin-regex <string>", "This may be set to an ECMA complient regular expression which will be used to locate plugins by name. The entire" +
-//" name must be matched. This only applies to the directory which contains the plugin. E.g. /home/brand_plugin_tester would match to -x '^brand_plugin_.*'",
-//"/^brace_document_.*/")
+.option("-x, --plugin-regex <string>", "This may be set to an ECMA complient regular expression which will be used to locate plugins by name. The entire" +
+" name must be matched. This only applies to the directory which contains the plugin. E.g. /home/brand_plugin_tester would match to -x '^brand_plugin_.*'",
+"^(brace|batten|bracket)[\_,\-]document[\_,\-]")
 .option("-b, --backup <directory>", "This will create separate files and directories for the mutations and keep the originals intact. The directory path" +
 " must be contained within the project repository so that proper links can be created relative to it. It can be supplied as either absolute or relative" +
 " to the project root.")

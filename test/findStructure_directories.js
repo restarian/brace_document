@@ -283,6 +283,10 @@ describe("Using stop further progression methodology for dependencies in: "+path
 								path.join(__dirname, "example", "directories", "theCompany.md"), 
 							])
 
+							expect(structure).to.deep.equal(parser.sortStructure(structure))
+							parser.option.reverseSort = false
+							//expect(structure).to.not.deep.equal(parser.sortStructure(structure))
+
 							done()
 
 						}, function(error) { expect(true, error).to.be.false; done() })

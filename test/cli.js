@@ -83,7 +83,7 @@ describe("Using stop further progression methodology for dependencies in: "+path
 
 	describe("the CLI returns the proper codes and string output when using", function() {
 
-		var captured_text, cwd = path.join(__dirname, "..", "bin")
+		var cwd = path.join(__dirname, "..", "bin")
 		beforeEach(function() {
 			remove_cache()
 			requirejs = require("requirejs")
@@ -111,7 +111,7 @@ describe("Using stop further progression methodology for dependencies in: "+path
 
 		})
 
-		it("only the dryRun option", function(done) {
+		it.skip("only the dryRun option", function(done) {
 			utils.Spawn("node", ["document.js", "-v", "--dry-run", "--no-color"], {cwd: cwd}, function(exit_code, stdout, stderr) { 
 				
 				expect(exit_code).to.equal(7)

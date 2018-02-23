@@ -3,19 +3,18 @@
 
 
 ---
-### Brace document
-* [Synopsis](https://github.com/restarian/brace_document/blob/master/docs/README.md)
-* [Contributor code of conduct](https://github.com/restarian/brace_document/blob/master/docs/code_of_conduct.md)
-* [Making a difference with brace document ](https://github.com/restarian/brace_document/blob/master/docs/contributing.md)
+### Document pages
+* [Code of conduct](https://github.com/restarian/brace_document/blob/master/docs/)
+* The plugin system
+  * [Allocating plugins on the system](https://github.com/restarian/brace_document/blob/master/docs/)
+  * [Creating additional plugins](https://github.com/restarian/brace_document/blob/master/docs/)
+* [Contributing](https://github.com/restarian/brace_document/blob/master/docs/)
+* [Synopsis](https://github.com/restarian/brace_document/blob/master/docs/)
 * Specification
   * **License information**
-  * [Project specification data](https://github.com/restarian/brace_document/blob/master/docs/specification/specification.md)
-* The plugin system
-  * [Allocating plugins on the system](https://github.com/restarian/brace_document/blob/master/docs/the_plugin_system/allocating_plugins.md)
-  * [Creating plugins](https://github.com/restarian/brace_document/blob/master/docs/the_plugin_system/creating_plugins.md)
 * Using brace document
-  * [Using the program script](https://github.com/restarian/brace_document/blob/master/docs/using_brace_document/command_line_usage.md)
-  * [Using the module directly](https://github.com/restarian/brace_document/blob/master/docs/using_brace_document/module_import_usage.md)
+  * [Command line usage](https://github.com/restarian/brace_document/blob/master/docs/)
+  * [Using the module directly](https://github.com/restarian/brace_document/blob/master/docs/)
 
 ---
 #### All works, media and writings contained within this project are licensed under the Brace navlink license unless it is explicitly specified otherwise.

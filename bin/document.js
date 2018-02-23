@@ -52,25 +52,25 @@ viewed with the -h flag.`)
 .option("-q, --quiet", "No not output any log messages (including errors). This option supersedes the verbose flag.")
 .option("--no-color", "Print everthing in black and white (is more efficient).")
 .option("-r, --recursive", "Descend into all sub-directories to find markdown files.")
-.option("-d, --project-location <string>", "The directory which is at or inside the repository to work with. If not supplied this will be the" +
+.option("-d, --project-location <directory>", "The directory which is at or inside the repository to work with. If not supplied this will be the" +
 " current working directory of the shell process that started this program. Therefore, it is easiest to omit this parameter while running this command" +
 " from within the project which is being operated on.", process.cwd())
-.option("-p, --plugins", "Print all of the available plugins and return without further action.")
-.option("-P, --plugin-path <string>", "Add a path to the module lookups when searching for plugins. The directory should contain a node_modules" +
-" sub-directory.", "")
+.option("-p, --plugins", "Print all of the available plugins to standard out and return without further action.")
+.option("-P, --plugin-path <directory>", "Add a path to the module lookups when searching for plugins. The directory should contain a node_modules" +
+" sub-directory or be a node_modules directory.", "")
 .option("-e, --enable-all", "Use all of the plugins found by the program. Plugins will only e called once.")
-.option("--dry-run", "Do not write any data out to the docs and/or backup directory.")
-.option("-x, --plugin-regex <string>", "This may be set to an ECMA complient regular expression which will be used to locate plugins by name. The entire" +
+.option("--dry-run", "Do not write any data out to the docs and/or backup directory and output log messages if the verbose option is used as well.")
+.option("-x, --plugin-regex <regex>", "This may be set to an ECMA complient regular expression which will be used to locate plugins by name. The entire" +
 " name must be matched. This only applies to the directory which contains the plugin. E.g. /home/brand_plugin_tester would match to -x '^brand_plugin_.*'",
 "^(brace|batten|bracket)[\_,\-]document[\_,\-]")
 .option("-b, --backup <directory>", "This will create separate files and directories for the mutations and keep the originals intact. The directory path" +
 " must be contained within the project repository so that proper links can be created relative to it. It can be supplied as either absolute or relative" +
 " to the project root.")
-.option("-s, --sort <alphanumeric, depth, native>", "alphanumeric: The documents and directory structure be arranged in alphanumeric order. depth: All"+
-	" of the sub-directories will be arranged at the top of the directory list with the document pages below. Note: the structure will be presorted in" +
-	" alphanumeric regardless of the reverse-sort flag when the sort option is set to 'depth'. native: The structure is kept the same as the operating" +
-	" system outputs it.", "native")
-.option("-R, --reverse-sort", "Reverse the sorting operation specified via the --sort option.")
+.option("-s, --sort <alphanumeric, depth, native>", "alphanumeric: the documents and directory structure be arranged in alphanumeric order according" +
+" to the base name of the path (e.g. myfile.txt in /home/me/myfile.txt). depth: all of the sub-directories will be arranged at the top of the directory" +
+" list with the document pages below. Note: the structure will be pre-sorted in alphanumeric regardless of the reverse-sort flag when the sort option is" +
+" set to 'depth'. native: the structure is kept the same as the operating system outputs it (which is most efficient).", "native")
+.option("-R, --reverse-sort", "Reverse the sorting operation specified via the -sort option.")
 
 // The process exit code is maintained for unit testing via the cli.
 require("../../brace_document")(program, print({level: 1, title_stamp: false, log_title: path.join("bin", "document")}), function(exit_code) { process.exit(exit_code) })

@@ -113,6 +113,23 @@ describe("Using stop further progression methodology for dependencies in: "+path
 			})
 		})
 
+		it("passing in a path to getPlugin that ends with node_modules", function(done) {
+			requirejs(["document_parse"], function(document_parse) { 
+
+				var test_path = path.join(__dirname, "example", "node_modules")
+				var parser = document_parse()
+
+				parser.getPlugin(test_path, function(data) {
+
+					expect(data).to.be.an("array")
+					expect(data.length > 1, "There bracket_document_testplugin was not found at " + test_path).to.be.true
+					expect(data[0]).to.include({name: "bracket_document_testplugin"})
+					done()
+
+				}, function(error) { expect(true, error).to.be.false; done() })
+			})
+		})
+
 		it("passing in a path to getPlugin and setting a pluginRegex", function(done) {
 			requirejs(["document_parse"], function(document_parse) { 
 

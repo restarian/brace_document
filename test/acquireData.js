@@ -90,7 +90,6 @@ describe("Using stop further progression methodology for dependencies in: "+path
 		describe("creates the proper document data object using the directory: "+ test_path, function() {
 
 			it("with directories contained in the structrure", function(done) {
-
 				requirejs(["document_parse"], function(document_parse) { 
 
 					var parser = document_parse()
@@ -106,7 +105,6 @@ describe("Using stop further progression methodology for dependencies in: "+path
 								// up in any order. This is because the callback to any one particular fs command is based on many external factors (like drive IO).
 								expect(Object.keys(data).length).to.equal(5)
 								expect(data[path.join(test_path, "framers.md")]).to.be.a("object").that.includes({
-									file_name: "framers.md",
 									secondary_heading: "##### Carpentry is for people \n\n",
 									primary_heading: "# Directories Example Page \n",
 								})

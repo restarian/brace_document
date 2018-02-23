@@ -28,13 +28,11 @@ SOFTWARE.
 
 var expect = require("chai").expect,
 	path = require("path"),
-	fs = require("fs"),
 	utils = require("bracket_utils"),
 	maybe = require("brace_maybe")
 
 var remove_cache = utils.remove_cache.bind(null, "r.js", "document_parse.js")
 var it_will = global
-global.module = module
 
 describe("Using stop further progression methodology for dependencies in: "+path.basename(__filename), function() { 
 
@@ -51,9 +49,11 @@ describe("Using stop further progression methodology for dependencies in: "+path
 			done()
 		})
 
+		/*
 		it("git is available in the system as a program", function(done) {
 			it_will.stop = true 
 			utils.Spawn("git", [], function() {
+				expect(true).to.be.true
 				it_will.stop = false 
 				done()
 			}, function() {
@@ -61,64 +61,64 @@ describe("Using stop further progression methodology for dependencies in: "+path
 				done()
 			})
 		})
+		*/
 
 	})
 
-	describe("using the testing example directory -> " + path.join("test", "example"), function() {
+	describe("addStructureDirectory is working appropriately", function() {
 
-		var cwd = path.join(__dirname, "example"), requirejs
+		var structure
 		beforeEach(function() {
 			remove_cache()
 			requirejs = require("requirejs")
 			requirejs.config({baseUrl: path.join(__dirname, "..", "lib"), nodeRequire: require})
 
+			structure = [
+				"/home/my/module/joes.md",
+				{ 
+					"there": [
+						{ 
+							"more": [ 
+								"/aaaa/my/module/bbbb.md",
+								"/home/my/module/aaaa.md"
+							],
+						},
+						"/home/my/module/joes.md",
+					],
+				},
+				"/home/my/module/cool.md",
+			]
 		})
 
-		it("is able to create a git repository in the example directory if their is not one already", function(done) {
+		it("with a single subdirectory", function(done) {
+			requirejs(["document_parse"], function(document_parse) { 
 
-			utils.Spawn("git", ["init"], {cwd: cwd}, (code, stdout, stderr) => {
-				expect(true, stdout+"  "+stderr).to.be.true	
-				done()
-			}, function(error) {
-				expect(false, error).to.be.true	
+				var parser = document_parse()
+				//parser.option.sort = "alphanumeric"
+				expect(structure).to.deep.equal([ "/home/my/module/joes.md", { "there": [ { "more": [ "/aaaa/my/module/bbbb.md", "/home/my/module/aaaa.md" ], }, "/home/my/module/joes.md", ], }, "/home/my/module/cool.md", ] )
+
+				parser.addStructureDirectory(structure, "coolJoes")
+				expect(structure).to.deep.equal([ "/home/my/module/joes.md", { "there": [ { "more": [ "/aaaa/my/module/bbbb.md", "/home/my/module/aaaa.md" ], }, "/home/my/module/joes.md", ], }, "/home/my/module/cool.md", {"coolJoes": []}] )
+
+
 				done()
 			})
 		})
 
-		var test_path = path.join(__dirname, "example", "directories")
+		it.only("with a double subdirectory", function(done) {
+			requirejs(["document_parse"], function(document_parse) { 
 
-		describe("creates the proper document data object using the directory: "+ test_path, function() {
+				var parser = document_parse()
+				//parser.option.sort = "alphanumeric"
+				expect(structure).to.deep.equal([ "/home/my/module/joes.md", { "there": [ { "more": [ "/aaaa/my/module/bbbb.md", "/home/my/module/aaaa.md" ], }, "/home/my/module/joes.md", ], }, "/home/my/module/cool.md", ] )
 
-			it("with directories contained in the structrure", function(done) {
-				requirejs(["./document_parse"], function(document_parse) { 
+				parser.addStructureDirectory(structure, "cool/Joes")
+				console.log(structure)
+				console.log(structure)
+				expect(structure).to.deep.equal([ "/home/my/module/joes.md", { "there": [ { "more": [ "/aaaa/my/module/bbbb.md", "/home/my/module/aaaa.md" ], }, "/home/my/module/joes.md", ], }, "/home/my/module/cool.md", {"cool": [ {"Joes": []}]} ] )
 
-					document_parse(function() {
-						this.option.recursive = true
-						this.relative_docs_dir = test_path
 
-						this.findPath(cwd, () => {
-							this.findStructure((structure) => {
-								this.acquireData(structure, (data) => {
-
-									expect(data).to.be.a("object")
-									// Note: it is not possible to asynchronously test the structure output without the sort flag set to something sense it can end 
-									// up in any order. This is because the callback to any one particular fs command is based on many external factors (like drive IO).
-									expect(Object.keys(data).length).to.equal(5)
-									expect(data[path.join(test_path, "framers.md")]).to.be.a("object")
-									var all = Object.keys(data), key
-									expect(data[key = all.pop()].content).to.be.a("string")
-									expect(data[key = all.pop()].content).to.be.a("string")
-									expect(data[key = all.pop()].content).to.be.a("string")
-									expect(data[key = all.pop()].content).to.be.a("string")
-									expect(data[key = all.pop()].content).to.be.a("string")
-									done()
-
-								}, function(error) { expect(true, error).to.be.false; done() })
-							}, function(error) { expect(true, error).to.be.false; done() })
-						}, function(error) { expect(true, error).to.be.false; done() })
-
-					})
-				})
+				done()
 			})
 		})
 	})

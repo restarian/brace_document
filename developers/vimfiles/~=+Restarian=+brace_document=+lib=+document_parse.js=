@@ -9,64 +9,70 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-64,72fold
-64,72fold
-115,123fold
-177,185fold
-205,213fold
-205,213fold
-205,213fold
-204,213fold
-259,267fold
-363,371fold
-402,410fold
-427,435fold
-483,491fold
-483,491fold
-584,592fold
-647,655fold
-754,763fold
-64
+65,72fold
+65,72fold
+65,72fold
+114,121fold
+114,121fold
+175,182fold
+204,209fold
+204,209fold
+204,209fold
+202,209fold
+255,262fold
+358,365fold
+411,418fold
+435,442fold
+490,497fold
+592,599fold
+654,661fold
+654,661fold
+760,767fold
+65
 normal! zo
-64
+65
+normal! zo
+114
+normal! zo
+114
 normal! zc
-64
+114
 normal! zc
-115
+175
 normal! zc
-177
-normal! zc
+202
+normal! zo
 204
 normal! zo
-205
+204
 normal! zo
-205
+204
 normal! zo
-259
+202
 normal! zc
-363
+255
 normal! zc
-402
+358
 normal! zc
-427
+411
 normal! zc
-483
+435
+normal! zc
+490
+normal! zc
+592
+normal! zc
+654
 normal! zo
-483
+654
 normal! zc
-483
+760
 normal! zc
-584
-normal! zc
-647
-normal! zc
-754
-normal! zc
-let s:l = 382 - ((31 * winheight(0) + 20) / 40)
+let s:l = 648 - ((16 * winheight(0) + 20) / 40)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-382
+648
 normal! 013|
 let &so = s:so_save | let &siso = s:siso_save
 doautoall SessionLoadPost

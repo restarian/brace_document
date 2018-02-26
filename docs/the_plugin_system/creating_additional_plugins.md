@@ -1,22 +1,23 @@
-# Brace Document
-## Creating plugins
 
 
 ---
 ### Document pages
-* [Code of conduct](https://github.com/restarian/brace_document/blob/master/docs/)
-* The plugin system
-  * [Allocating plugins on the system](https://github.com/restarian/brace_document/blob/master/docs/)
-  * **Creating additional plugins**
-* [Contributing](https://github.com/restarian/brace_document/blob/master/docs/)
-* [Synopsis](https://github.com/restarian/brace_document/blob/master/docs/)
+* [Contributer code of conduct](https://github.com/restarian/brace_document/blob/master/docs/contributer_code_of_conduct.md)
+* [Guilines for contributing](https://github.com/restarian/brace_document/blob/master/docs/guilines_for_contributing.md)
+* [Synopsis](https://github.com/restarian/brace_document/blob/master/docs/synopsis.md)
 * Specification
-  * [License information](https://github.com/restarian/brace_document/blob/master/docs/)
+  * [License information](https://github.com/restarian/brace_document/blob/master/docs/specification/license_information.md)
+* The plugin system
+  ,  * [Allocating plugins on the system](https://github.com/restarian/brace_document/blob/master/docs/specification/the_plugin_system/allocating_plugins_on_the_system.md)
+  ,  * **Creating additional plugins**
 * Using brace document
-  * [Command line usage](https://github.com/restarian/brace_document/blob/master/docs/)
-  * [Using the module directly](https://github.com/restarian/brace_document/blob/master/docs/)
+  ,  ,  * [Command line usage](https://github.com/restarian/brace_document/blob/master/docs/specification/the_plugin_system/using_brace_document/command_line_usage.md)
+  ,  ,  * [Using the module directly](https://github.com/restarian/brace_document/blob/master/docs/specification/the_plugin_system/using_brace_document/using_the_module_directly.md)
 
 ---
+# Brace Document
+## Creating plugins
+
 #### The plugin constructor
 All plugins must return a function from the require/import call. The function constructor may or may not have a prototype and does not need to return a value. This function will be called with the *document_parse* module as the first parameter.
 The module function must also contain and return a function property with the qualifier *runThrough*. The documents *structure* and *data* objects are passed in as the first and second arguments. The function must also call a callback (the third argument), when it is finished so that subsequent plugins can be called when it finishes.

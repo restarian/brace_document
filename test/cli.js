@@ -105,13 +105,13 @@ describe("Using stop further progression methodology for dependencies in: "+path
 			utils.Spawn("node", ["document.js", "--plugins"], {cwd: cwd}, function(exit_code, stdout, stderr) { 
 				
 				expect(exit_code).to.equal(2)
-				expect(stdout).to.include("Available plugins:\nbrace_document_navlink ->")
+				expect(stdout).to.include("brace_document_navlink :")
 				done()
 			}, function(error) { expect(false, error).to.be.true; done() })
 
 		})
 
-		it.skip("only the dryRun option", function(done) {
+		it("only the dryRun option", function(done) {
 			utils.Spawn("node", ["document.js", "-v", "--dry-run", "--no-color"], {cwd: cwd}, function(exit_code, stdout, stderr) { 
 				
 				expect(exit_code).to.equal(7)

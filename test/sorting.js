@@ -124,10 +124,10 @@ describe("Using stop further progression methodology for dependencies in: "+path
 					var parser = document_parse()
 					parser.option.sort = "depth" 
 					parser.option.reverseSort = false
-					parser.sortList(structure)
-					expect(structure).to.deep.equal([ "/home/my/module/cool.md", "/home/my/module/joes.md", { "there": [ { "more": [ "/aaaa/my/module/bbbb.md", "/home/my/module/aaaa.md" ], }, "/home/my/module/joes.md", ], }, ] )
-
+					parser.sortList(structure, () => {
+						expect(structure).to.deep.equal([ "/home/my/module/cool.md", "/home/my/module/joes.md", { "there": [ { "more": [ "/aaaa/my/module/bbbb.md", "/home/my/module/aaaa.md" ], }, "/home/my/module/joes.md", ], }, ] )
 					done()
+					})
 				})
 			})
 					
@@ -179,10 +179,10 @@ describe("Using stop further progression methodology for dependencies in: "+path
 					var parser = document_parse()
 					parser.option.sort = "depth" 
 					parser.option.reverseSort = false 
-					parser.sortStructure(structure)
-					expect(structure).to.deep.equal([ "/home/my/module/cool.md", "/home/my/module/joes.md", { "there": [ "/home/my/module/joes.md", { "more": [ "/home/my/module/aaaa.md", "/aaaa/my/module/bbbb.md", ], }, ], }, ] )
-
+					parser.sortStructure(structure, () => {
+						expect(structure).to.deep.equal([ "/home/my/module/cool.md", "/home/my/module/joes.md", { "there": [ "/home/my/module/joes.md", { "more": [ "/home/my/module/aaaa.md", "/aaaa/my/module/bbbb.md", ], }, ], }, ] )
 					done()
+					})
 				})
 			})
 				

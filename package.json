@@ -8,7 +8,7 @@
 	},
 	"scripts": {
 		"test": "mocha",
-		"make_document": "node ./bin/document.js -vre -s 'depth' -t 'Brace document' -b docs docs_raw; rm README.md; ln docs/README.md ."
+		"make_document": "./bin/document.js -i docs_raw -vre -b docs --sort depth --specification-path specification/package_data_and_information.md; rm README.md; ln docs/synopsis.md ./README.md"
 	},
 	"repository": {
 		"type": "git",
@@ -38,9 +38,9 @@
 		"requirejs": "^2.3.5"
 	},
 	"dependencies": {
-		"commander": "^2.11.0",
+		"amdefine": "^1.0.1",
 		"bracket_print": "^0.9.12",
-		"amdefine": "^1.0.1"
+		"commander": "^2.14.1"
 	},
 	"optionalDependencies": {
 		"batten_document_specification": "*"

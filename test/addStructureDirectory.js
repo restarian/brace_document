@@ -90,35 +90,142 @@ describe("Using stop further progression methodology for dependencies in: "+path
 			]
 		})
 
-		it("with a single subdirectory", function(done) {
-			requirejs(["document_parse"], function(document_parse) { 
+		it("with an empty subdirectory parameter", function(done) {
+			requirejs(["./document_parse"], function(document_parse) { 
 
 				var parser = document_parse()
-				//parser.option.sort = "alphanumeric"
 				expect(structure).to.deep.equal([ "/home/my/module/joes.md", { "there": [ { "more": [ "/aaaa/my/module/bbbb.md", "/home/my/module/aaaa.md" ], }, "/home/my/module/joes.md", ], }, "/home/my/module/cool.md", ] )
 
-				parser.addStructureDirectory(structure, "coolJoes")
-				expect(structure).to.deep.equal([ "/home/my/module/joes.md", { "there": [ { "more": [ "/aaaa/my/module/bbbb.md", "/home/my/module/aaaa.md" ], }, "/home/my/module/joes.md", ], }, "/home/my/module/cool.md", {"coolJoes": []}] )
+				var list = parser.addStructureDirectory(structure, "./")
+				expect(structure).to.deep.equal([ "/home/my/module/joes.md", { "there": [ { "more": [ "/aaaa/my/module/bbbb.md", "/home/my/module/aaaa.md" ], }, "/home/my/module/joes.md", ], }, "/home/my/module/cool.md", ] )
+				expect(list).to.deep.equal(structure)	
+
+				list = parser.addStructureDirectory(structure, ".")
+				expect(structure).to.deep.equal([ "/home/my/module/joes.md", { "there": [ { "more": [ "/aaaa/my/module/bbbb.md", "/home/my/module/aaaa.md" ], }, "/home/my/module/joes.md", ], }, "/home/my/module/cool.md", ] )
+				expect(list).to.deep.equal(structure)	
+
+				parser.addStructureDirectory(structure, "", function(list) {
+					expect(structure).to.deep.equal([ "/home/my/module/joes.md", { "there": [ { "more": [ "/aaaa/my/module/bbbb.md", "/home/my/module/aaaa.md" ], }, "/home/my/module/joes.md", ], }, "/home/my/module/cool.md", ] )
+					expect(list).to.deep.equal(structure)	
+					done()
+				}, function(error) { expect(false, "Should not have errored").to.be.true; done() })
+			})
+		})
+
+		it("with an existing single directory which has subdirectories", function(done) {
+			requirejs(["./document_parse"], function(document_parse) { 
+
+				var parser = document_parse()
+				expect(structure).to.deep.equal([ "/home/my/module/joes.md", { "there": [ { "more": [ "/aaaa/my/module/bbbb.md", "/home/my/module/aaaa.md" ], }, "/home/my/module/joes.md", ], }, "/home/my/module/cool.md", ] )
+
+				var list = parser.addStructureDirectory(structure, "there")
+				expect(structure).to.deep.equal([ "/home/my/module/joes.md", { "there": [ { "more": [ "/aaaa/my/module/bbbb.md", "/home/my/module/aaaa.md" ], }, "/home/my/module/joes.md", ], }, "/home/my/module/cool.md", ] )
+				expect(list).to.deep.equal([ { "more": [ "/aaaa/my/module/bbbb.md", "/home/my/module/aaaa.md" ], }, "/home/my/module/joes.md", ] )
+				
+				var list = parser.addStructureDirectory(structure, "./there")
+				expect(structure).to.deep.equal([ "/home/my/module/joes.md", { "there": [ { "more": [ "/aaaa/my/module/bbbb.md", "/home/my/module/aaaa.md" ], }, "/home/my/module/joes.md", ], }, "/home/my/module/cool.md", ] )
+				expect(list).to.deep.equal([ { "more": [ "/aaaa/my/module/bbbb.md", "/home/my/module/aaaa.md" ], }, "/home/my/module/joes.md", ] )
+				done()
+			})
+		})
+
+
+		it("with an existing double directory", function(done) {
+			requirejs(["./document_parse"], function(document_parse) { 
+
+				var parser = document_parse()
+				expect(structure).to.deep.equal([ "/home/my/module/joes.md", { "there": [ { "more": [ "/aaaa/my/module/bbbb.md", "/home/my/module/aaaa.md" ], }, "/home/my/module/joes.md", ], }, "/home/my/module/cool.md", ] )
+
+				var list = parser.addStructureDirectory(structure, "there/more")
+				expect(structure).to.deep.equal([ "/home/my/module/joes.md", { "there": [ { "more": [ "/aaaa/my/module/bbbb.md", "/home/my/module/aaaa.md" ], }, "/home/my/module/joes.md", ], }, "/home/my/module/cool.md", ] )
+
+				expect(list).to.deep.equal([ "/aaaa/my/module/bbbb.md", "/home/my/module/aaaa.md" ])
+				done()
+			})
+		})
+
+		it("with a non-existant double subdirectory", function(done) {
+			requirejs(["./document_parse"], function(document_parse) { 
+
+				var parser = document_parse()
+				expect(structure).to.deep.equal([ "/home/my/module/joes.md", { "there": [ { "more": [ "/aaaa/my/module/bbbb.md", "/home/my/module/aaaa.md" ], }, "/home/my/module/joes.md", ], }, "/home/my/module/cool.md", ] )
+
+				parser.addStructureDirectory(structure, "cool/Joes")
+				expect(structure).to.deep.equal([ "/home/my/module/joes.md", { "there": [ { "more": [ "/aaaa/my/module/bbbb.md", "/home/my/module/aaaa.md" ], }, "/home/my/module/joes.md", ], }, "/home/my/module/cool.md", {"cool": [ {"Joes": []}]} ] )
 
 
 				done()
 			})
 		})
 
-		it.only("with a double subdirectory", function(done) {
-			requirejs(["document_parse"], function(document_parse) { 
+		it("with a non-existant double subdirectory in win32 format", function(done) {
+			requirejs(["./document_parse"], function(document_parse) { 
 
 				var parser = document_parse()
-				//parser.option.sort = "alphanumeric"
 				expect(structure).to.deep.equal([ "/home/my/module/joes.md", { "there": [ { "more": [ "/aaaa/my/module/bbbb.md", "/home/my/module/aaaa.md" ], }, "/home/my/module/joes.md", ], }, "/home/my/module/cool.md", ] )
 
-				parser.addStructureDirectory(structure, "cool/Joes")
-				console.log(structure)
-				console.log(structure)
+				parser.addStructureDirectory(structure, "cool\\Joes")
 				expect(structure).to.deep.equal([ "/home/my/module/joes.md", { "there": [ { "more": [ "/aaaa/my/module/bbbb.md", "/home/my/module/aaaa.md" ], }, "/home/my/module/joes.md", ], }, "/home/my/module/cool.md", {"cool": [ {"Joes": []}]} ] )
 
 
 				done()
+			})
+		})
+
+		it("with a non-existant double subdirectory inside a existing directory in win32 format", function(done) {
+			requirejs(["./document_parse"], function(document_parse) { 
+
+				var parser = document_parse()
+				expect(structure).to.deep.equal([ "/home/my/module/joes.md", { "there": [ { "more": [ "/aaaa/my/module/bbbb.md", "/home/my/module/aaaa.md" ], }, "/home/my/module/joes.md", ], }, "/home/my/module/cool.md", ] )
+
+				parser.addStructureDirectory(structure, "there\\more\\cool\\joes", function() {
+					
+					expect(structure).to.deep.equal([ "/home/my/module/joes.md", { "there": [ { "more": [ "/aaaa/my/module/bbbb.md", "/home/my/module/aaaa.md", {"cool": [ {"joes": []}]} ], }, "/home/my/module/joes.md", ], }, "/home/my/module/cool.md",  ] )
+					done()
+				})
+			})
+		})
+
+		it("with a directory which is absolute", function(done) {
+			requirejs(["./document_parse"], function(document_parse) { 
+
+				var parser = document_parse()
+				expect(structure).to.deep.equal([ "/home/my/module/joes.md", { "there": [ { "more": [ "/aaaa/my/module/bbbb.md", "/home/my/module/aaaa.md" ], }, "/home/my/module/joes.md", ], }, "/home/my/module/cool.md", ] )
+
+				var param = "/there/more/cool/joes"
+				parser.addStructureDirectory(structure, param, function() {
+					expect(false, "The absolute directory should have errored instead.").to.be.true
+					done()
+				}, function(error) {
+
+					expect(error.toString()).to.include("The directory parameter " + param + " must be relative (not contain a root). Found / as the root.")
+					done()
+				})
+			})
+		})
+		
+		it("with a directory which is absolute", function(done) {
+			requirejs(["./document_parse"], function(document_parse) { 
+
+				var parser = document_parse()
+				expect(structure).to.deep.equal([ "/home/my/module/joes.md", { "there": [ { "more": [ "/aaaa/my/module/bbbb.md", "/home/my/module/aaaa.md" ], }, "/home/my/module/joes.md", ], }, "/home/my/module/cool.md", ] )
+
+				var param = "C:\\there\\more\\cool\\joes"
+				parser.addStructureDirectory(structure, param, function() {
+					expect(false, "The absolute directory should have errored instead.").to.be.true
+				}, function(error) {
+					expect(error.toString()).to.include("The directory parameter " + param + " must be relative (not contain a root). Found C:\\ as the root.")
+
+					param = "\\there\\more\\cool\\joes"
+					parser.addStructureDirectory(structure, param, function() {
+						expect(false, "The absolute directory should have errored instead.").to.be.true
+						done()
+					}, function(error) {
+						expect(error.toString()).to.include("The directory parameter " + param + " must be relative (not contain a root). Found \\ as the root.")
+						done()
+					})
+
+				})
 			})
 		})
 	})

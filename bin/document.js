@@ -33,14 +33,13 @@ var info = require("../package.json"),
 	path = require("path")
 
 program.version(info.name + " " + info.version)
-.usage(`[options] <docs directory>
+.usage(`[options] 
 
 -- Brace Document `+info.version+`  ----------------------------------------------------------------------------------------------------
-[docs directory] - The base directory where the markdown files are found. 
-  The last parameter passed into the command will be used as the "docs directory" parameter. Otherwise, the current 
-working directory of the shell is used if it is not suppied. The docs directory must be at or below a project root 
-directory structure in order to use the associated information. The project root directory is automatically set as the 
-directory which contains the first found .git repository from the current working directory of the process.
+  The input option will be used as the "docs directory" parameter. Otherwise, the current working directory of the shell is used if 
+it is not suppied. The docs directory (or input), must be at or below a project root directory structure in order to use the associated 
+information. The project root directory is automatically set as the directory which contains the first found .git repository from the 
+current working directory of the process.
   The "backup" option can be used to specify a directory where copies of the "docs directory" files will be created. It
 is acceptable to specify a "docs directory" which is outside (below), the project root only if the "backup" option is 
 set to a directory which is inside the project root. At least one of the "docs directory" or the "backup" directories
@@ -48,9 +47,10 @@ must be inside the project root directory.
   Plugins are found using the commonjs structure created by the npm package manager. The plugin module paths are relative
 to the project root directory. Any plugins found will have its option data appended to this gateway menu and can be 
 viewed with the -h flag.`)
-.option("-v, --verbose", print().s("Print any superfluous information from the run-time."))
+.option("-v, --verbose", "Print any and all superfluous information from the run-time.")
 .option("-q, --quiet", "No not output any log messages (including errors). This option supersedes the verbose flag.")
-.option("--no-color", "Print everthing in black and white (is more efficient).")
+.option("-C, --no-color", "Print everthing in black and white (is more efficient).")
+.option("-i, --input <path>", "The location of the docs to parse. Note: these files will be overwritten if the --backup option is not set.")
 .option("-r, --recursive", "Descend into all sub-directories to find markdown files.")
 .option("-d, --project-location <directory>", "The directory which is at or inside the repository to work with. If not supplied this will be the" +
 " current working directory of the shell process that started this program. Therefore, it is easiest to omit this parameter while running this command" +
@@ -59,7 +59,7 @@ viewed with the -h flag.`)
 .option("-P, --plugin-path <directory>", "Add a path to the module lookups when searching for plugins. The directory should contain a node_modules" +
 " sub-directory or be a node_modules directory.", "")
 .option("-e, --enable-all", "Use all of the plugins found by the program. Plugins will only e called once.")
-.option("--dry-run", "Do not write any data out to the docs and/or backup directory and output log messages if the verbose option is used as well.")
+.option("-N, --dry-run", "Do not write any data out to the docs and/or backup directory and output log messages if the verbose option is used as well.")
 .option("-x, --plugin-regex <regex>", "This may be set to an ECMA complient regular expression which will be used to locate plugins by name. The entire" +
 " name must be matched. This only applies to the directory which contains the plugin. E.g. /home/brand_plugin_tester would match to -x '^brand_plugin_.*'",
 "^(brace|batten|bracket)[\_,\-]document[\_,\-]")

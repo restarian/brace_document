@@ -1,5 +1,9 @@
-# Brace Document
 ## Creating plugins
+
+---
+### Document pages
+
+---
 
 #### The plugin constructor
 All plugins must return a function from the require/import call. The function constructor may or may not have a prototype and does not need to return a value. This function will be called with the *document_parse* module as the first parameter.

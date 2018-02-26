@@ -289,6 +289,94 @@ describe("Using stop further progression methodology for dependencies in: "+path
 					}, function(error) { expect(true, error).to.be.false; done() })
 				})
 			})
+
+			it("using the nested directory with the recursive flag set, the sort flag set to alphanumeric and the reverse-sort flag set", function(done) {
+
+				requirejs(["document_parse"], function(document_parse) { 
+
+					var parser = document_parse()
+					parser.option.sort = "alphanumeric"
+					parser.option.reverseSort = true
+					parser.option.recursive = true
+					parser.relative_docs_dir = path.join(__dirname, "example", "directories_nested")
+
+					parser.findPath(cwd, function() {
+						parser.findStructure(function(structure) {
+
+							expect(structure).to.be.a("array")
+							expect(structure.length).to.equal(4)
+							// These should be sorted by directory depth in reverse order now.
+							expect(structure).to.deep.equal(
+							[
+								path.join(__dirname, "example", "directories_nested", "theCompany.md"), 
+								{ 
+									"resorces": [
+										path.join(__dirname, "example", "directories_nested", "resorces", "tools.md"),
+										{ 
+											"nails": [
+											] 
+										}, 
+										path.join(__dirname, "example", "directories_nested", "resorces", "0wood.md"),
+									] 
+								}, 
+								{ 
+									"logistics": [
+										path.join(__dirname, "example", "directories_nested", "logistics", "wages.md"),
+									] 
+								}, 
+								path.join(__dirname, "example", "directories_nested", "framers.md"), 
+							])
+
+							done()
+
+						}, function(error) { expect(true, error).to.be.false; done() })
+					}, function(error) { expect(true, error).to.be.false; done() })
+				})
+			})
+
+			it("using the nested directory with the recursive flag set, the sort flag set to depth and the reverse-sort flag set", function(done) {
+
+				requirejs(["document_parse"], function(document_parse) { 
+
+					var parser = document_parse()
+					parser.option.sort = "depth"
+					parser.option.reverseSort = true
+					parser.option.recursive = true
+					parser.relative_docs_dir = path.join(__dirname, "example", "directories_nested")
+
+					parser.findPath(cwd, function() {
+						parser.findStructure(function(structure) {
+
+							expect(structure).to.be.a("array")
+							expect(structure.length).to.equal(4)
+							// These should be sorted by directory depth in reverse order now.
+							expect(structure).to.deep.equal(
+							[
+								{ 
+									"logistics": [
+										path.join(__dirname, "example", "directories_nested", "logistics", "wages.md"),
+									] 
+								}, 
+								{ 
+									"resorces": [
+										{ 
+											"nails": [
+											] 
+										}, 
+										path.join(__dirname, "example", "directories_nested", "resorces", "0wood.md"),
+										path.join(__dirname, "example", "directories_nested", "resorces", "tools.md"),
+									] 
+								}, 
+								path.join(__dirname, "example", "directories_nested", "framers.md"), 
+								path.join(__dirname, "example", "directories_nested", "theCompany.md"), 
+							])
+
+							done()
+
+						}, function(error) { expect(true, error).to.be.false; done() })
+					}, function(error) { expect(true, error).to.be.false; done() })
+				})
+			})
 		})
 
 	})

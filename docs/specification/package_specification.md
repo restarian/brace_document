@@ -7,7 +7,7 @@
 * [Synopsis](https://github.com/restarian/brace_document/blob/master/docs/synopsis.md)
 * Specification
 undefined* [License information](https://github.com/restarian/brace_document/blob/master/docs/specification/license_information.md)
-undefined* **Package data and information**
+undefined* **Package specification**
 * The plugin system
 undefined* [Allocating plugins on the system](https://github.com/restarian/brace_document/blob/master/docs/the_plugin_system/allocating_plugins_on_the_system.md)
 undefined* [Creating additional plugins](https://github.com/restarian/brace_document/blob/master/docs/the_plugin_system/creating_additional_plugins.md)

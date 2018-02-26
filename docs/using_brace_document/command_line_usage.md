@@ -1,4 +1,3 @@
-# Brace Document
 ## Using the program script 
 
 ----
@@ -9,11 +8,11 @@
 * Specification
   * [License information](https://github.com/restarian/brace_document/blob/master/docs/specification/license_information.md)
 * The plugin system
-  ,  * [Allocating plugins on the system](https://github.com/restarian/brace_document/blob/master/docs/specification/the_plugin_system/allocating_plugins_on_the_system.md)
-  ,  * [Creating additional plugins](https://github.com/restarian/brace_document/blob/master/docs/specification/the_plugin_system/creating_additional_plugins.md)
+  * [Allocating plugins on the system](https://github.com/restarian/brace_document/blob/master/docs/the_plugin_system/allocating_plugins_on_the_system.md)
+  * [Creating additional plugins](https://github.com/restarian/brace_document/blob/master/docs/the_plugin_system/creating_additional_plugins.md)
 * Using brace document
-  ,  ,  * **Command line usage**
-  ,  ,  * [Using the module directly](https://github.com/restarian/brace_document/blob/master/docs/specification/the_plugin_system/using_brace_document/using_the_module_directly.md)
+  * **Command line usage**
+  * [Using the module directly](https://github.com/restarian/brace_document/blob/master/docs/using_brace_document/using_the_module_directly.md)
 
 ----
 

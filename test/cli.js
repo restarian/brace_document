@@ -86,8 +86,6 @@ describe("Using stop further progression methodology for dependencies in: "+path
 		var cwd = path.join(__dirname, "..", "bin")
 		beforeEach(function() {
 			remove_cache()
-			requirejs = require("requirejs")
-			requirejs.config({baseUrl: path.join(__dirname, "..", "lib"), nodeRequire: require})
 		})
 
 		it("the help option", function(done) {
@@ -125,6 +123,32 @@ describe("Using stop further progression methodology for dependencies in: "+path
 			utils.Spawn("node", ["document.js", "-v", "--dry-run", "--bad-option"], {cwd: cwd}, function(exit_code, stdout, stderr) { 
 				
 				expect(exit_code).to.equal(1)
+				done()
+			}, function(error) { expect(false, error).to.be.true; done() })
+
+		})
+
+		it("the npm run make_document command", function(done) {
+			utils.Exec("npm", ["run", "make_document"], {cwd: path.join(__dirname, "..")}, function(exit_code, stdout, stderr) { 
+				
+				expect(exit_code).to.equal(4)
+				done()
+			}, function(error) { expect(false, error).to.be.true; done() })
+		})
+
+		it("the npm run make_document command", function(done) {
+			utils.Exec("npm", ["run", "make_document", "--", "-v", "--no-color"], {cwd: path.join(__dirname, "..")}, function(exit_code, stdout, stderr) { 
+				
+				expect(exit_code).to.equal(4)
+				expect(stdout).to.include("SUCCESS")
+				expect(stdout).to.include("Using git repository at "+ path.join(__dirname, ".."))
+				done()
+			}, function(error) { expect(false, error).to.be.true; done() })
+		})
+
+		it("the npm run make_document command", function(done) {
+			utils.Exec("npm", ["run", "make_document", "--", "-v", "--no-color", "--plugins"], {cwd: path.join(__dirname, "..")}, function(exit_code, stdout, stderr) { 
+				expect(stdout).to.include("brace_document_navlink :")
 				done()
 			}, function(error) { expect(false, error).to.be.true; done() })
 

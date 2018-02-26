@@ -1,4 +1,4 @@
-
+## Allocating plugins on the system
 
 ---
 ### Document pages
@@ -8,16 +8,13 @@
 * Specification
   * [License information](https://github.com/restarian/brace_document/blob/master/docs/specification/license_information.md)
 * The plugin system
-  ,  * **Allocating plugins on the system**
-  ,  * [Creating additional plugins](https://github.com/restarian/brace_document/blob/master/docs/specification/the_plugin_system/creating_additional_plugins.md)
+  * **Allocating plugins on the system**
+  * [Creating additional plugins](https://github.com/restarian/brace_document/blob/master/docs/the_plugin_system/creating_additional_plugins.md)
 * Using brace document
-  ,  ,  * [Command line usage](https://github.com/restarian/brace_document/blob/master/docs/specification/the_plugin_system/using_brace_document/command_line_usage.md)
-  ,  ,  * [Using the module directly](https://github.com/restarian/brace_document/blob/master/docs/specification/the_plugin_system/using_brace_document/using_the_module_directly.md)
+  * [Command line usage](https://github.com/restarian/brace_document/blob/master/docs/using_brace_document/command_line_usage.md)
+  * [Using the module directly](https://github.com/restarian/brace_document/blob/master/docs/using_brace_document/using_the_module_directly.md)
 
 ---
-# Brace Document
-## Allocating plugins on the system
-
 
 #### Plugin locations
 Only modules which are located withing a *node_modules* directory that is also specified in the current *module.paths* array can be used as plugins for Brace document. The *--plugin-path* or *option.pluginPath* option can be used to specify an additional path to search for plugins.

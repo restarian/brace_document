@@ -1,14 +1,7 @@
-# Brace Document
 ## Using the program script 
 
 ----
 ### Brace document
-* [](https://github.com/restarian/brace_document/blob/master//README.md)
-* [](https://github.com/restarian/brace_document/blob/master//code_of_conduct.md)
-* [](https://github.com/restarian/brace_document/blob/master//contributing.md)
-* **/**
-* Specification
-  * [](https://github.com/restarian/brace_document/blob/master//specification/license.md)
 
 ----
 

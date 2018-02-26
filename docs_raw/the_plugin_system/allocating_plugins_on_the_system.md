@@ -1,6 +1,9 @@
-# Brace Document
 ## Allocating plugins on the system
 
+---
+### Document pages
+
+---
 
 #### Plugin locations
 Only modules which are located withing a *node_modules* directory that is also specified in the current *module.paths* array can be used as plugins for Brace document. The *--plugin-path* or *option.pluginPath* option can be used to specify an additional path to search for plugins.

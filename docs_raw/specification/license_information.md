@@ -1,5 +1,9 @@
-# Brace Document 
-### License information
+## License information
+
+---
+### Document pages
+
+---
 
 #### All works, media and writings contained within this project are licensed under the Brace navlink license unless it is explicitly specified otherwise.
 

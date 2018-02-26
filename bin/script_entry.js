@@ -33,7 +33,7 @@ cmd.on("exit", function(exit_code) {
 	if ( exit_code == 7 ) 
 		fs.unlink(path.join(__dirname, "..", "README.md"), function(error) {
 
-			fs.symlink(path.join(__dirname, "..", "docs", "synopsis.md"), path.join(__dirname, "..", "README.md"), function(error) {
+			fs.link(path.join(__dirname, "..", "docs", "synopsis.md"), path.join(__dirname, "..", "README.md"), function(error) {
 				if ( error ) {
 					console.log(error)
 					process.exit(-1)

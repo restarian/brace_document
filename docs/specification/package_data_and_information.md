@@ -1,24 +1,24 @@
 
 
 ---
-### "Brace document pages"
+### Document pages
 * [Contributer code of conduct](https://github.com/restarian/brace_document/blob/master/docs/contributer_code_of_conduct.md)
 * [Guilines for contributing](https://github.com/restarian/brace_document/blob/master/docs/guilines_for_contributing.md)
 * [Synopsis](https://github.com/restarian/brace_document/blob/master/docs/synopsis.md)
 * Specification
-undefined* [License information](https://github.com/restarian/brace_document/blob/master/docs/specification/license_information.md)
-undefined* **Package data and information**
+  * [License information](https://github.com/restarian/brace_document/blob/master/docs/specification/license_information.md)
+  * **Package data and information**
 * The plugin system
-undefined* [Allocating plugins on the system](https://github.com/restarian/brace_document/blob/master/docs/the_plugin_system/allocating_plugins_on_the_system.md)
-undefined* [Creating additional plugins](https://github.com/restarian/brace_document/blob/master/docs/the_plugin_system/creating_additional_plugins.md)
+  * [Allocating plugins on the system](https://github.com/restarian/brace_document/blob/master/docs/the_plugin_system/allocating_plugins_on_the_system.md)
+  * [Creating additional plugins](https://github.com/restarian/brace_document/blob/master/docs/the_plugin_system/creating_additional_plugins.md)
 * Using brace document
-undefined* [Command line usage](https://github.com/restarian/brace_document/blob/master/docs/using_brace_document/command_line_usage.md)
-undefined* [Using the module directly](https://github.com/restarian/brace_document/blob/master/docs/using_brace_document/using_the_module_directly.md)
+  * [Command line usage](https://github.com/restarian/brace_document/blob/master/docs/using_brace_document/command_line_usage.md)
+  * [Using the module directly](https://github.com/restarian/brace_document/blob/master/docs/using_brace_document/using_the_module_directly.md)
 
 ---
 ###  A module and program which creates base data for plugin utilization regarding document generation.
 
-**Version**: 0.6.1
+**Version**: 0.7.0
 
 **Author**: [Robert Steckroth](mailto:RobertSteckroth@gmail.com)
 

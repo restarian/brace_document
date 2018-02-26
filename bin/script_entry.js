@@ -15,6 +15,7 @@ var p_args = process.argv.slice(2).filter(value => {
 })
 	
 if ( this.extra ) {
+	p_args.push("--specification")
 	p_args.push("--specification-path")
 	// The path join here is one of the reasons to have an entry script like this one.
 	p_args.push(path.join("specification", "package_data_and_information.md"))

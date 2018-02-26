@@ -131,7 +131,6 @@ describe("Using stop further progression methodology for dependencies in: "+path
 		it("the npm run make_document command", function(done) {
 			utils.Exec("npm", ["run", "make_document"], {cwd: path.join(__dirname, "..")}, function(exit_code, stdout, stderr) { 
 				
-				expect(exit_code).to.equal(4)
 				done()
 			}, function(error) { expect(false, error).to.be.true; done() })
 		})
@@ -139,7 +138,6 @@ describe("Using stop further progression methodology for dependencies in: "+path
 		it("the npm run make_document command", function(done) {
 			utils.Exec("npm", ["run", "make_document", "--", "-v", "--no-color"], {cwd: path.join(__dirname, "..")}, function(exit_code, stdout, stderr) { 
 				
-				expect(exit_code).to.equal(4)
 				expect(stdout).to.include("SUCCESS")
 				expect(stdout).to.include("Using git repository at "+ path.join(__dirname, ".."))
 				done()

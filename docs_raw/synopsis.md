@@ -26,6 +26,7 @@
 
 **Caveats:**
 * Only works with git repositories.
+* Requires nodejs version 6 or greater 
 
 ### What it is 
 Brace document serves as a platform to generate/modify document pages. It creates and stores a structure object which is representative of the document pages hierarchy. It also creates a data object which contains the individual document content and meta data of all the documents. These structure and data objects are then passed to the available plugins which are found in the system to be further modified before written back to a directory.

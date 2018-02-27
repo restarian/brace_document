@@ -3,11 +3,12 @@
 ---
 ### Document pages
 * [Contributer code of conduct](https://github.com/restarian/brace_document/blob/master/docs/contributer_code_of_conduct.md)
-* [Guilines for contributing](https://github.com/restarian/brace_document/blob/master/docs/guilines_for_contributing.md)
+* [Guidelines for contributing](https://github.com/restarian/brace_document/blob/master/docs/guidelines_for_contributing.md)
 * [Synopsis](https://github.com/restarian/brace_document/blob/master/docs/synopsis.md)
 * Specification
   * [License information](https://github.com/restarian/brace_document/blob/master/docs/specification/license_information.md)
-  * [Package information](https://github.com/restarian/brace_document/blob/master/docs/specification/package_information.md)
+  * [Package specification](https://github.com/restarian/brace_document/blob/master/docs/specification/package_specification.md)
+  * [Unit test output](https://github.com/restarian/brace_document/blob/master/docs/specification/unit_test_output.md)
 * The plugin system
   * **Allocating plugins on the system**
   * [Creating additional plugins](https://github.com/restarian/brace_document/blob/master/docs/the_plugin_system/creating_additional_plugins.md)

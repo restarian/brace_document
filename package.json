@@ -7,7 +7,7 @@
 	"scripts": {
 		"test": "mocha",
 		"brace_document": "node ./bin/document.js",
-		"make_docs": "node ./bin/script_entry.js"
+		"make_docs": "node ./bin/make_docs.js"
 	},
 	"repository": {
 		"type": "git",

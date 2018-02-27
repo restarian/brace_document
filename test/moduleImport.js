@@ -1,6 +1,6 @@
 /* Copyright (c) 2018 Robert Steckroth <RobertSteckroth@gmail.com>
 
-	Brace Document resides under the MIT licensed.
+	Brace document resides under the MIT licensed.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -20,9 +20,9 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-  Brace Document is module to automatically add markdown page navigation links.
+  Brace document is module to automatically add markdown page navigation links.
 
-  this file is a part of Brace Document 
+  this file is a part of Brace document 
 
  Author: Robert Steckroth, BustOut, <RobertSteckroth@gmail.com> */
 
@@ -32,7 +32,7 @@ var expect = require("chai").expect,
 	utils = require("bracket_utils"),
 	maybe = require("brace_maybe")
 
-var remove_cache = utils.remove_cache.bind(null, "r.js", "brace_document.js")
+var cache = utils.cacheManager(require)
 module.paths.unshift(path.join(__dirname, "..", ".."))
 var it_will = global
 global.module = module
@@ -69,15 +69,15 @@ describe("Using stop further progression methodology for dependencies in: "+path
 
 		var requirejs, parser
 		beforeEach(function(done) {
-			remove_cache()
+			cache.start()
 			requirejs = require("requirejs")
 			requirejs.config({baseUrl: path.join(__dirname, "..", "lib"), nodeRequire: require})
 			requirejs(["brace_document"], function(doc) { 
 				parser = doc
 				done()
 			})
-
 		})
+		afterEach(cache.dump.bind(cache))
 
 		it("the module will load when not passed any option data to it", function(done) {
 			parser({}, () => {

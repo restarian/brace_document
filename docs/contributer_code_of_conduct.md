@@ -1,7 +1,7 @@
 # Contributor code of conduct
 
 ---
-### Brace document pages
+### Document pages
 * **Contributer code of conduct**
 * [Guilines for contributing](https://github.com/restarian/brace_document/blob/master/docs/guilines_for_contributing.md)
 * [Synopsis](https://github.com/restarian/brace_document/blob/master/docs/synopsis.md)

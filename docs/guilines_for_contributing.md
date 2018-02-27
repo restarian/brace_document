@@ -1,7 +1,7 @@
 ## Making a difference with Brace Document
 
 ---
-### Brace document pages
+### Document pages
 * [Contributer code of conduct](https://github.com/restarian/brace_document/blob/master/docs/contributer_code_of_conduct.md)
 * **Guilines for contributing**
 * [Synopsis](https://github.com/restarian/brace_document/blob/master/docs/synopsis.md)

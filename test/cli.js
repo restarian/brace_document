@@ -1,6 +1,6 @@
 /* Copyright (c) 2018 Robert Steckroth <RobertSteckroth@gmail.com>
 
-	Brace Document resides under the MIT licensed.
+	Brace document resides under the MIT licensed.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -20,11 +20,11 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-  Brace Document is module to automatically add markdown page navigation links.
+  Brace document is module to automatically add markdown page navigation links.
 
-  this file is a part of Brace Document 
+  this file is a part of Brace document 
 
- Author: Robert Edward Steckroth II, BustOut, <RobertSteckroth@gmail.com> */
+ Author: Robert Steckroth, BustOut, <RobertSteckroth@gmail.com> */
 
 var expect = require("chai").expect,
 	path = require("path"),
@@ -32,7 +32,7 @@ var expect = require("chai").expect,
 	maybe = require("brace_maybe")
 
 module.paths.unshift(path.join(__dirname, "..", ".."))
-var remove_cache = utils.remove_cache.bind(null, "r.js", "document_parse.js")
+var cache = utils.cacheManager(require)
 var it_will = global
 
 describe("Using stop further progression methodology for dependencies in: "+path.basename(__filename), function() { 
@@ -85,8 +85,9 @@ describe("Using stop further progression methodology for dependencies in: "+path
 
 		var cwd = path.join(__dirname, "..", "bin")
 		beforeEach(function() {
-			remove_cache()
+			cache.start()
 		})
+		afterEach(cache.dump.bind(cache))
 
 		it("the help option", function(done) {
 			utils.Spawn("node", ["document.js", "-h"], {cwd: cwd}, function(exit_code, stdout, stderr) { 

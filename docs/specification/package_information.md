@@ -18,7 +18,7 @@
 ---
 ###  A module and program which creates base data for plugin utilization regarding document generation.
 
-**Version**: 0.7.2
+**Version**: 0.7.3
 
 **Author**: [Robert Steckroth](mailto:RobertSteckroth@gmail.com)
 

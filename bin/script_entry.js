@@ -19,7 +19,7 @@ if ( this.extra ) {
 	p_args.push("--link-dest")
 	p_args.push("README.md")
 	p_args.push("--link-path")
-	p_args.push(path.join("docs", "synopis.md"))
+	p_args.push(path.join("docs", "synopsis.md"))
 	p_args.push("--specification")
 	p_args.push("--specification-path")
 	p_args.push(path.join("specification", "package_information.md"))

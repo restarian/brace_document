@@ -17,9 +17,7 @@
   * [Using the module directly](https://github.com/restarian/brace_document/blob/master/docs/using_brace_document/using_the_module_directly.md)
 
 ---
-## The output of the unit tests
-
----
+## Output of the unit testing
 
 
   * Using stop further progression methodology for dependencies in: acquireData.js

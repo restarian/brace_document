@@ -6,7 +6,8 @@
 	"bin": "./bin/document.js",
 	"scripts": {
 		"test": "mocha",
-		"make_document": "node ./bin/script_entry.js"
+		"brace_document": "node ./bin/document.js",
+		"make_docs": "node ./bin/script_entry.js"
 	},
 	"repository": {
 		"type": "git",

@@ -129,15 +129,15 @@ describe("Using stop further progression methodology for dependencies in: "+path
 
 		})
 
-		it("the npm run make_document command", function(done) {
-			utils.Exec("npm", ["run", "make_document"], {cwd: path.join(__dirname, "..")}, function(exit_code, stdout, stderr) { 
+		it("the npm run make_docs command", function(done) {
+			utils.Exec("npm", ["run", "make_docs", "--", "--dry-run"], {cwd: path.join(__dirname, "..")}, function(exit_code, stdout, stderr) { 
 				
 				done()
 			}, function(error) { expect(false, error).to.be.true; done() })
 		})
 
-		it("the npm run make_document command", function(done) {
-			utils.Exec("npm", ["run", "make_document", "--", "-v", "--no-color"], {cwd: path.join(__dirname, "..")}, function(exit_code, stdout, stderr) { 
+		it("the npm run make_docs command", function(done) {
+			utils.Exec("npm", ["run", "make_docs", "--", "-v", "--no-color", "--dry-run"], {cwd: path.join(__dirname, "..")}, function(exit_code, stdout, stderr) { 
 				
 				expect(stdout).to.include("SUCCESS")
 				expect(stdout).to.include("Using git repository at "+ path.join(__dirname, ".."))
@@ -145,8 +145,8 @@ describe("Using stop further progression methodology for dependencies in: "+path
 			}, function(error) { expect(false, error).to.be.true; done() })
 		})
 
-		it("the npm run make_document command", function(done) {
-			utils.Exec("npm", ["run", "make_document", "--", "-v", "--no-color", "--plugins"], {cwd: path.join(__dirname, "..")}, function(exit_code, stdout, stderr) { 
+		it("the npm run make_docs command", function(done) {
+			utils.Exec("npm", ["run", "make_docs", "--", "-v", "--no-color", "--plugins", "--dry-run"], {cwd: path.join(__dirname, "..")}, function(exit_code, stdout, stderr) { 
 				expect(stdout).to.include("brace_document_navlink :")
 				done()
 			}, function(error) { expect(false, error).to.be.true; done() })

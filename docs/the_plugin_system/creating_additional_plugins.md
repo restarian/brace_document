@@ -7,6 +7,7 @@
 * [Synopsis](https://github.com/restarian/brace_document/blob/master/docs/synopsis.md)
 * Specification
   * [License information](https://github.com/restarian/brace_document/blob/master/docs/specification/license_information.md)
+  * [Package information](https://github.com/restarian/brace_document/blob/master/docs/specification/package_information.md)
 * The plugin system
   * [Allocating plugins on the system](https://github.com/restarian/brace_document/blob/master/docs/the_plugin_system/allocating_plugins_on_the_system.md)
   * **Creating additional plugins**
@@ -15,6 +16,11 @@
   * [Using the module directly](https://github.com/restarian/brace_document/blob/master/docs/using_brace_document/using_the_module_directly.md)
 
 ---
+
+### IMPORTANT:
+#### Make sure to mind the **dryRun** option when creating plugins.
+A plugin dry run execution should call all of the ALI commands that would be called otherwise without making changes which are considered mutating. 
+Some examples of mutating changes are: writing to, or deleting from the file system, creating and/or removing links, etc..
 
 #### The plugin constructor
 All plugins must return a function from the require/import call. The function constructor may or may not have a prototype and does not need to return a value. This function will be called with the *document_parse* module as the first parameter.

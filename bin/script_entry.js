@@ -1,8 +1,8 @@
-// This file provides cross-platform access to the document.js CLI script which can be used by: the npm run commands, the unit tests, and by the end-user 
-// at the command line. It also creates an additional parameter to enable private plugin usage.
+// This file provides cross-platform access to the document.js CLI script in order to create the documents for this program (ironically useing this program
+// do do so). This script should be used by: the npm run commands, the unit tests, and by the end-user at the command line. It also creates an additional 
+// parameter to enable private plugin usage.
 
 var path = require("path")
-var fs = require("fs")
 
 var args = ["-i", "docs_raw", "-b", "docs", "-r", "--navlink", "--force-title", "--title", "Brace document pages", "--sort", "depth"]
 
@@ -15,13 +15,17 @@ var p_args = process.argv.slice(2).filter(value => {
 })
 	
 if ( this.extra ) {
+	p_args.push("--link")
+	p_args.push("--link-dest")
+	p_args.push("README.md")
+	p_args.push("--link-path")
+	p_args.push(path.join("docs", "synopis.md"))
 	p_args.push("--specification")
 	p_args.push("--specification-path")
-	// The path join here is one of the reasons to have an entry script like this one.
 	p_args.push(path.join("specification", "package_information.md"))
 }
 
-p_args.unshift("./bin/document.js")
+p_args.unshift(path.join("bin", "document.js"))
 
 var cmd = require("child_process").spawn("node", p_args.concat(args), {cwd: process.cwd()})
 

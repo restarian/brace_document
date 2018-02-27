@@ -1,13 +1,12 @@
 ## Using the program script 
 
 ----
-### Brace document
+### Brace document pages
 * [Contributer code of conduct](https://github.com/restarian/brace_document/blob/master/docs/contributer_code_of_conduct.md)
 * [Guilines for contributing](https://github.com/restarian/brace_document/blob/master/docs/guilines_for_contributing.md)
 * [Synopsis](https://github.com/restarian/brace_document/blob/master/docs/synopsis.md)
 * Specification
   * [License information](https://github.com/restarian/brace_document/blob/master/docs/specification/license_information.md)
-  * [Package data and information](https://github.com/restarian/brace_document/blob/master/docs/specification/package_data_and_information.md)
 * The plugin system
   * [Allocating plugins on the system](https://github.com/restarian/brace_document/blob/master/docs/the_plugin_system/allocating_plugins_on_the_system.md)
   * [Creating additional plugins](https://github.com/restarian/brace_document/blob/master/docs/the_plugin_system/creating_additional_plugins.md)
@@ -17,7 +16,7 @@
 
 ----
 
-**bash :>** ```node path/to/document.js [option] [directory]``` or if installed globally: ```make_document [option] [directory]``` or if in the brace_document directory ```npm run make_document -- [option]```
+**:>** ```node path/to/document.js [option] [directory]``` or if installed globally: ```brace_document [option] [directory]``` or if in the brace_document directory ```npm run make_document -- [option]```
 
 This program requires a git repository to operate with as the project root location. This is determined by asking git what the top level directory is. All paths will then be relative to that project root directory. The process shell current working directory is used to find the git repositry when ran from the command line. This can be set to another value at run-time by passing in the desired working directory to the *findPath* member or by setting the *projectRoot* option via the cli or the *module.option* object.
 

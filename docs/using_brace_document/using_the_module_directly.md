@@ -1,13 +1,12 @@
 ## Using the module directly 
 
 ----
-### Brace document
+### Brace document pages
 * [Contributer code of conduct](https://github.com/restarian/brace_document/blob/master/docs/contributer_code_of_conduct.md)
 * [Guilines for contributing](https://github.com/restarian/brace_document/blob/master/docs/guilines_for_contributing.md)
 * [Synopsis](https://github.com/restarian/brace_document/blob/master/docs/synopsis.md)
 * Specification
   * [License information](https://github.com/restarian/brace_document/blob/master/docs/specification/license_information.md)
-  * [Package data and information](https://github.com/restarian/brace_document/blob/master/docs/specification/package_data_and_information.md)
 * The plugin system
   * [Allocating plugins on the system](https://github.com/restarian/brace_document/blob/master/docs/the_plugin_system/allocating_plugins_on_the_system.md)
   * [Creating additional plugins](https://github.com/restarian/brace_document/blob/master/docs/the_plugin_system/creating_additional_plugins.md)
@@ -25,7 +24,6 @@ This object can either be a [commander](https://npmjs.org/packages/commander) in
 ```javascript
 document_parse.option = {
 	sort: "native", 
-	projectLocation: process.cwd(),
 	reverseSort: false,
 	recursive: false, 
 	enableAll: false,
@@ -44,7 +42,7 @@ All of the Brace_document options which are are available via the command line s
 ```javascript
 // Note: The bracket print module instance parameter is optional as it is also loaded automatically if not included.
 
-var parser = require("([Bracket print])
+var parser = require([Bracket print])
 
 parser.option.recursive = true
 parser.option.sort = "depth" 

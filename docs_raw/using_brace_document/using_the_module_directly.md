@@ -13,7 +13,6 @@ This object can either be a [commander](https://npmjs.org/packages/commander) in
 ```javascript
 document_parse.option = {
 	sort: "native", 
-	projectLocation: process.cwd(),
 	reverseSort: false,
 	recursive: false, 
 	enableAll: false,
@@ -32,7 +31,7 @@ All of the Brace_document options which are are available via the command line s
 ```javascript
 // Note: The bracket print module instance parameter is optional as it is also loaded automatically if not included.
 
-var parser = require("([Bracket print])
+var parser = require([Bracket print])
 
 parser.option.recursive = true
 parser.option.sort = "depth" 

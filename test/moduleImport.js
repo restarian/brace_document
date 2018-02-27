@@ -32,7 +32,8 @@ var expect = require("chai").expect,
 	utils = require("bracket_utils"),
 	maybe = require("brace_maybe")
 
-var remove_cache = utils.remove_cache.bind(null, "r.js", "document_parse.js")
+var remove_cache = utils.remove_cache.bind(null, "r.js", "brace_document.js")
+module.paths.unshift(path.join(__dirname, "..", ".."))
 var it_will = global
 global.module = module
 
@@ -66,60 +67,44 @@ describe("Using stop further progression methodology for dependencies in: "+path
 
 	describe("using the testing example directory -> " + path.join("test", "example"), function() {
 
-		var cwd = path.join(__dirname, "example"), requirejs
-		beforeEach(function() {
+		var requirejs, parser
+		beforeEach(function(done) {
 			remove_cache()
 			requirejs = require("requirejs")
 			requirejs.config({baseUrl: path.join(__dirname, "..", "lib"), nodeRequire: require})
+			requirejs(["brace_document"], function(doc) { 
+				parser = doc
+				done()
+			})
 
 		})
 
-		it("is able to create a git repository in the example directory if their is not one already", function(done) {
-
-			utils.Spawn("git", ["init"], {cwd: cwd}, (code, stdout, stderr) => {
-				expect(true, stdout+"  "+stderr).to.be.true	
+		it("the module will load when not passed any option data to it", function(done) {
+			parser({}, () => {
+				
 				done()
-			}, function(error) {
-				expect(false, error).to.be.true	
-				done()
-			})
+			}, function(error) { expect("brace_document has failed", error).to.be.true; done() })
 		})
 
-		var test_path = path.join(__dirname, "example", "directories")
+		it("the module will load when not passed any option data to it", function(done) {
+			parser(null, () => {
+				
+				done()
+			}, function(error) { expect("brace_document has failed", error).to.be.true; done() })
+		})
 
-		describe("creates the proper document data object using the directory: "+ test_path, function() {
+		it("the module will load when not passed any option data to it", function(done) {
+			parser(null, () => {
+				
+				done()
+			}, function(error) { expect("brace_document has failed", error).to.be.true; done() })
+		})
 
-			it("with directories contained in the structrure", function(done) {
-				requirejs(["./document_parse"], function(document_parse) { 
-
-					document_parse(function() {
-						this.option.recursive = true
-						this.relative_docs_dir = test_path
-
-						this.findPath(cwd, () => {
-							this.findStructure((structure) => {
-								this.acquireData(structure, (data) => {
-
-									expect(data).to.be.a("object")
-									// Note: it is not possible to asynchronously test the structure output without the sort flag set to something sense it can end 
-									// up in any order. This is because the callback to any one particular fs command is based on many external factors (like drive IO).
-									expect(Object.keys(data).length).to.equal(5)
-									expect(data[path.join(test_path, "framers.md")]).to.be.a("object")
-									var all = Object.keys(data), key
-									expect(data[key = all.pop()].content).to.be.a("string")
-									expect(data[key = all.pop()].content).to.be.a("string")
-									expect(data[key = all.pop()].content).to.be.a("string")
-									expect(data[key = all.pop()].content).to.be.a("string")
-									expect(data[key = all.pop()].content).to.be.a("string")
-									done()
-
-								}, function(error) { expect(true, error).to.be.false; done() })
-							}, function(error) { expect(true, error).to.be.false; done() })
-						}, function(error) { expect(true, error).to.be.false; done() })
-
-					})
-				})
-			})
+		it("the module will load when bad option data is passed to it", function(done) {
+			parser({"badOption": true}, () => {
+				
+				done()
+			}, function(error) { expect("brace_document has failed", error).to.be.true; done() })
 		})
 	})
 })

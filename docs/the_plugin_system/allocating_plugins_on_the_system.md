@@ -1,13 +1,12 @@
 ## Allocating plugins on the system
 
 ---
-### Document pages
+### Brace document pages
 * [Contributer code of conduct](https://github.com/restarian/brace_document/blob/master/docs/contributer_code_of_conduct.md)
 * [Guilines for contributing](https://github.com/restarian/brace_document/blob/master/docs/guilines_for_contributing.md)
 * [Synopsis](https://github.com/restarian/brace_document/blob/master/docs/synopsis.md)
 * Specification
   * [License information](https://github.com/restarian/brace_document/blob/master/docs/specification/license_information.md)
-  * [Package data and information](https://github.com/restarian/brace_document/blob/master/docs/specification/package_data_and_information.md)
 * The plugin system
   * **Allocating plugins on the system**
   * [Creating additional plugins](https://github.com/restarian/brace_document/blob/master/docs/the_plugin_system/creating_additional_plugins.md)

@@ -5,7 +5,7 @@
 
 ----
 
-**bash :>** ```node path/to/document.js [option] [directory]``` or if installed globally: ```make_document [option] [directory]``` or if in the brace_document directory ```npm run make_document -- [option]```
+**:>** ```node path/to/document.js [option] [directory]``` or if installed globally: ```brace_document [option] [directory]``` or if in the brace_document directory ```npm run make_document -- [option]```
 
 This program requires a git repository to operate with as the project root location. This is determined by asking git what the top level directory is. All paths will then be relative to that project root directory. The process shell current working directory is used to find the git repositry when ran from the command line. This can be set to another value at run-time by passing in the desired working directory to the *findPath* member or by setting the *projectRoot* option via the cli or the *module.option* object.
 

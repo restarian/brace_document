@@ -13,6 +13,7 @@
 * **Synopsis**
 * Specification
   * [License information](https://github.com/restarian/brace_document/blob/master/docs/specification/license_information.md)
+  * [Package data and information](https://github.com/restarian/brace_document/blob/master/docs/specification/package_data_and_information.md)
 * The plugin system
   * [Allocating plugins on the system](https://github.com/restarian/brace_document/blob/master/docs/the_plugin_system/allocating_plugins_on_the_system.md)
   * [Creating additional plugins](https://github.com/restarian/brace_document/blob/master/docs/the_plugin_system/creating_additional_plugins.md)
@@ -37,6 +38,7 @@
 
 **Caveats:**
 * Only works with git repositories.
+* Requires nodejs version 6 or greater 
 
 ### What it is 
 Brace document serves as a platform to generate/modify document pages. It creates and stores a structure object which is representative of the document pages hierarchy. It also creates a data object which contains the individual document content and meta data of all the documents. These structure and data objects are then passed to the available plugins which are found in the system to be further modified before written back to a directory.

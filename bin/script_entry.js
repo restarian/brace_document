@@ -29,6 +29,10 @@ cmd.stdout.on("data", function(chunk) {
 	console.log(chunk.toString())
 })
 
+cmd.stdout.on("error", function(error) {
+	console.log(error)
+})
+
 cmd.on("exit", function(exit_code) {
 
 	if ( exit_code == 7 ) 

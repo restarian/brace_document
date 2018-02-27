@@ -7,6 +7,7 @@
 * [Synopsis](https://github.com/restarian/brace_document/blob/master/docs/synopsis.md)
 * Specification
   * [License information](https://github.com/restarian/brace_document/blob/master/docs/specification/license_information.md)
+  * [Package data and information](https://github.com/restarian/brace_document/blob/master/docs/specification/package_data_and_information.md)
 * The plugin system
   * **Allocating plugins on the system**
   * [Creating additional plugins](https://github.com/restarian/brace_document/blob/master/docs/the_plugin_system/creating_additional_plugins.md)
@@ -17,7 +18,8 @@
 ---
 
 #### Plugin locations
-Only modules which are located withing a *node_modules* directory that is also specified in the current *module.paths* array can be used as plugins for Brace document. The *--plugin-path* or *option.pluginPath* option can be used to specify an additional path to search for plugins.
+Only modules which are located withing a *node_modules* directory that is also contained within the current *module.paths* array can be used as plugins for Brace document. The *--plugin-path* or *option.pluginPath* option can be used to specify an additional path to search for plugins.
+Note: the *pluginPath* will be appended with *node_modules* if it does not already end with one.
 
 #### Plugin identification
 By default, a module is potentially identified as a plugin if the directory/module name is prepended with *brace_document_"*. 

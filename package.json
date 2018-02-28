@@ -7,7 +7,7 @@
 	"scripts": {
 		"test": "mocha",
 		"brace_document": "node ./bin/document.js",
-		"make_docs": "npm run brace_document -- -i docs_raw -b docs --link-dest README.md --link-path docs/synopsis.md --force-title --title 'Brace document pages' --sort depth",
+		"make_docs": "npm run brace_document -- --navlink -r -i docs_raw -b docs --force-title --title 'Brace document pages' --sort depth",
 		"make_docs_extra": "npm run make_docs -- --specification --mocha"
 	},
 	"repository": {
@@ -33,8 +33,8 @@
 		"brace_document_navlink": "^0.3.7",
 		"brace_maybe": "^0.1.3",
 		"bracket_utils": "^0.3.0",
-		"chai": "^4.1.2",
 		"mocha": "^5.0.0",
+		"chai": "^4.1.2",
 		"requirejs": "^2.3.5"
 	},
 	"dependencies": {
@@ -44,7 +44,7 @@
 	},
 	"optionalDependencies": {
 		"batten_document_specification": "latest",
-		"brace_document_link": "latest"
+		"batten_document_mocha": "latest"
 	},
 	"technologies": [
 		{

@@ -11,7 +11,9 @@
   * [Unit test output](https://github.com/restarian/brace_document/blob/master/docs/specification/unit_test_output.md)
 * The plugin system
   * [Allocating plugins on the system](https://github.com/restarian/brace_document/blob/master/docs/the_plugin_system/allocating_plugins_on_the_system.md)
-  * [Creating additional plugins](https://github.com/restarian/brace_document/blob/master/docs/the_plugin_system/creating_additional_plugins.md)
+  * Creating additional plugins
+    * [The module outline and structure](https://github.com/restarian/brace_document/blob/master/docs/the_plugin_system/creating_additional_plugins/the_module_outline_and_structure.md)
+    * [The run through function and accociated data](https://github.com/restarian/brace_document/blob/master/docs/the_plugin_system/creating_additional_plugins/the_runThrough_function_and_accociated_data.md)
 * Using brace document
   * **Command line usage**
   * [Using the module directly](https://github.com/restarian/brace_document/blob/master/docs/using_brace_document/using_the_module_directly.md)

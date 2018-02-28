@@ -11,7 +11,9 @@
   * [Unit test output](https://github.com/restarian/brace_document/blob/master/docs/specification/unit_test_output.md)
 * The plugin system
   * [Allocating plugins on the system](https://github.com/restarian/brace_document/blob/master/docs/the_plugin_system/allocating_plugins_on_the_system.md)
-  * [Creating additional plugins](https://github.com/restarian/brace_document/blob/master/docs/the_plugin_system/creating_additional_plugins.md)
+  * Creating additional plugins
+    * [The module outline and structure](https://github.com/restarian/brace_document/blob/master/docs/the_plugin_system/creating_additional_plugins/the_module_outline_and_structure.md)
+    * [The run through function and accociated data](https://github.com/restarian/brace_document/blob/master/docs/the_plugin_system/creating_additional_plugins/the_runThrough_function_and_accociated_data.md)
 * Using brace document
   * [Command line usage](https://github.com/restarian/brace_document/blob/master/docs/using_brace_document/command_line_usage.md)
   * [Using the module directly](https://github.com/restarian/brace_document/blob/master/docs/using_brace_document/using_the_module_directly.md)
@@ -20,7 +22,7 @@
 
 ### Unit Testing:
 
-It would be nice to know that the unit tests are also working remotely. This project uses [Appveyor](https://www.appveyor.com) and [TravisCI](https://travis-ci.org) which are free for open source projects.
+It is nice to know that the unit tests are also working remotely. This project uses [Appveyor](https://www.appveyor.com) and [TravisCI](https://travis-ci.org) which are free for open source projects. Any tests which fail the remote testing process will be considered invalid.
 
 Unit tests are the nuts and bolts of javascript engineering. The entire API of this program has corresponding unit tests and it needs to stay that way. It is not terribly important if you have your own style of unit tests however. It is convenient to copy/paste another testing file and replace the tests with the new ones specific to the target. Also, comments are completely optional in the unit tests and serve for reminders only. 
 

@@ -8,7 +8,7 @@
 The program is ran by invoking the script *./bin/document.js* via nodejs and passing in the desired handling options. Below are some examples of this.
 *:>* ```node path/to/bin/document.js [options]``` or if installed globally: ```brace_document [options]```
 
-Note: *the *bin/script_entry.js file is used to create the docs for this program.* It is invoked like the following: *:>* ```npm run make_document -- [options]```
+Note: *the *bin/script_entry.js file is used to create the docs for this program.* It is invoked like the following: *:>* ```npm run make_docs -- [options]```
 
 This program requires a git repository to operate with as the project root location. This is determined by asking git what the top level directory is. All paths will then be relative to that project root directory. The process shell current working directory is used to find the git repositry when ran from the command line. This can be set to another value at runtime by passing in the desired working directory to the *findPath* member or by setting the *projectLocation* option via the cli or the *module.option* object from an import.
 

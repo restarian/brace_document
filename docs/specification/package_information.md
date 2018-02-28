@@ -19,7 +19,7 @@
   * [Using the module directly](https://github.com/restarian/brace_document/blob/master/docs/using_brace_document/using_the_module_directly.md)
 
 ---
-###  A module and program which creates base data for plugin utilization regarding document generation.
+###  A program which creates a platform for plugin utilization regarding document generation
 
 **Version**: 0.7.4
 
@@ -29,18 +29,16 @@
 
 **Development dependencies**: [brace_document_navlink](https://npmjs.org/package/brace_document_navlink) [brace_maybe](https://npmjs.org/package/brace_maybe) [bracket_utils](https://npmjs.org/package/bracket_utils) [mocha](https://npmjs.org/package/mocha) [chai](https://npmjs.org/package/chai) [requirejs](https://npmjs.org/package/requirejs)
 
-**Optional Dependencies**: [batten_document_specification](https://npmjs.org/package/batten_document_specification) [batten_document_mocha](https://npmjs.org/package/batten_document_mocha)
-
 **Package scripts**:
 
 | Name | Action |
 | ---- | ------ |
  | test | mocha |
  | brace_document | node ./bin/document.js |
- | make_docs | npm run brace_document -- --navlink -r -i docs_raw -b docs --force-title --title 'Brace document pages' --sort depth |
- | make_docs_extra | npm run make_docs -- --specification --mocha |
+ | make_docs | npm run brace_document --silent -- --navlink -r -i docs_raw -b docs --force-title --title 'Brace document pages' --sort depth |
+ | make_docs_extra | npm run make_docs --silent -- --specification --mocha |
 
-**Keywords**: *brace*, *markdown*, *documentation*, *generation*
+**Keywords**: *markdown*, *documentation*, *platform*, *generation*
 
 **Technologies used in development**:
   * [VIM](https://vim.org) As an IDE

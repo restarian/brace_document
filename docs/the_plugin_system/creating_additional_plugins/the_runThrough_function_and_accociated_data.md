@@ -20,8 +20,7 @@
 
 ---
 
-#### IMPORTANT
-##### Make sure to mind the *dryRun* option when creating plugins.
+##### IMPORTANT: Make sure to mind the *dryRun* option when creating plugins.
 A plugin dry run execution should call all of methods/members that would be normally be called without making changes which are considered mutating. Some examples of mutating changes are: writing to, or deleting from the file system, creating and/or removing links, or altering the Brace document (*parser*), object data.
 
 #### Creating the plugin constructor

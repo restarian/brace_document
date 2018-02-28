@@ -1,6 +1,6 @@
 {
 	"name": "brace_document",
-	"version": "0.7.4",
+	"version": "0.7.5",
 	"description": "A program which creates a platform for plugin utilization regarding document generation",
 	"main": "lib/brace_document.js",
 	"bin": "./bin/document.js",
@@ -42,8 +42,7 @@
 		"bracket_print": "^0.9.12",
 		"commander": "^2.14.1"
 	},
-	"optionalDependencies": {
-	},
+	"optionalDependencies": {},
 	"technologies": [
 		{
 			"name": "VIM",

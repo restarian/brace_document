@@ -5,7 +5,9 @@
 
 ---
 
-#### All works, media and writings contained within this project are licensed under the Brace navlink license unless it is explicitly specified otherwise.
+#### All works, media and writings contained within this project are licensed the same as Brace document license unless it is explicitly specified otherwise.
+
+---
 
 Brace document resides under the MIT license
 
@@ -32,6 +34,4 @@ SOFTWARE.
   Brace document is module to automatically add markdown page navigation links.
 
   this file is a part of Brace document 
-
- Author: Robert Edward Steckroth II, BustOut, [<RobertSteckroth@gmail.com>](mailto:RobertSteckroth@gmail.com)
 

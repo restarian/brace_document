@@ -176,7 +176,7 @@
 
       * ✓ the module will load when not passed any option data to it
 
-      * ✓ the module will load when not passed any option data to it
+      * ✓ the module will laod the proper plugins when given a plugin path and plugin regex
 
       * ✓ the module will load when not passed any option data to it
 

@@ -19,6 +19,8 @@
  | make_docs | npm run brace_document -- -i docs_raw -b docs --link-dest README.md --link-path docs/synopsis.md --force-title --title 'Brace document pages' --sort depth |
  | make_docs_extra | npm run make_docs -- --specification --mocha |
 
+**Keywords**: *brace*, *markdown*, *documentation*, *generation*
+
 **Technologies used in development**:
   * [VIM](https://vim.org) As an IDE
   * [Windows 10](https://www.microsoft.com/en-us/software-download/windows10) For unit testing and as the base operating system

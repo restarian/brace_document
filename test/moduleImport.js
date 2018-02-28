@@ -78,28 +78,33 @@ describe("Using stop further progression methodology for dependencies in: "+path
 		afterEach(cache.dump.bind(cache))
 
 		it("the module will load when not passed any option data to it", function(done) {
-			parser({}, () => {
+			parser("text", (exit_code) => {
 				
+				expect(exit_code).to.equal(7)
 				done()
 			}, function(error) { expect("brace_document has failed", error).to.be.true; done() })
 		})
 
 		it("the module will laod the proper plugins when given a plugin path and plugin regex", function(done) {
-			parser({plugins: true, pluginPath: path.join(__dirname, "example"), pluginRegex: ".*testplugin$"}, up, function() {
+			parser({plugins: true, pluginPath: path.join(__dirname, "example"), pluginRegex: ".*testplugin$"}, (exit_code) => {
+
+				expect(exit_code).to.equal(2)
 				done()
 			}, function(error) { expect("brace_document has failed", error).to.be.true; done() })
 		})
 
 		it("the module will load when not passed any option data to it", function(done) {
-			parser(null, () => {
+			parser(null, (exit_code) => {
 				
+				expect(exit_code).to.equal(7)
 				done()
 			}, function(error) { expect("brace_document has failed", error).to.be.true; done() })
 		})
 
 		it("the module will load when bad option data is passed to it", function(done) {
-			parser({"badOption": true}, () => {
+			parser({"badOption": true}, (exit_code) => {
 				
+				expect(exit_code).to.equal(7)
 				done()
 			}, function(error) { expect("brace_document has failed", error).to.be.true; done() })
 		})

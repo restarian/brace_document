@@ -20,11 +20,9 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-  Brace document is module to automatically add markdown page navigation links.
+  Brace document is platform which hosts document management and generation plugins.
 
-  this file is a part of Brace :ocument 
-
- Author: Robert Steckroth, BustOut, <RobertSteckroth@gmail.com> */
+  this file is a part of Brace document */
 
 var expect = require("chai").expect,
 	path = require("path"),

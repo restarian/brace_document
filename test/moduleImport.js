@@ -20,11 +20,9 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-  Brace document is module to automatically add markdown page navigation links.
+  Brace document is platform which hosts document management and generation plugins.
 
-  this file is a part of Brace document 
-
- Author: Robert Steckroth, BustOut, <RobertSteckroth@gmail.com> */
+  this file is a part of Brace document */
 
 var expect = require("chai").expect,
 	path = require("path"),
@@ -72,8 +70,8 @@ describe("Using stop further progression methodology for dependencies in: "+path
 			cache.start()
 			requirejs = require("requirejs")
 			requirejs.config({baseUrl: path.join(__dirname, "..", "lib"), nodeRequire: require})
-			requirejs(["brace_document"], function(doc) { 
-				parser = doc
+			requirejs(["./brace_document"], function(brace_document) { 
+				parser = brace_document 
 				done()
 			})
 		})
@@ -86,9 +84,8 @@ describe("Using stop further progression methodology for dependencies in: "+path
 			}, function(error) { expect("brace_document has failed", error).to.be.true; done() })
 		})
 
-		it("the module will load when not passed any option data to it", function(done) {
-			parser(null, () => {
-				
+		it("the module will laod the proper plugins when given a plugin path and plugin regex", function(done) {
+			parser({plugins: true, pluginPath: path.join(__dirname, "example"), pluginRegex: ".*testplugin$"}, up, function() {
 				done()
 			}, function(error) { expect("brace_document has failed", error).to.be.true; done() })
 		})

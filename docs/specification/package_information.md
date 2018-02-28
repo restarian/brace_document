@@ -1,22 +1,3 @@
-
-
----
-### Document pages
-* [Contributer code of conduct](https://github.com/restarian/brace_document/blob/master/docs/contributer_code_of_conduct.md)
-* [Guidelines for contributing](https://github.com/restarian/brace_document/blob/master/docs/guidelines_for_contributing.md)
-* [Synopsis](https://github.com/restarian/brace_document/blob/master/docs/synopsis.md)
-* Specification
-  * [License information](https://github.com/restarian/brace_document/blob/master/docs/specification/license_information.md)
-  * **Package specification**
-  * [Unit test output](https://github.com/restarian/brace_document/blob/master/docs/specification/unit_test_output.md)
-* The plugin system
-  * [Allocating plugins on the system](https://github.com/restarian/brace_document/blob/master/docs/the_plugin_system/allocating_plugins_on_the_system.md)
-  * [Creating additional plugins](https://github.com/restarian/brace_document/blob/master/docs/the_plugin_system/creating_additional_plugins.md)
-* Using brace document
-  * [Command line usage](https://github.com/restarian/brace_document/blob/master/docs/using_brace_document/command_line_usage.md)
-  * [Using the module directly](https://github.com/restarian/brace_document/blob/master/docs/using_brace_document/using_the_module_directly.md)
-
----
 ###  A module and program which creates base data for plugin utilization regarding document generation.
 
 **Version**: 0.7.3
@@ -35,7 +16,8 @@
 | ---- | ------ |
  | test | mocha |
  | brace_document | node ./bin/document.js |
- | make_docs | node ./bin/make_docs.js |
+ | make_docs | npm run brace_document -- -i docs_raw -b docs --link-dest README.md --link-path docs/synopsis.md --force-title --title 'Brace document pages' --sort depth |
+ | make_docs_extra | npm run make_docs -- --specification --mocha |
 
 **Technologies used in development**:
   * [VIM](https://vim.org) As an IDE

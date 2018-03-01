@@ -21,7 +21,7 @@
 ---
 ###  A program which creates a platform for plugin utilization regarding document generation
 
-**Version**: 0.7.4
+**Version**: 0.7.5
 
 **Author**: [Robert Steckroth](mailto:RobertSteckroth@gmail.com)
 

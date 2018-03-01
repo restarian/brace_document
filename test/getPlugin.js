@@ -30,8 +30,7 @@ var expect = require("chai").expect,
 	path = require("path"),
 	fs = require("fs"),
 	utils = require("bracket_utils"),
-	maybe = require("brace_maybe"),
-	EOL = require("os").EOL
+	maybe = require("brace_maybe")
 
 // Needed because mocha does not use the nodejs function wrapper for modules.
 global.module = module

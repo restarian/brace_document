@@ -1,4 +1,4 @@
-## The contributor code of conduct
+## The contributors code of conduct
 
 ---
 ### Document pages

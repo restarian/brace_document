@@ -25,6 +25,7 @@
   * [Using the module directly](https://github.com/restarian/brace_document/blob/master/docs/using_brace_document/using_the_module_directly.md)
 
 ----
+
 **Bonuses:**
 * A beautiful showpiece of **fully asynchronous** non-blocking run-time program/script
 * A versatile and idempotent API design runs safely from anywhere on the system

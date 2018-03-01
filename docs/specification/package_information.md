@@ -19,7 +19,7 @@
   * [Using the module directly](https://github.com/restarian/brace_document/blob/master/docs/using_brace_document/using_the_module_directly.md)
 
 ---
-###  A program which creates a platform for plugin utilization regarding document generation
+#####  A program which creates a platform for plugin utilization regarding document generation
 
 **Version**: 0.7.5
 
@@ -33,15 +33,15 @@
 
 | Name | Action |
 | ---- | ------ |
- | test | mocha |
- | brace_document | node ./bin/document.js |
- | make_docs | npm run brace_document --silent -- --navlink -r -i docs_raw -b docs --force-title --title 'Brace document pages' --sort depth |
- | make_docs_extra | npm run make_docs --silent -- --specification --mocha |
+ | test | ```mocha``` |
+ | brace_document | ```node ./bin/document.js``` |
+ | make_docs | ```npm run brace_document --silent -- --navlink -r -i docs_raw -b docs --force-title --title 'Brace document pages' --sort depth``` |
+ | make_docs_extra | ```npm run make_docs --silent -- --specification --mocha``` |
 
 **Keywords**: *markdown*, *documentation*, *platform*, *generation*
 
 **Technologies used in development**:
-  * [VIM](https://vim.org) As an IDE
+  * [VIM](https://www.vim.org) As an IDE
   * [Windows 10](https://www.microsoft.com/en-us/software-download/windows10) For unit testing and as the base operating system
   * [Ubuntu on Windows](https://www.microsoft.com/en-us/store/p/ubuntu/9nblggh4msv6) As the development operating environment
   * [Git](https://git-scm.com) For repository management

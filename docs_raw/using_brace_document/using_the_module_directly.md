@@ -1,9 +1,7 @@
 ## Using the module directly 
 
-----
+---
 ### Brace document
-
-----
 
 Brace_document can be utilized by importing either the *brace_document.js* or *document_parse.js* scripts. The *brace_document.js* script is 
 used by the CLI to set extra data needed for convenience and thusly requires a option object to be passed into the constructor. 

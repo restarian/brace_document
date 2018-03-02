@@ -1,5 +1,4 @@
 
-
 ---
 ### Brace document pages
 * [Contributer code of conduct](https://github.com/restarian/brace_document/blob/master/docs/contributer_code_of_conduct.md)
@@ -17,8 +16,6 @@
 * Using brace document
   * [Command line usage](https://github.com/restarian/brace_document/blob/master/docs/using_brace_document/command_line_usage.md)
   * [Using the module directly](https://github.com/restarian/brace_document/blob/master/docs/using_brace_document/using_the_module_directly.md)
-
----
 ## Output of the unit testing
 
   * Using stop further progression methodology for dependencies in: acquireData.js

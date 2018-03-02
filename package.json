@@ -1,7 +1,7 @@
 {
 	"name": "brace_document",
 	"version": "0.7.6",
-	"description": "A program which creates a platform for plugin utilization regarding document generation",
+	"description": "A platform for plugin utilization regarding document generation which has many plugins",
 	"main": "lib/brace_document.js",
 	"bin": "./bin/document.js",
 	"scripts": {
@@ -30,7 +30,7 @@
 	},
 	"homepage": "https://github.com/restarian/brace_document#readme",
 	"devDependencies": {
-		"brace_document_navlink": "^0.3.0",
+		"brace_document_navlink": "^0.4.0",
 		"brace_maybe": "^0.1.3",
 		"bracket_utils": "^0.3.0",
 		"mocha": "^5.0.0",

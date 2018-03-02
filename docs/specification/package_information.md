@@ -1,5 +1,4 @@
 
-
 ---
 ### Brace document pages
 * [Contributer code of conduct](https://github.com/restarian/brace_document/blob/master/docs/contributer_code_of_conduct.md)
@@ -17,11 +16,9 @@
 * Using brace document
   * [Command line usage](https://github.com/restarian/brace_document/blob/master/docs/using_brace_document/command_line_usage.md)
   * [Using the module directly](https://github.com/restarian/brace_document/blob/master/docs/using_brace_document/using_the_module_directly.md)
+**Version**: 0.7.6
 
----
-#####  A program which creates a platform for plugin utilization regarding document generation
-
-**Version**: 0.7.5
+**Description**: A platform for plugin utilization regarding document generation which has many plugins
 
 **Author**: [Robert Steckroth](mailto:RobertSteckroth@gmail.com)
 

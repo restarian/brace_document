@@ -1,6 +1,6 @@
 ## Using the module directly 
 
-----
+---
 ### Brace document pages
 * [Contributer code of conduct](https://github.com/restarian/brace_document/blob/master/docs/contributer_code_of_conduct.md)
 * [Guidelines for contributing](https://github.com/restarian/brace_document/blob/master/docs/guidelines_for_contributing.md)
@@ -17,8 +17,6 @@
 * Using brace document
   * [Command line usage](https://github.com/restarian/brace_document/blob/master/docs/using_brace_document/command_line_usage.md)
   * **Using the module directly**
-
-----
 
 Brace_document can be utilized by importing either the *brace_document.js* or *document_parse.js* scripts. The *brace_document.js* script is 
 used by the CLI to set extra data needed for convenience and thusly requires a option object to be passed into the constructor. 

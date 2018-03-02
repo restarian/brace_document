@@ -44,7 +44,7 @@ describe("Using stop further progression methodology for dependencies in: "+path
 
 		it("requirejs in the system as a program", function(done) {
 			it_will.stop = true 
-			expect((function() {try { require("requirejs"); return true; } catch(e) { return e;}})(), "unable to find the requirejs module").to.be.true
+			expect((function() {try { require("requirejs"); return true; } catch(e) { return e; }})()).to.be.true 
 			it_will.stop = false 
 			done()
 		})
@@ -73,17 +73,6 @@ describe("Using stop further progression methodology for dependencies in: "+path
 
 		afterEach(cache.dump.bind(cache))
 
-		it("is able to create a git repository in the example directory if their is not one already", function(done) {
-
-			utils.Spawn("git", ["init"], {cwd: cwd}, (code, stdout, stderr) => {
-				expect(true, stdout+"  "+stderr).to.be.true	
-				done()
-			}, function(error) {
-				expect(false, error).to.be.true	
-				done()
-			})
-		})
-
 		var test_path = path.join(__dirname, "example", "directories")
 
 		describe("creates the proper document data object using the directory: "+ test_path, function() {
@@ -93,7 +82,7 @@ describe("Using stop further progression methodology for dependencies in: "+path
 
 					document_parse(function() {
 						this.option.recursive = true
-						this.relative_docs_dir = test_path
+						this.option.input = test_path
 
 						this.findPath(cwd, () => {
 							this.findStructure((structure) => {

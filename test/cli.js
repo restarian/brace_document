@@ -44,7 +44,7 @@ describe("Using stop further progression methodology for dependencies in: "+path
 		/*
 		it("r_js in the system as a program", function(done) {
 			it_will.stop = true 
-			expect((function() {try { require("requirejs"); return true; } catch(e) { return e;}})(), "could not find r.js dependency").to.be.true
+			expect((function() {try { require("requirejs"); return true; } catch(e) { return e; }})()).to.be.true 
 			it_will.stop = false 
 			done()
 		})
@@ -136,7 +136,6 @@ describe("Using stop further progression methodology for dependencies in: "+path
 
 		it("the npm run make_docs command", function(done) {
 			utils.Exec("npm", ["run", "make_docs", "--", "-v", "--no-color", "--dry-run"], {cwd: path.join(__dirname, "..")}, function(exit_code, stdout, stderr) { 
-				
 				expect(stdout).to.include("SUCCESS")
 				expect(stdout).to.include("Using git repository at "+ path.join(__dirname, ".."))
 				done()

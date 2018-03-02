@@ -44,7 +44,7 @@ describe("using stop further progression methodology for dependencies in: "+path
 
 		it("r_js in the system as a program", function(done) {
 			it_will.stop = true 
-			expect((function() {try { require("requirejs"); return true; } catch(e) { return e;}})(), "could not find r.js dependency").to.be.true
+			expect((function() {try { require("requirejs"); return true; } catch(e) { return e; }})()).to.be.true 
 			it_will.stop = false 
 			done()
 		})
@@ -69,7 +69,6 @@ describe("using stop further progression methodology for dependencies in: "+path
 			cache.start()
 			requirejs = require("requirejs")
 			requirejs.config({baseUrl: path.join(__dirname, "..", "lib"), nodeRequire: require})
-
 		})
 		afterEach(cache.dump.bind(cache))
 
@@ -91,7 +90,7 @@ describe("using stop further progression methodology for dependencies in: "+path
 				requirejs(["document_parse"], function(document_parse) { 
 
 					var parser = document_parse()
-					parser.relative_docs_dir = "docs"
+					parser.option.input = "docs"
 
 					parser.findPath(path.join("..", ".."), function() {
 						expect(false, "The error callback should have been called instead of this").to.be.true
@@ -109,17 +108,14 @@ describe("using stop further progression methodology for dependencies in: "+path
 				requirejs(["document_parse"], function(document_parse) { 
 
 					var parser = document_parse()
-					parser.relative_docs_dir = path.join("..", "example")
+					parser.option.input = path.join("..", "example")
 
 					parser.findPath(cwd, function() {
 
+						// The current directory is resolved from the path set via the constructor.
 						expect(parser.project_root).to.equal(cwd)
 						expect(parser.docs_dir).to.equal(path.join(__dirname, "example"))
 						expect(parser.backup_dir).to.equal(path.join(__dirname, "example"))
-						// The current directory is resolved from the path set via the constructor.
-						expect(parser.relative_docs_dir).to.equal("."+path.sep)
-						// Should be the same as the relative_docs_dir if it is not provided.
-						expect(parser.relative_backup_dir).to.equal(parser.relative_docs_dir)
 						done()
 
 					}, function(error) {
@@ -138,17 +134,15 @@ describe("using stop further progression methodology for dependencies in: "+path
 				requirejs(["document_parse"], function(document_parse) { 
 
 					var parser = document_parse()
-					parser.relative_docs_dir = path.join("..", "example")
+					parser.option.input = path.join("..", "example")
 					parser.option.backup = path.join("..", "example", "backup_docs")
 
 					parser.findPath(cwd, function() {
 
 						expect(parser.project_root).to.equal(cwd)
 						// Both of these paths should be resolved to the cwd and have the correct data.
-						expect(parser.relative_docs_dir).to.equal("."+path.sep)
 						expect(parser.project_root).to.equal(cwd)
 						expect(parser.backup_dir).to.equal(path.join(__dirname, "example", "backup_docs"))
-						expect(parser.relative_backup_dir).to.equal("backup_docs")
 						done()
 
 					}, function(error) {
@@ -158,12 +152,51 @@ describe("using stop further progression methodology for dependencies in: "+path
 				})
 			})
 
+			it("finds the correct path data for the project without a directory argument and no projectLocation option set", function(done) {
+
+				requirejs(["document_parse"], function(document_parse) { 
+
+					var parser = document_parse()
+
+					parser.findPath(function() {
+
+						expect(parser.project_root).to.equal(path.join(__dirname, ".."))
+						expect(parser.project_root).to.equal(parser.backup_dir)
+						expect(parser.docs_dir).to.equal(parser.backup_dir)
+						done()
+
+					}, function(error) {
+						expect(false, error).to.be.true
+						done()
+					})
+				})
+			})
+
+			it("finds the correct path data for the project without a directory argument and the projectLocation option set", function(done) {
+
+				requirejs(["document_parse"], function(document_parse) { 
+
+					var parser = document_parse()
+					parser.option.projectLocation = cwd
+					parser.findPath(function() {
+
+						expect(parser.project_root).to.equal(cwd)
+						expect(parser.project_root).to.equal(parser.backup_dir)
+						expect(parser.docs_dir).to.equal(parser.backup_dir)
+						done()
+
+					}, function(error) {
+						expect(false, error).to.be.true
+						done()
+					})
+				})
+			})
 			it("complains if the backup directory is outside the repository", function(done) {
 
 				requirejs(["document_parse"], function(document_parse) { 
 
 					var parser = document_parse()
-					parser.relative_docs_dir = "docs"
+					parser.option.input = "docs"
 					parser.option.backup = path.join("..", "..", "brace_document", "docs_temp")
 
 					parser.findPath(cwd, function() {
@@ -184,7 +217,7 @@ describe("using stop further progression methodology for dependencies in: "+path
 				requirejs(["document_parse"], function(document_parse) { 
 
 					var parser = document_parse()
-					parser.relative_docs_dir = path.join("..", "..")
+					parser.option.input = path.join("..", "..")
 					// This will pass sense the backup directory is inside the project root.
 					parser.option.backup = "docs_temp"
 					parser.findPath(cwd, function() {

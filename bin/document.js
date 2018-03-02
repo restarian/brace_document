@@ -37,20 +37,20 @@ program.version(info.name + " " + info.version)
 
 -- Brace Document `+info.version+`  ----------------------------------------------------------------------------------------------------
   The input option will be used as the "docs directory" parameter. Otherwise, the current working directory of the shell is used if 
-it is not suppied. The docs directory (or input), must be at or below a project root directory structure in order to use the associated 
-information. The project root directory is automatically set as the directory which contains the first found .git repository from the 
+it is not suppied. The docs directory (or input), must be at or below a project location directory structure in order to use the associated 
+information. The project location directory is automatically set as the directory which contains the first found .git repository from the 
 current working directory of the process.
   The "backup" option can be used to specify a directory where copies of the "docs directory" files will be created. It
-is acceptable to specify a "docs directory" which is outside (below), the project root only if the "backup" option is 
-set to a directory which is inside the project root. At least one of the "docs directory" or the "backup" directories
-must be inside the project root directory. 
+is acceptable to specify a "docs directory" which is outside (below), the project location only if the "backup" option is 
+set to a directory which is inside the project location. At least one of the "docs directory" or the "backup" directories
+must be inside the project location directory. 
   Plugins are found using the commonjs structure created by the npm package manager. The plugin module paths are relative
-to the project root directory. Any plugins found will have its option data appended to this gateway menu and can be 
+to the project location directory. Any plugins found will have its option data appended to this gateway menu and can be 
 viewed with the -h flag.`)
 .option("-v, --verbose", "Print any and all superfluous information from the run-time.")
 .option("-q, --quiet", "No not output any log messages (including errors). This option supersedes the verbose flag.")
 .option("-C, --no-color", "Print everthing in black and white (is more efficient).")
-.option("-i, --input <path>", "The location of the docs to parse. Note: these files will be overwritten if the --backup option is not set.")
+.option("-i, --input <path>", "The location of the docs to parse. Note: these files will be overwritten if the --backup option is not set.", process.cwd())
 .option("-r, --recursive", "Descend into all sub-directories to find markdown files.")
 .option("-d, --project-location <directory>", "The directory which is at or inside the repository to work with. If not supplied this will be the" +
 " current working directory of the shell process that started this program. Therefore, it is easiest to omit this parameter while running this command" +
@@ -65,7 +65,7 @@ viewed with the -h flag.`)
 "^(brace|batten|bracket)[\_,\-]document[\_,\-]")
 .option("-b, --backup <directory>", "This will create separate files and directories for the mutations and keep the originals intact. The directory path" +
 " must be contained within the project repository so that proper links can be created relative to it. It can be supplied as either absolute or relative" +
-" to the project root.")
+" to the project location.")
 .option("-s, --sort <alphanumeric, depth, native>", "alphanumeric: the documents and directory structure be arranged in alphanumeric order according" +
 " to the base name of the path (e.g. myfile.txt in /home/me/myfile.txt). depth: all of the sub-directories will be arranged at the top of the directory" +
 " list with the document pages below. Note: the structure will be pre-sorted in alphanumeric regardless of the reverse-sort flag when the sort option is" +

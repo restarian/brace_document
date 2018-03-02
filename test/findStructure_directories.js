@@ -34,6 +34,8 @@ var expect = require("chai").expect,
 var cache = utils.cacheManager(require)
 var it_will = global
 global.module = module
+// A simple addition to the expect module which tries to find a module.
+expect.a_module = function(n, str) { }
 
 describe("Using stop further progression methodology for dependencies in: "+path.basename(__filename), function() { 
 
@@ -45,7 +47,7 @@ describe("Using stop further progression methodology for dependencies in: "+path
 
 		it("r_js in the system as a program", function(done) {
 			it_will.stop = true 
-			expect((function() {try { require("requirejs"); return true; } catch(e) { return e;}})(), "could not find r.js dependency").to.be.true
+			expect((function() {try { require("requirejs"); return true; } catch(e) { return e; }})()).to.be.true 
 			it_will.stop = false 
 			done()
 		})
@@ -65,19 +67,9 @@ describe("Using stop further progression methodology for dependencies in: "+path
 
 	describe("using the testing example directory -> " + path.join("test", "example"), function() {
 
-		var cwd = path.join(__dirname, "example")
-		it("is able to create a git repository in the example directory if there is not one already", function(done) {
-
-			utils.Spawn("git", ["init"], {cwd: cwd}, (code, stdout, stderr) => {
-				done()
-			}, function(error) {
-				expect(false, error).to.be.true	
-				done()
-			})
-		})
-
 		describe("creates the proper document structure using the directory: "+ path.join("example", "directories"), function() {
 
+			var cwd = path.join(__dirname, "example"), requirejs
 			beforeEach(function() {
 				cache.start()
 				requirejs = require("requirejs")
@@ -91,7 +83,7 @@ describe("Using stop further progression methodology for dependencies in: "+path
 
 					var parser = document_parse()
 					parser.option.sort = "alphanumeric"
-					parser.relative_docs_dir = path.join(__dirname, "example", "directories")
+					parser.option.input = path.join(__dirname, "example", "directories")
 
 					parser.findPath(cwd, function() {
 						parser.findStructure(function(structure) {
@@ -116,7 +108,7 @@ describe("Using stop further progression methodology for dependencies in: "+path
 					var parser = document_parse()
 					parser.option.sort = "alphanumeric"
 					parser.option.reverseSort = true 
-					parser.relative_docs_dir = path.join(__dirname, "example", "directories")
+					parser.option.input = path.join(__dirname, "example", "directories")
 
 					parser.findPath(cwd, function() {
 						parser.findStructure(function(structure) {
@@ -141,7 +133,7 @@ describe("Using stop further progression methodology for dependencies in: "+path
 					var parser = document_parse()
 					parser.option.sort = "alphanumeric"
 					parser.option.recursive = true
-					parser.relative_docs_dir = path.join(__dirname, "example", "directories")
+					parser.option.input = path.join(__dirname, "example", "directories")
 
 					parser.findPath(cwd, function() {
 						parser.findStructure(function(structure) {
@@ -182,7 +174,7 @@ describe("Using stop further progression methodology for dependencies in: "+path
 					parser.option.sort = "alphanumeric"
 					parser.option.recursive = true
 					parser.option.reverseSort = true
-					parser.relative_docs_dir = path.join(__dirname, "example", "directories")
+					parser.option.input = path.join(__dirname, "example", "directories")
 
 					parser.findPath(cwd, function() {
 						parser.findStructure(function(structure) {
@@ -220,7 +212,7 @@ describe("Using stop further progression methodology for dependencies in: "+path
 					var parser = document_parse()
 					parser.option.sort = "depth"
 					parser.option.recursive = true
-					parser.relative_docs_dir = path.join(__dirname, "example", "directories")
+					parser.option.input = path.join(__dirname, "example", "directories")
 
 					parser.findPath(cwd, function() {
 						parser.findStructure(function(structure) {
@@ -259,7 +251,7 @@ describe("Using stop further progression methodology for dependencies in: "+path
 					parser.option.sort = "depth"
 					parser.option.reverseSort = true
 					parser.option.recursive = true
-					parser.relative_docs_dir = path.join(__dirname, "example", "directories")
+					parser.option.input = path.join(__dirname, "example", "directories")
 
 					parser.findPath(cwd, function() {
 						parser.findStructure(function(structure) {
@@ -299,7 +291,7 @@ describe("Using stop further progression methodology for dependencies in: "+path
 					parser.option.sort = "alphanumeric"
 					parser.option.reverseSort = true
 					parser.option.recursive = true
-					parser.relative_docs_dir = path.join(__dirname, "example", "directories_nested")
+					parser.option.input = path.join(__dirname, "example", "directories_nested")
 
 					parser.findPath(cwd, function() {
 						parser.findStructure(function(structure) {
@@ -343,7 +335,7 @@ describe("Using stop further progression methodology for dependencies in: "+path
 					parser.option.sort = "depth"
 					parser.option.reverseSort = true
 					parser.option.recursive = true
-					parser.relative_docs_dir = path.join(__dirname, "example", "directories_nested")
+					parser.option.input = path.join(__dirname, "example", "directories_nested")
 
 					parser.findPath(cwd, function() {
 						parser.findStructure(function(structure) {

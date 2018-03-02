@@ -45,7 +45,7 @@ describe("Using stop further progression methodology for dependencies in: "+path
 
 		it("requirejs in the system as a program", function(done) {
 			it_will.stop = true 
-			expect((function() {try { require("requirejs"); return true; } catch(e) { return e;}})(), "unable to find the requirejs module").to.be.true
+			expect((function() {try { require("requirejs"); return true; } catch(e) { return e; }})()).to.be.true 
 			it_will.stop = false 
 			done()
 		})

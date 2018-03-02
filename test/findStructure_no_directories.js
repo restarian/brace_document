@@ -34,7 +34,6 @@ var expect = require("chai").expect,
 
 var cache = utils.cacheManager(require)
 var it_will = global
-
 global.module = module
 
 describe("Using stop further progression methodology for dependencies in: "+path.basename(__filename), function() { 
@@ -47,7 +46,7 @@ describe("Using stop further progression methodology for dependencies in: "+path
 
 		it("r_js in the system as a program", function(done) {
 			it_will.stop = true 
-			expect((function() {try { require("requirejs"); return true; } catch(e) { return e;}})(), "could not find r.js dependency").to.be.true
+			expect((function() {try { require("requirejs"); return true; } catch(e) { return e; }})()).to.be.true 
 			it_will.stop = false 
 			done()
 		})
@@ -94,7 +93,7 @@ describe("Using stop further progression methodology for dependencies in: "+path
 				requirejs(["document_parse"], function(document_parse) { 
 
 					var parser = document_parse()
-					parser.relative_docs_dir = path.join(__dirname, "example", "no_directories")
+					parser.option.input = path.join(__dirname, "example", "no_directories")
 
 					parser.findPath(cwd, function() {
 
@@ -121,7 +120,7 @@ describe("Using stop further progression methodology for dependencies in: "+path
 
 					var parser = document_parse()
 					parser.option.sort = "alphanumeric"
-					parser.relative_docs_dir = path.join(__dirname, "example", "no_directories")
+					parser.option.input = path.join(__dirname, "example", "no_directories")
 
 					parser.findPath(cwd, function() {
 						parser.findStructure(function(structure) {
@@ -148,7 +147,7 @@ describe("Using stop further progression methodology for dependencies in: "+path
 					var parser = document_parse()
 					parser.option.sort = "alphanumeric"
 					parser.option.reverseSort = true
-					parser.relative_docs_dir = path.join(__dirname, "example", "no_directories")
+					parser.option.input = path.join(__dirname, "example", "no_directories")
 
 					parser.findPath(cwd, function() {
 						parser.findStructure(function(structure) {

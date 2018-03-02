@@ -10,13 +10,13 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 2,26fold
-52,64fold
-let s:l = 70 - ((23 * winheight(0) + 20) / 40)
+53,63fold
+let s:l = 42 - ((41 * winheight(0) + 20) / 40)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-70
-normal! 07|
+42
+normal! 0
 let &so = s:so_save | let &siso = s:siso_save
 doautoall SessionLoadPost
 " vim: set ft=vim :

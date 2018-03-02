@@ -12,8 +12,8 @@
 * The plugin system
   * **Allocating plugins on the system**
   * Creating additional plugins
+    * [The callback and accociated data](https://github.com/restarian/brace_document/blob/master/docs/the_plugin_system/creating_additional_plugins/the_callback_and_accociated_data.md)
     * [The module outline and structure](https://github.com/restarian/brace_document/blob/master/docs/the_plugin_system/creating_additional_plugins/the_module_outline_and_structure.md)
-    * [The run through function and accociated data](https://github.com/restarian/brace_document/blob/master/docs/the_plugin_system/creating_additional_plugins/the_runThrough_function_and_accociated_data.md)
 * Using brace document
   * [Command line usage](https://github.com/restarian/brace_document/blob/master/docs/using_brace_document/command_line_usage.md)
   * [Using the module directly](https://github.com/restarian/brace_document/blob/master/docs/using_brace_document/using_the_module_directly.md)
@@ -29,8 +29,8 @@ Dot fret too much if a unexpected plugin is located by the matching system. Modu
 
 ##### Hint: the *plugins* option can be used to display a simple list of the located plugins relative to a project. It then returns early without call the API.
 
-
-
+#### Plugins names will be shortened withing the platform if the directory name starts with *brace_document_*.
+This is done out of convenience when enabling plugins. 
 
 
 

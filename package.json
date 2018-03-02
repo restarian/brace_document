@@ -8,7 +8,7 @@
 		"test": "mocha",
 		"brace_document": "node ./bin/document.js",
 		"make_docs": "npm run brace_document --silent -- --navlink -r -i docs_raw -b docs --force-title --title 'Brace document pages' --sort depth",
-		"make_docs_extra": "npm run make_docs --silent -- --specification --mocha"
+		"make_docs_extra": "npm run make_docs --silent -- --batten-document-specification --batten-document-mocha"
 	},
 	"repository": {
 		"type": "git",

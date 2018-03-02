@@ -14,8 +14,8 @@ Dot fret too much if a unexpected plugin is located by the matching system. Modu
 
 ##### Hint: the *plugins* option can be used to display a simple list of the located plugins relative to a project. It then returns early without call the API.
 
-
-
+#### Plugins names will be shortened withing the platform if the directory name starts with *brace_document_*.
+This is done out of convenience when enabling plugins. 
 
 
 

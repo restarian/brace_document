@@ -1,21 +1,20 @@
 
 ---
 ### Brace document pages
-* [Contributer code of conduct](https://github.com/restarian/brace_document/blob/master/docs/contributer_code_of_conduct.md)
-* [Guidelines for contributing](https://github.com/restarian/brace_document/blob/master/docs/guidelines_for_contributing.md)
-* [Synopsis](https://github.com/restarian/brace_document/blob/master/docs/synopsis.md)
+* [Contributer code of conduct](https://github.com/restarian/brace_document/blob/master//contributer_code_of_conduct.md)
+* [Guidelines for contributing](https://github.com/restarian/brace_document/blob/master//guidelines_for_contributing.md)
+* [Synopsis](https://github.com/restarian/brace_document/blob/master//synopsis.md)
 * Specification
-  * [License information](https://github.com/restarian/brace_document/blob/master/docs/specification/license_information.md)
-  * [Package information](https://github.com/restarian/brace_document/blob/master/docs/specification/package_information.md)
+  * [License information](https://github.com/restarian/brace_document/blob/master//specification/license_information.md)
+  * [Package information](https://github.com/restarian/brace_document/blob/master//specification/package_information.md)
   * **Unit test output**
 * The plugin system
-  * [Allocating plugins on the system](https://github.com/restarian/brace_document/blob/master/docs/the_plugin_system/allocating_plugins_on_the_system.md)
-  * Creating additional plugins
-    * [The callback and accociated data](https://github.com/restarian/brace_document/blob/master/docs/the_plugin_system/creating_additional_plugins/the_callback_and_accociated_data.md)
-    * [The module outline and structure](https://github.com/restarian/brace_document/blob/master/docs/the_plugin_system/creating_additional_plugins/the_module_outline_and_structure.md)
+  * [Allocating plugins on the system](https://github.com/restarian/brace_document/blob/master//the_plugin_system/allocating_plugins_on_the_system.md)
+  * [The callback and accociated data](https://github.com/restarian/brace_document/blob/master//the_plugin_system/the_callback_and_accociated_data.md)
+  * [The module outline and structure](https://github.com/restarian/brace_document/blob/master//the_plugin_system/the_module_outline_and_structure.md)
 * Using brace document
-  * [Command line usage](https://github.com/restarian/brace_document/blob/master/docs/using_brace_document/command_line_usage.md)
-  * [Using the module directly](https://github.com/restarian/brace_document/blob/master/docs/using_brace_document/using_the_module_directly.md)
+  * [Command line usage](https://github.com/restarian/brace_document/blob/master//using_brace_document/command_line_usage.md)
+  * [Using the module directly](https://github.com/restarian/brace_document/blob/master//using_brace_document/using_the_module_directly.md)
 ## Output of the unit testing
 
   * Using stop further progression methodology for dependencies in: acquireData.js
@@ -23,7 +22,6 @@
       * ✓ requirejs in the system as a program
       * ✓ git is available in the system as a program
     * using the testing example directory -> test/example
-      * ✓ is able to create a git repository in the example directory if their is not one already
       * creates the proper document data object using the directory: /home/nickali/Restarian/brace_document/test/example/directories
         * ✓ with directories contained in the structrure
 
@@ -63,6 +61,8 @@
         * ✓ finds the correct path data for the project
       * with the backup directory option used and verbose flag set
         * ✓ finds the correct path data for the project
+        * ✓ finds the correct path data for the project without a directory argument and no projectLocation option set
+        * ✓ finds the correct path data for the project without a directory argument and the projectLocation option set
         * ✓ complains if the backup directory is outside the repository
         * ✓ does not complain if the initial document directory is outside the repository but a backup directory is inside the project root
 
@@ -71,7 +71,6 @@
       * ✓ r_js in the system as a program
       * ✓ git is available in the system as a program
     * using the testing example directory -> test/example
-      * ✓ is able to create a git repository in the example directory if there is not one already
       * creates the proper document structure using the directory: example/directories
         * ✓ with the sort flag set to alphanumeric
         * ✓ with the sort flag set to alphanumeric and the reverse-sort flag set

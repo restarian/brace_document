@@ -1,6 +1,6 @@
 {
 	"name": "brace_document",
-	"version": "0.8.1",
+	"version": "1.0.0",
 	"description": "A platform for plugin utilization regarding document generation which has many plugins",
 	"main": "lib/brace_document.js",
 	"bin": "./bin/document.js",

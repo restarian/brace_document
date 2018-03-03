@@ -17,7 +17,10 @@
   * **Command line usage**
   * [Using the module directly](https://github.com/restarian/brace_document/blob/master/docs/using_brace_document/using_the_module_directly.md)
 
-The program is ran from the command line by invoking the script *./bin/document.js* via nodejs and passing in the desired handling options. Below are some examples of this in practice.
+The program is ran from the command line by invoking the script *./bin/document.js* via nodejs and passing in the desired handling options. 
+
+Below are two examples of invoking the Brace document command line program.
+
 ```:> node path/to/brace_document/bin/document.js [options]``` or if installed globally: ```:> brace_document [options]```
 
 The program exits with code **7** after a succesfull run through. A return code of **2** is used when the *plugins* option is used to display available plugins.

@@ -17,7 +17,7 @@
   * [Using the module directly](https://github.com/restarian/brace_document/blob/master/docs/using_brace_document/using_the_module_directly.md)
  
  
-**Version**: 0.8.0
+**Version**: 0.8.1
 
 **Description**: A platform for plugin utilization regarding document generation which has many plugins
 

@@ -30,7 +30,7 @@
 	},
 	"homepage": "https://github.com/restarian/brace_document#readme",
 	"devDependencies": {
-		"brace_document_navlink": "^0.4.0",
+		"brace_document_navlink": "^1.0.0",
 		"brace_maybe": "^0.1.3",
 		"bracket_utils": "^0.3.0",
 		"mocha": "^5.0.0",

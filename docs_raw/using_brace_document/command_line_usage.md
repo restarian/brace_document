@@ -9,7 +9,7 @@ Below are two examples of invoking the Brace document command line program.
 
 ```:> node path/to/brace_document/bin/document.js [options]``` or if installed globally: ```:> brace_document [options]```
 
-The program exits with code **7** after a succesfull run through. A return code of **2** is used when the *plugins* option is used to display available plugins.
+The program exits with code **7** after a succesfull run through. A code of **2** is returned when the *plugins* option is supllied to display the available plugins.
 
 This program requires a git repository to operate with as the project location. This is determined by asking git what its top level directory is. All paths used within the platform will then be relative to that project location directory. The shell process working directory is used as the default value when locating a git repository to establish a project location. 
 

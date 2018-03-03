@@ -3,7 +3,7 @@
 ---
 ### Document pages
 
-Note: the plugin name is determined by the directory name, **not** from the name entry in the *package.json* file.
+Note: a plugin name is determined by the directory name, **not** from the name entry in the *package.json* file.
 
 #### Plugins are called in an order 
 ##### Brace document uses a priority integer value from the *package.json* file to assemble a plugin calling order. 

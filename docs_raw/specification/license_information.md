@@ -3,8 +3,6 @@
 ---
 ### Document pages
 
----
-
 #### All works, media and writings contained within this project are licensed the same as Brace document license unless it is explicitly specified otherwise.
 
 ---

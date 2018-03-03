@@ -20,7 +20,8 @@ Below is the minimum structure needed to create a Brace document plugin
 ```javascript
 module.exports = function() {
 	this.runThrough = function(structure, data, cb) {
-		// The callback must be called when the plugin finises so that the other plugins are called.	
+		// The callback must be called when the plugin finises so that the other 
+		// plugins are called.	
 		cb()
 	}
 	return this
@@ -29,7 +30,8 @@ module.exports = function() {
 // Here is another way of doing the same thing as above but with prototypes
 var plugin = function() { }
 plugin.prototype.runThrough = function(structure, data, cb) {
-	// The callback must be called when the plugin finises so that the other plugins are called.	
+	// The callback must be called when the plugin finises so that the other 
+	// plugins are called.	
 	cb()
 }
 module.exports = plugin
@@ -38,16 +40,20 @@ module.exports = plugin
 This example plugin contains all of the data which is available to the plugins:
 ```javascript
 
-// The brace_document_instance and bracket_print_instance arguments are optional but it is recommeded to save these to the plugin constructor like below.
+// The brace_document_instance and bracket_print_instance arguments are optional 
+// but it is recommeded to save these to the plugin constructor like below.
+
 module.exports = function(document_parse_instance, bracket_print_instance) {
 	
 	// The API members in here can be used within the plugins for advanced usage.
 	this.parser = brace_document_instance
-	// Setting the options from the parser to the plugin is reccomended sense the option data collected from all of the plugins will be available in it.
+	// Setting the options from the parser to the plugin is reccomended sense the 
+	// option data collected from all of the plugins will be available in it.
 	this.option = this.parser.option
 
 	this.runThrough = function(structure, data, cb) {
-		// The callback must be called when the plugin finises so that the other plugins are called.	
+		// The callback must be called when the plugin finises so that the other 
+		// plugins are called.	
 		cb()
 	}
 	return this

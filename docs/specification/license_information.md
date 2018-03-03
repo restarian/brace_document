@@ -17,8 +17,6 @@
   * [Command line usage](https://github.com/restarian/brace_document/blob/master/docs/using_brace_document/command_line_usage.md)
   * [Using the module directly](https://github.com/restarian/brace_document/blob/master/docs/using_brace_document/using_the_module_directly.md)
 
----
-
 #### All works, media and writings contained within this project are licensed the same as Brace document license unless it is explicitly specified otherwise.
 
 ---

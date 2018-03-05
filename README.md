@@ -58,5 +58,5 @@ For example: *document_parse.createStructure* can be called again in any of the 
 
 ### Brace document eats its own dog food.
 ##### The vast possibilities of a pragmatic platform are displayed right here.
-The *package.json* scripts field contains a *make_docs* entry which processes these very documents. Simply use *npm run make_docs -- -v** after any modifications are made within the *docs_raw* directory.
+The *package.json* scripts field contains a *make_docs* entry which processes these very documents. Simply use *npm run make_docs -- -v* after any modifications are made within the *docs_raw* directory.
 

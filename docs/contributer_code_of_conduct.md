@@ -17,6 +17,8 @@
   * [Command line usage](https://github.com/restarian/brace_document/blob/master/docs/using_brace_document/command_line_usage.md)
   * [Using the module directly](https://github.com/restarian/brace_document/blob/master/docs/using_brace_document/using_the_module_directly.md)
 
+---
+
 ## The Pledge
 
 In the interest of fostering an open and welcoming environment, we as

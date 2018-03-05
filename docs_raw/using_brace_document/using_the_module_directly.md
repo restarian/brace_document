@@ -3,8 +3,10 @@
 ---
 ### Document pages 
 
-Brace document can be utilized by importing either the *lib -> brace_document.js* or *lib -> document_parse.js* modules. The *brace_document.js* script is 
-used by the CLI to set extra data for convenience and thusly requires a option object to be passed into the constructor. 
+---
+
+### Brace document fully supports scripting usage.
+It is utilized by importing either the *lib -> brace_document.js* or the *lib -> document_parse.js* modules using either require or an AMD loader. The *brace_document.js* module is used by the CLI to handle extra data for convenience and thusly requires a option object to be passed into the constructor. 
 
 Setting option data to the *brace_document.js* module is done by passing an Object literal or [Commander](https://npmjs.org/packages/commander) instance into the constructor call as the first argument. This parameter is non-optional so an empty object must at least be passed in to the constructor call. 
 
@@ -76,7 +78,7 @@ parser.option.backup = "../../docs"
 // location as long as the backup option is set to a path at or below the project location. 
 ```
 
-#### There is one difference in option data availability using the module as a script vs using it from the CLI
+### There is one difference in option data availability using the module as a script vs using it from the CLI
 The *pluginEnable* option is unique to a imported *brace_document.js* module. This option contains a contains a string of comma separated plugin module names which tell the **document_parse.runPlugin* member what plugins should be called. It is not accessible to be set via the command line but is instead automatically created from all of the plugins which were dentoed as command line parameter flags.
 However, the *pluginEnable* option can be used when using the modules programically. 
 

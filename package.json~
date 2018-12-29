@@ -42,10 +42,9 @@
 		"commander": "^2.14.1"
 	},
 	"optionalDependencies": {
-		"@restarian/batten_document_mocha": "0.1.0",
-		"@restarian/batten_document_specification": "0.1.0",
-		"brace_document_navlink": "^1.0.2",
-		"brace_document_link": "^0.1.0"
+		"@restarian/batten_document_mocha": "0.0.5",
+		"@restarian/batten_document_specification": "0.0.5",
+		"brace_document_navlink": "^1.0.2"
 	},
 	"technologies": [
 		{

@@ -1,4 +1,4 @@
-/* Copyright (c) 2019 Robert Steckroth, Bust0ut <RobertSteckroth@gmail.com>
+/* Copyright (c) 2018 Robert Steckroth [<RobertSteckroth@gmail.com>](mailto:RobertSteckroth@gmail.com)
 
 Brace document resides under the MIT license
 
@@ -101,7 +101,7 @@ describe("Using stop further progression methodology for dependencies in: "+path
 		it("the plugins option", function(done) {
 			utils.Spawn("node", ["document.js", "--plugins"], {cwd: cwd}, function(exit_code, stdout, stderr) { 
 				
-				expect(exit_code).to.equal(0)
+				expect(exit_code).to.equal(2)
 				expect(stdout).to.include("brace_document_navlink :")
 				done()
 			}, function(error) { expect(false, error).to.be.true; done() })
@@ -111,7 +111,7 @@ describe("Using stop further progression methodology for dependencies in: "+path
 		it("only the dryRun option", function(done) {
 			utils.Spawn("node", ["document.js", "-v", "--dry-run", "--no-color"], {cwd: cwd}, function(exit_code, stdout, stderr) { 
 				
-				expect(exit_code).to.equal(0)
+				expect(exit_code).to.equal(7)
 				expect(stdout).to.include("Using git repository at "+ path.join(__dirname, ".."))
 				done()
 			}, function(error) { expect(false, error).to.be.true; done() })

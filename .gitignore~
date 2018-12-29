@@ -1,5 +1,3 @@
-local/
 node_modules/
 !test/example/node_modules/
 *.sw[a-z]
-*.~

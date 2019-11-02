@@ -10,14 +10,11 @@ Only modules which are located within a *node_modules* directory that is also co
 Note: the *pluginPath* value will be appended with *node_modules* if it does not already end with one.
 
 ### Plugins are identified using the name of the directory which housed them.
-A module is potentially identified as a plugin if the directory name is a regular expression match using the *pluginRegex* option. 
+A module is potentially identified as a plugin if the directory name is a regular expression match using the *pluginRegex* option.
 Note: It is smart to use a *^* at the beginning of the regular expression to ensure that no unwanted plugins are found.
 Do not fret too much if an unexpected plugin is located by the matching system. Modules which do not conform to the plugin standards of the platform will be delicately rejected with an error message.
 
 ##### Hint: the *plugins* option can be used to display a simple list of the located plugins relative to a project. It then returns early without a call to the API.
 
-### Plugins names will be shortened withing the platform if the directory name starts with *brace_document_*.
+### Plugins names will be shortened within the platform if the directory name starts with *brace_document_*.
 This is done out of convenience when enabling plugins. For example: a located plugin using the default value in the *pluginRegex* option which has a directory name of: *brace_document_my_plugin* is enabled using the shortened name *my_plugin*. This is done so that plugins which are created by the same team as *Brace document* can be more easily identified.
-
-
-

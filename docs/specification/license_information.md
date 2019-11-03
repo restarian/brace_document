@@ -2,9 +2,7 @@
 ## Restarian Technology
 
 ----
-----
-
-#### Brace Document help pages
+### Brace Document help pages
 * [Contributor code of conduct](https://github.com/restarian/brace_document/blob/master/docs/contributor_code_of_conduct.md)
 * [Guidelines for contributing](https://github.com/restarian/brace_document/blob/master/docs/guidelines_for_contributing.md)
 * [Synopsis](https://github.com/restarian/brace_document/blob/master/docs/synopsis.md)
@@ -19,6 +17,9 @@
 * Using brace document
   * [Command line usage](https://github.com/restarian/brace_document/blob/master/docs/using_brace_document/command_line_usage.md)
   * [Using the module directly](https://github.com/restarian/brace_document/blob/master/docs/using_brace_document/using_the_module_directly.md)
+----
+
+#### Brace Document is included in the Brace Suite.
 
 All works, media and writings contained within this project are licensed the same as Brace document license unless it is explicitly specified otherwise.
 

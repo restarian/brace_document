@@ -1,6 +1,6 @@
 {
 	"name": "brace_document",
-	"version": "1.2.0",
+	"version": "1.1.0",
 	"description": "A platform for plugin utilization regarding document generation which has many plugins",
 	"main": "lib/brace_document.js",
 	"bin": "./bin/document.js",
@@ -42,10 +42,10 @@
 		"requirejs": "^2.3.5"
 	},
 	"optionalDependencies": {
-		"batten_document_specification": "https://github.com/restarian/batten_document_specification.git",
-		"batten_document_mocha": "https://github.com/restarian/batten_document_mocha.git",
 		"brace_document_navlink": "^1.1.0",
-		"brace_document_link": "^1.1.0"
+		"batten_document_specification": "^1.1.0",
+		"brace_document_link": "^1.1.0",
+		"batten_document_mocha": "https://github.com/restarian/batten_document_mocha.git"
 	},
 	"technologies": [
 		{

@@ -1,7 +1,8 @@
 # Brace Document
 ### Package Specifications
- 
+
 ----
+
 ### Brace Document help pages
 * [Contributor code of conduct](https://github.com/restarian/brace_document/blob/master/docs/contributor_code_of_conduct.md)
 * [Guidelines for contributing](https://github.com/restarian/brace_document/blob/master/docs/guidelines_for_contributing.md)
@@ -18,7 +19,7 @@
   * [Command line usage](https://github.com/restarian/brace_document/blob/master/docs/using_brace_document/command_line_usage.md)
   * [Using the module directly](https://github.com/restarian/brace_document/blob/master/docs/using_brace_document/using_the_module_directly.md)
 ----
- 
+
 **Version**: 1.1.0
 
 **Description**: A platform for plugin utilization regarding document generation which has many plugins
@@ -29,7 +30,7 @@
 
 **Development dependencies**: [brace_maybe](https://npmjs.org/package/brace_maybe) [bracket_utils](https://npmjs.org/package/bracket_utils) [chai](https://npmjs.org/package/chai) [mocha](https://npmjs.org/package/mocha) [requirejs](https://npmjs.org/package/requirejs)
 
-**Optional Dependencies**: [batten_document_specification](https://npmjs.org/package/batten_document_specification) [batten_document_mocha](https://npmjs.org/package/batten_document_mocha) [brace_document_navlink](https://npmjs.org/package/brace_document_navlink) [brace_document_link](https://npmjs.org/package/brace_document_link)
+**Optional Dependencies**: [brace_document_navlink](https://npmjs.org/package/brace_document_navlink) [batten_document_specification](https://npmjs.org/package/batten_document_specification) [brace_document_link](https://npmjs.org/package/brace_document_link) [batten_document_mocha](https://npmjs.org/package/batten_document_mocha)
 
 **Package scripts**:
 

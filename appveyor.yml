@@ -1,26 +1,25 @@
 version: 1.0.{build}
 
+image:
+   - Visual Studio 2015
+   - Ubuntu
+
 clone_depth: 1
-clone_folder: c:\projects\brace_document
 notifications:
 - provider: Email
   to:
   - robertsteckroth@gmail.com
-  subject: A Brace_document build has failed.
+  subject: A Brace Document build has failed.
   on_build_success: false
   on_build_failure: true
   on_build_status_changed: false
-
-image:
-- Ubuntu
-- Visual Studio 2015
-
 environment:
   matrix:
     - nodejs_version: 6
-    - nodejs_version: 7
-    - nodejs_version: 8
     - nodejs_version: 9
+    - nodejs_version: 10
+    - nodejs_version: 11
+    - nodejs_version: 12
 
 install:
   - npm install

@@ -5,6 +5,7 @@ image:
    - Ubuntu
 
 clone_depth: 1
+
 notifications:
 - provider: Email
   to:

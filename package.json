@@ -7,7 +7,7 @@
 	"scripts": {
 		"test": "mocha",
 		"brace_document": "node ./bin/document.js",
-		"make_docs": "npm run brace_document --silent -- --navlink --link --link-dest README.md --link-path docs/synopsis.md -r -i docs_raw -b docs --force-title --title \"Brace Document help pages\" --sort depth",
+		"make_docs": "npm run brace_document --silent -- --navlink --link --link-dest ../Readme.md --link-path synopsis.md -r -i docs_raw -b docs --force-title --title \"Brace Document help pages\" --sort depth",
 		"make_docs_extra": "npm run make_docs --silent -- --specification --mocha"
 	},
 	"repository": {
@@ -44,8 +44,7 @@
 	"optionalDependencies": {
 		"brace_document_navlink": "^1.1.0",
 		"brace_document_specification": "^1.1.0",
-		"brace_document_link": "^1.1.0",
-		"batten_document_mocha": "https://github.com/restarian/batten_document_mocha.git"
+		"brace_document_link": "^1.1.0"
 	},
 	"technologies": [
 		{

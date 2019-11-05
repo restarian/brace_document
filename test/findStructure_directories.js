@@ -1,4 +1,4 @@
-/* Copyright (c) 2018 Robert Steckroth [<RobertSteckroth@gmail.com>](mailto:RobertSteckroth@gmail.com)
+/* Copyright (c) 2020 Robert Steckroth, Bust0ut <RobertSteckroth@gmail.com>
 
 Brace document resides under the MIT license
 
@@ -83,7 +83,7 @@ describe("Using stop further progression methodology for dependencies in: "+path
 					parser.option.sort = "alphanumeric"
 					parser.option.input = path.join(__dirname, "example", "directories")
 
-					parser.findPath(cwd, function() {
+					parser.setPath(cwd, function() {
 						parser.findStructure(function(structure) {
 
 							expect(structure).to.be.an("array")
@@ -108,7 +108,7 @@ describe("Using stop further progression methodology for dependencies in: "+path
 					parser.option.reverseSort = true 
 					parser.option.input = path.join(__dirname, "example", "directories")
 
-					parser.findPath(cwd, function() {
+					parser.setPath(cwd, function() {
 						parser.findStructure(function(structure) {
 
 							expect(structure).to.be.an("array")
@@ -133,7 +133,7 @@ describe("Using stop further progression methodology for dependencies in: "+path
 					parser.option.recursive = true
 					parser.option.input = path.join(__dirname, "example", "directories")
 
-					parser.findPath(cwd, function() {
+					parser.setPath(cwd, function() {
 						parser.findStructure(function(structure) {
 
 							expect(structure).to.be.a("array")
@@ -174,7 +174,7 @@ describe("Using stop further progression methodology for dependencies in: "+path
 					parser.option.reverseSort = true
 					parser.option.input = path.join(__dirname, "example", "directories")
 
-					parser.findPath(cwd, function() {
+					parser.setPath(cwd, function() {
 						parser.findStructure(function(structure) {
 
 							expect(structure).to.be.a("array")
@@ -212,7 +212,7 @@ describe("Using stop further progression methodology for dependencies in: "+path
 					parser.option.recursive = true
 					parser.option.input = path.join(__dirname, "example", "directories")
 
-					parser.findPath(cwd, function() {
+					parser.setPath(cwd, function() {
 						parser.findStructure(function(structure) {
 
 							expect(structure).to.be.a("array")
@@ -251,7 +251,7 @@ describe("Using stop further progression methodology for dependencies in: "+path
 					parser.option.recursive = true
 					parser.option.input = path.join(__dirname, "example", "directories")
 
-					parser.findPath(cwd, function() {
+					parser.setPath(cwd, function() {
 						parser.findStructure(function(structure) {
 
 							expect(structure).to.be.a("array")
@@ -291,7 +291,7 @@ describe("Using stop further progression methodology for dependencies in: "+path
 					parser.option.recursive = true
 					parser.option.input = path.join(__dirname, "example", "directories_nested")
 
-					parser.findPath(cwd, function() {
+					parser.setPath(cwd, function() {
 						parser.findStructure(function(structure) {
 
 							expect(structure).to.be.a("array")
@@ -335,7 +335,7 @@ describe("Using stop further progression methodology for dependencies in: "+path
 					parser.option.recursive = true
 					parser.option.input = path.join(__dirname, "example", "directories_nested")
 
-					parser.findPath(cwd, function() {
+					parser.setPath(cwd, function() {
 						parser.findStructure(function(structure) {
 
 							expect(structure).to.be.a("array")

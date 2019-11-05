@@ -1,4 +1,4 @@
-/* Copyright (c) 2018 Robert Steckroth [<RobertSteckroth@gmail.com>](mailto:RobertSteckroth@gmail.com)
+/* Copyright (c) 2020 Robert Steckroth, Bust0ut <RobertSteckroth@gmail.com>
 
 Brace document resides under the MIT license
 
@@ -23,7 +23,6 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. */
-
 var expect = require("chai").expect,
 	path = require("path"),
 	fs = require("fs"),
@@ -93,7 +92,7 @@ describe("Using stop further progression methodology for dependencies in: "+path
 					var parser = document_parse()
 					parser.option.input = path.join(__dirname, "example", "no_directories")
 
-					parser.findPath(cwd, function() {
+					parser.setPath(cwd, function() {
 
 						parser.findStructure(function(structure) {
 
@@ -120,7 +119,7 @@ describe("Using stop further progression methodology for dependencies in: "+path
 					parser.option.sort = "alphanumeric"
 					parser.option.input = path.join(__dirname, "example", "no_directories")
 
-					parser.findPath(cwd, function() {
+					parser.setPath(cwd, function() {
 						parser.findStructure(function(structure) {
 
 							expect(structure).to.be.a("array")
@@ -147,7 +146,7 @@ describe("Using stop further progression methodology for dependencies in: "+path
 					parser.option.reverseSort = true
 					parser.option.input = path.join(__dirname, "example", "no_directories")
 
-					parser.findPath(cwd, function() {
+					parser.setPath(cwd, function() {
 						parser.findStructure(function(structure) {
 
 							expect(structure).to.be.a("array")

@@ -1,4 +1,4 @@
-# Brace Suite
+# Brace Document
 ## Restarian Technology
 
 ----
@@ -19,9 +19,9 @@
   * [Using the module directly](https://github.com/restarian/brace_document/blob/master/docs/using_brace_document/using_the_module_directly.md)
 ----
 
-#### Brace Document is included in the Brace Suite.
+#### Brace Document is included in the [Brace Suite](https://github.com/restarian/restarian/tree/master/brace).
 
-All works, media and writings contained within this project are licensed the same as Brace document license unless it is explicitly specified otherwise.
+All works, media and writings contained within this project carry the same license as the Brace Document license unless it is explicitly specified otherwise.
 
 #### The Brace Suite is a collection of javascript centric libraries aimed at application development.
 
@@ -31,11 +31,6 @@ ___
 
 **Author**: Robert Steckroth, *Bust0ut* [<RobertSteckroth@gmail.com>](mailto:robertsteckroth@gmail.com)
 
-**Bonuses:**
-* Open-sourced under a liberal licensed
-
-**Caveats:**
-  * Does not come with tailored support
 
 ![Brace](https://raw.githubusercontent.com/restarian/restarian/master/brace/doc/image/brace_logo_medium.png)
 

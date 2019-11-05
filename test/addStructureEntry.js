@@ -63,7 +63,7 @@ describe("Using stop further progression methodology for dependencies in: "+path
 
 	})
 
-	describe("addStructureDirectory is working appropriately", function() {
+	describe("addStructureEntry is working appropriately", function() {
 
 		afterEach(cache.dump.bind(cache))
 		var structure
@@ -95,15 +95,15 @@ describe("Using stop further progression methodology for dependencies in: "+path
 				var parser = document_parse()
 				expect(structure).to.deep.equal([ "/home/my/module/joes.md", { "there": [ { "more": [ "/aaaa/my/module/bbbb.md", "/home/my/module/aaaa.md" ], }, "/home/my/module/joes.md", ], }, "/home/my/module/cool.md", ] )
 
-				var list = parser.addStructureDirectory(structure, "./")
+				var list = parser.addStructureEntry(structure, "./")
 				expect(structure).to.deep.equal([ "/home/my/module/joes.md", { "there": [ { "more": [ "/aaaa/my/module/bbbb.md", "/home/my/module/aaaa.md" ], }, "/home/my/module/joes.md", ], }, "/home/my/module/cool.md", ] )
 				expect(list).to.deep.equal(structure)	
 
-				list = parser.addStructureDirectory(structure, ".")
+				list = parser.addStructureEntry(structure, ".")
 				expect(structure).to.deep.equal([ "/home/my/module/joes.md", { "there": [ { "more": [ "/aaaa/my/module/bbbb.md", "/home/my/module/aaaa.md" ], }, "/home/my/module/joes.md", ], }, "/home/my/module/cool.md", ] )
 				expect(list).to.deep.equal(structure)	
 
-				parser.addStructureDirectory(structure, "", function(list) {
+				parser.addStructureEntry(structure, "", function(list) {
 					expect(structure).to.deep.equal([ "/home/my/module/joes.md", { "there": [ { "more": [ "/aaaa/my/module/bbbb.md", "/home/my/module/aaaa.md" ], }, "/home/my/module/joes.md", ], }, "/home/my/module/cool.md", ] )
 					expect(list).to.deep.equal(structure)	
 					done()
@@ -111,34 +111,55 @@ describe("Using stop further progression methodology for dependencies in: "+path
 			})
 		})
 
-		it("with an existing single directory which has subdirectories", function(done) {
+		it("with an existing single directory and filename", function(done) {
 			requirejs(["./document_parse"], function(document_parse) { 
 
 				var parser = document_parse()
 				expect(structure).to.deep.equal([ "/home/my/module/joes.md", { "there": [ { "more": [ "/aaaa/my/module/bbbb.md", "/home/my/module/aaaa.md" ], }, "/home/my/module/joes.md", ], }, "/home/my/module/cool.md", ] )
 
-				var list = parser.addStructureDirectory(structure, "there")
-				expect(structure).to.deep.equal([ "/home/my/module/joes.md", { "there": [ { "more": [ "/aaaa/my/module/bbbb.md", "/home/my/module/aaaa.md" ], }, "/home/my/module/joes.md", ], }, "/home/my/module/cool.md", ] )
-				expect(list).to.deep.equal([ { "more": [ "/aaaa/my/module/bbbb.md", "/home/my/module/aaaa.md" ], }, "/home/my/module/joes.md", ] )
+				var list = parser.addStructureEntry(structure, "there/cooljoes.md")
+				expect(structure).to.deep.equal([ "/home/my/module/joes.md", { "there": [ { "more": [ "/aaaa/my/module/bbbb.md", "/home/my/module/aaaa.md" ], }, "/home/my/module/joes.md", path.join("there", "cooljoes.md") ], }, "/home/my/module/cool.md", ] )
+				expect(list).to.deep.equal(structure)
 				
-				var list = parser.addStructureDirectory(structure, "./there")
-				expect(structure).to.deep.equal([ "/home/my/module/joes.md", { "there": [ { "more": [ "/aaaa/my/module/bbbb.md", "/home/my/module/aaaa.md" ], }, "/home/my/module/joes.md", ], }, "/home/my/module/cool.md", ] )
-				expect(list).to.deep.equal([ { "more": [ "/aaaa/my/module/bbbb.md", "/home/my/module/aaaa.md" ], }, "/home/my/module/joes.md", ] )
 				done()
 			})
 		})
 
+		it("with an existing single directory using a relative path identifier", function(done) {
+			requirejs(["./document_parse"], function(document_parse) { 
 
+				var parser = document_parse()
+				list = parser.addStructureEntry(structure, "./there/cooljoes.md")
+				expect(structure).to.deep.equal([ "/home/my/module/joes.md", { "there": [ { "more": [ "/aaaa/my/module/bbbb.md", "/home/my/module/aaaa.md" ], }, "/home/my/module/joes.md", path.join("there", "cooljoes.md") ], }, "/home/my/module/cool.md", ] )
+				done()
+			})
+		})
+		it("with an existing single directory using a relative path identifier in win32 format", function(done) {
+			requirejs(["./document_parse"], function(document_parse) { 
+
+				var parser = document_parse()
+				list = parser.addStructureEntry(structure, ".\\there\\cooljoes.md")
+				expect(structure).to.deep.equal([ "/home/my/module/joes.md", { "there": [ { "more": [ "/aaaa/my/module/bbbb.md", "/home/my/module/aaaa.md" ], }, "/home/my/module/joes.md", path.join("there", "cooljoes.md") ], }, "/home/my/module/cool.md", ] )
+				done()
+			})
+		})
 		it("with an existing double directory", function(done) {
 			requirejs(["./document_parse"], function(document_parse) { 
 
 				var parser = document_parse()
-				expect(structure).to.deep.equal([ "/home/my/module/joes.md", { "there": [ { "more": [ "/aaaa/my/module/bbbb.md", "/home/my/module/aaaa.md" ], }, "/home/my/module/joes.md", ], }, "/home/my/module/cool.md", ] )
+				parser.addStructureEntry(structure, "there/more/cooljoes.md")
+				expect(structure).to.deep.equal([ "/home/my/module/joes.md", { "there": [ { "more": [ "/aaaa/my/module/bbbb.md", "/home/my/module/aaaa.md", path.join("there", "more", "cooljoes.md")  ], }, "/home/my/module/joes.md", ], }, "/home/my/module/cool.md", ] )
 
-				var list = parser.addStructureDirectory(structure, "there/more")
-				expect(structure).to.deep.equal([ "/home/my/module/joes.md", { "there": [ { "more": [ "/aaaa/my/module/bbbb.md", "/home/my/module/aaaa.md" ], }, "/home/my/module/joes.md", ], }, "/home/my/module/cool.md", ] )
+				done()
+			})
+		})
+		it("with an existing double directory in win32 format", function(done) {
+			requirejs(["./document_parse"], function(document_parse) { 
 
-				expect(list).to.deep.equal([ "/aaaa/my/module/bbbb.md", "/home/my/module/aaaa.md" ])
+				var parser = document_parse()
+				parser.addStructureEntry(structure, "there\\more\\cooljoes.md")
+				expect(structure).to.deep.equal([ "/home/my/module/joes.md", { "there": [ { "more": [ "/aaaa/my/module/bbbb.md", "/home/my/module/aaaa.md", path.join("there", "more", "cooljoes.md")  ], }, "/home/my/module/joes.md", ], }, "/home/my/module/cool.md", ] )
+
 				done()
 			})
 		})
@@ -147,11 +168,8 @@ describe("Using stop further progression methodology for dependencies in: "+path
 			requirejs(["./document_parse"], function(document_parse) { 
 
 				var parser = document_parse()
-				expect(structure).to.deep.equal([ "/home/my/module/joes.md", { "there": [ { "more": [ "/aaaa/my/module/bbbb.md", "/home/my/module/aaaa.md" ], }, "/home/my/module/joes.md", ], }, "/home/my/module/cool.md", ] )
-
-				parser.addStructureDirectory(structure, "cool/Joes")
-				expect(structure).to.deep.equal([ "/home/my/module/joes.md", { "there": [ { "more": [ "/aaaa/my/module/bbbb.md", "/home/my/module/aaaa.md" ], }, "/home/my/module/joes.md", ], }, "/home/my/module/cool.md", {"cool": [ {"Joes": []}]} ] )
-
+				parser.addStructureEntry(structure, "cool/Joes/good.md")
+				expect(structure).to.deep.equal([ "/home/my/module/joes.md", { "there": [ { "more": [ "/aaaa/my/module/bbbb.md", "/home/my/module/aaaa.md" ], }, "/home/my/module/joes.md", ], }, "/home/my/module/cool.md", {"cool": [ {"Joes": [ path.join("cool", "Joes", "good.md") ]}]} ] )
 
 				done()
 			})
@@ -161,11 +179,8 @@ describe("Using stop further progression methodology for dependencies in: "+path
 			requirejs(["./document_parse"], function(document_parse) { 
 
 				var parser = document_parse()
-				expect(structure).to.deep.equal([ "/home/my/module/joes.md", { "there": [ { "more": [ "/aaaa/my/module/bbbb.md", "/home/my/module/aaaa.md" ], }, "/home/my/module/joes.md", ], }, "/home/my/module/cool.md", ] )
-
-				parser.addStructureDirectory(structure, "cool\\Joes")
-				expect(structure).to.deep.equal([ "/home/my/module/joes.md", { "there": [ { "more": [ "/aaaa/my/module/bbbb.md", "/home/my/module/aaaa.md" ], }, "/home/my/module/joes.md", ], }, "/home/my/module/cool.md", {"cool": [ {"Joes": []}]} ] )
-
+				parser.addStructureEntry(structure, "cool\\Joes\\good.md")
+				expect(structure).to.deep.equal([ "/home/my/module/joes.md", { "there": [ { "more": [ "/aaaa/my/module/bbbb.md", "/home/my/module/aaaa.md" ], }, "/home/my/module/joes.md", ], }, "/home/my/module/cool.md", {"cool": [ {"Joes": [ path.join("cool", "Joes", "good.md") ]}]} ] )
 
 				done()
 			})
@@ -175,16 +190,46 @@ describe("Using stop further progression methodology for dependencies in: "+path
 			requirejs(["./document_parse"], function(document_parse) { 
 
 				var parser = document_parse()
-				expect(structure).to.deep.equal([ "/home/my/module/joes.md", { "there": [ { "more": [ "/aaaa/my/module/bbbb.md", "/home/my/module/aaaa.md" ], }, "/home/my/module/joes.md", ], }, "/home/my/module/cool.md", ] )
-
-				parser.addStructureDirectory(structure, "there\\more\\cool\\joes", function() {
+				parser.addStructureEntry(structure, "there\\more\\cool\\joes\\good.md", function(structure) {
 					
-					expect(structure).to.deep.equal([ "/home/my/module/joes.md", { "there": [ { "more": [ "/aaaa/my/module/bbbb.md", "/home/my/module/aaaa.md", {"cool": [ {"joes": []}]} ], }, "/home/my/module/joes.md", ], }, "/home/my/module/cool.md",  ] )
+					expect(structure).to.deep.equal([ "/home/my/module/joes.md", { "there": [ { "more": [ "/aaaa/my/module/bbbb.md", "/home/my/module/aaaa.md", {"cool": [ {"joes": [ path.join("there", "more", "cool", "joes", "good.md") ]}]} ], }, "/home/my/module/joes.md", ], }, "/home/my/module/cool.md",  ] )
 					done()
 				})
 			})
 		})
 
+		it("with a duplicate entry inside an existing subdirectory", function(done) {
+			requirejs(["./document_parse"], function(document_parse) { 
+
+				var parser = document_parse()
+				parser.addStructureEntry(structure, "there/more/cool/joes/good.md", function(structure) {
+					
+					expect(structure).to.deep.equal([ "/home/my/module/joes.md", { "there": [ { "more": [ "/aaaa/my/module/bbbb.md", "/home/my/module/aaaa.md", {"cool": [ {"joes": [ path.join("there", "more", "cool", "joes", "good.md") ]}]} ], }, "/home/my/module/joes.md", ], }, "/home/my/module/cool.md",  ] )
+
+					parser.addStructureEntry(structure, "there/more/cool/joes/good.md", function(structure) {
+						expect(structure).to.deep.equal([ "/home/my/module/joes.md", { "there": [ { "more": [ "/aaaa/my/module/bbbb.md", "/home/my/module/aaaa.md", {"cool": [ {"joes": [ path.join("there", "more", "cool", "joes", "good.md") ]}]} ], }, "/home/my/module/joes.md", ], }, "/home/my/module/cool.md",  ] )
+
+						done()
+					})
+				})
+			})
+		})
+		it("with a duplicate entry inside an existing subdirectory in win32 format", function(done) {
+			requirejs(["./document_parse"], function(document_parse) { 
+
+				var parser = document_parse()
+				parser.addStructureEntry(structure, "there\\more\\cool\\joes\\good.md", function(structure) {
+					
+					expect(structure).to.deep.equal([ "/home/my/module/joes.md", { "there": [ { "more": [ "/aaaa/my/module/bbbb.md", "/home/my/module/aaaa.md", {"cool": [ {"joes": [ path.join("there", "more", "cool", "joes", "good.md") ]}]} ], }, "/home/my/module/joes.md", ], }, "/home/my/module/cool.md",  ] )
+
+					parser.addStructureEntry(structure, "there\\more\\cool\\joes\\good.md", function(structure) {
+						expect(structure).to.deep.equal([ "/home/my/module/joes.md", { "there": [ { "more": [ "/aaaa/my/module/bbbb.md", "/home/my/module/aaaa.md", {"cool": [ {"joes": [ path.join("there", "more", "cool", "joes", "good.md") ]}]} ], }, "/home/my/module/joes.md", ], }, "/home/my/module/cool.md",  ] )
+
+						done()
+					})
+				})
+			})
+		})
 		it("with a directory which is absolute", function(done) {
 			requirejs(["./document_parse"], function(document_parse) { 
 
@@ -192,7 +237,7 @@ describe("Using stop further progression methodology for dependencies in: "+path
 				expect(structure).to.deep.equal([ "/home/my/module/joes.md", { "there": [ { "more": [ "/aaaa/my/module/bbbb.md", "/home/my/module/aaaa.md" ], }, "/home/my/module/joes.md", ], }, "/home/my/module/cool.md", ] )
 
 				var param = "/there/more/cool/joes"
-				parser.addStructureDirectory(structure, param, function() {
+				parser.addStructureEntry(structure, param, function() {
 					expect(false, "The absolute directory should have errored instead.").to.be.true
 					done()
 				}, function(error) {
@@ -203,20 +248,20 @@ describe("Using stop further progression methodology for dependencies in: "+path
 			})
 		})
 		
-		it("with a directory which is absolute", function(done) {
+		it("with a directory which is absolute for win32", function(done) {
 			requirejs(["./document_parse"], function(document_parse) { 
 
 				var parser = document_parse()
 				expect(structure).to.deep.equal([ "/home/my/module/joes.md", { "there": [ { "more": [ "/aaaa/my/module/bbbb.md", "/home/my/module/aaaa.md" ], }, "/home/my/module/joes.md", ], }, "/home/my/module/cool.md", ] )
 
 				var param = "C:\\there\\more\\cool\\joes"
-				parser.addStructureDirectory(structure, param, function() {
+				parser.addStructureEntry(structure, param, function() {
 					expect(false, "The absolute directory should have errored instead.").to.be.true
 				}, function(error) {
 					expect(error.toString()).to.include("The directory parameter " + param + " must be relative (not contain a root). Found C:\\ as the root.")
 
 					param = "\\there\\more\\cool\\joes"
-					parser.addStructureDirectory(structure, param, function() {
+					parser.addStructureEntry(structure, param, function() {
 						expect(false, "The absolute directory should have errored instead.").to.be.true
 						done()
 					}, function(error) {

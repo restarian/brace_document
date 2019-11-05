@@ -18,6 +18,8 @@
   * [Command line usage](https://github.com/restarian/brace_document/blob/master/docs/using_brace_document/command_line_usage.md)
   * [Using the module directly](https://github.com/restarian/brace_document/blob/master/docs/using_brace_document/using_the_module_directly.md)
 ----
+ 
+### ---------- Start of unit testing ----------
 
   * Using stop further progression methodology for dependencies in: acquireData.js
 
@@ -33,19 +35,25 @@
 
         * √ with directories contained in the structrure
 
-  * Using stop further progression methodology for dependencies in: addStructureDirectory.js
+  * Using stop further progression methodology for dependencies in: addStructureEntry.js
 
     * Checking for dependencies..
 
       * √ r_js in the system as a program
 
-    * addStructureDirectory is working appropriately
+    * addStructureEntry is working appropriately
 
       * √ with an empty subdirectory parameter
 
-      * √ with an existing single directory which has subdirectories
+      * √ with an existing single directory and filename
+
+      * √ with an existing single directory using a relative path identifier
+
+      * √ with an existing single directory using a relative path identifier in win32 format
 
       * √ with an existing double directory
+
+      * √ with an existing double directory in win32 format
 
       * √ with a non-existant double subdirectory
 
@@ -53,9 +61,13 @@
 
       * √ with a non-existant double subdirectory inside a existing directory in win32 format
 
-      * √ with a directory which is absolute
+      * √ with a duplicate entry inside an existing subdirectory
+
+      * √ with a duplicate entry inside an existing subdirectory in win32 format
 
       * √ with a directory which is absolute
+
+      * √ with a directory which is absolute for win32
 
   * Using stop further progression methodology for dependencies in: cli.js
 
@@ -78,36 +90,6 @@
       * √ the npm run make_docs command
 
       * √ the npm run make_docs command
-
-  * using stop further progression methodology for dependencies in: findPath.js
-
-    * checking for dependencies..
-
-      * √ r_js in the system as a program
-
-      * √ git is available in the system as a program
-
-    * using the blank testing example directory -> test\example
-
-      * √ is able to create a git repository in the example directory if there is not one already
-
-      * with no flags set to the document_parser
-
-        * √ complains if the project root directory is not inside a git repository
-
-        * √ finds the correct path data for the project
-
-      * with the backup directory option used and verbose flag set
-
-        * √ finds the correct path data for the project
-
-        * √ finds the correct path data for the project without a directory argument and no projectLocation option set
-
-        * √ finds the correct path data for the project without a directory argument and the projectLocation option set
-
-        * √ complains if the backup directory is outside the repository
-
-        * √ does not complain if the initial document directory is outside the repository but a backup directory is inside the project root
 
   * Using stop further progression methodology for dependencies in: findStructure_directories.js
 
@@ -165,9 +147,7 @@
 
       * √ brace_document_navlink is in the system as a program
 
-    * finds all of the commonjs modules which are plugins to this module with the
-
-      * √ getPlugin with only callbacks as parameters
+    * finds all of the commonjs modules which are plugins to this module with
 
       * √ passing in a path to getPlugin
 
@@ -203,6 +183,34 @@
 
       * √ runs with all empty data passed in
 
+  * using stop further progression methodology for dependencies in: setPath.js
+
+    * checking for dependencies..
+
+      * √ r_js in the system as a program
+
+      * √ git is available in the system as a program
+
+    * using the blank testing example directory -> test\example
+
+      * √ is able to create a git repository in the example directory if there is not one already
+
+      * with no flags set to the document_parser
+
+        * √ finds the correct path data for the project
+
+      * with the backup directory option used and verbose flag set
+
+        * √ finds the correct path data for the project
+
+        * √ finds the correct path data for the project without a directory argument and no projectLocation option set
+
+        * √ finds the correct path data for the project without a directory argument and the projectLocation option set
+
+        * √ complains if the backup directory is outside the repository
+
+        * √ does not complain if the initial document directory is outside the repository but a backup directory is inside the project root
+
   * Using stop further progression methodology for dependencies in: sorting.js
 
     * Checking for dependencies..
@@ -232,5 +240,7 @@
         * √ sort depth option with reverseSort
 
 
-  * 69 passing
+  * 72 passing
 
+
+### ---------- End of unit testing ----------

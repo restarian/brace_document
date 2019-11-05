@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /*  Copyright (c) 2020 Robert Steckroth <RobertSteckroth@gmail.com> -- MIT license
 
-Brace Document Link resides under the MIT license
+Brace Document resides under the MIT license
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -12,7 +12,7 @@ furnished to do so, subject to the following conditions:
 
   this file is a part of Brace Document
 
-  Brace Document Link is plugin platform which caters to automatic markdown generation.
+  Brace Document is plugin platform which caters to automatic markdown generation.
 
 The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
@@ -51,7 +51,7 @@ viewed with the -h flag.`)
 .option("-C, --no-color", up.toStyleString("Print everthing in black and white (is more efficient)."))
 .option("-i, --input <path>", up.toStyleString("The location of the docs to parse. Note: these files will be overwritten if the --backup option is not set."), process.cwd())
 .option("-r, --recursive", up.toStyleString("Descend into all sub-directories to find markdown files."))
-.option("-d, --project-location <directory>", up.toStyleString("The directory which is at or inside the repository to work with. If not supplied", 
+.option("-d, --project-location <directory>", up.toStyleString("An absolute directory which is at or inside the repository to work with. If not supplied", 
 	"this will be the current working directory of the shell process that started this program. Therefore, it is easiest to omit this parameter while",
 	"running this command from within the project which is being operated on."), process.cwd())
 .option("-p, --plugins", up.toStyleString("Print all of the available plugins to standard out and return without further action."))

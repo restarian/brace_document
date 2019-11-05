@@ -1,3 +1,4 @@
+# Brace Document
 ## How modules are defined as plugins
 
 ---
@@ -28,7 +29,7 @@ Brace Document plugins are called in a pre-determined order within three differe
 
 1. The directory structure object is created from the documentation directory structure.
   - The **first** tense plugins are called using the priority values (lower first). An empty data object is passed into these plugins sense it was not collected yet.
-2. All of the documentation text is collected and stored in the structure object. 
+2. All of the documentation text is collected and stored in the structure object.
   - The **collect** tense plugins are called with both the current structure and data objects.
 3. The newly modified documentation is written to the same (or backup), directory using the modified structure and data objects.
   - The **last** tense plugins are called with both structure and data objects.

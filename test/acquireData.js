@@ -1,4 +1,4 @@
-/* Copyright (c) 2018 Robert Steckroth [<RobertSteckroth@gmail.com>](mailto:RobertSteckroth@gmail.com)
+/* Copyright (c) 2020 Robert Steckroth, Bust0ut <RobertSteckroth@gmail.com>
 
 Brace document resides under the MIT license
 
@@ -81,10 +81,11 @@ describe("Using stop further progression methodology for dependencies in: "+path
 				requirejs(["./document_parse"], function(document_parse) { 
 
 					document_parse(function() {
+
 						this.option.recursive = true
 						this.option.input = test_path
 
-						this.findPath(cwd, () => {
+						this.setPath(cwd, () => {
 							this.findStructure((structure) => {
 								this.acquireData(structure, (data) => {
 

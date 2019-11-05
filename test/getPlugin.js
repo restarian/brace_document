@@ -1,4 +1,4 @@
-/* Copyright (c) 2018 Robert Steckroth [<RobertSteckroth@gmail.com>](mailto:RobertSteckroth@gmail.com)
+/* Copyright (c) 2020 Robert Steckroth, Bust0ut <RobertSteckroth@gmail.com>
 
 Brace document resides under the MIT license
 
@@ -50,8 +50,6 @@ describe("Using stop further progression methodology for dependencies in: "+path
 			it_will.stop = false 
 			done()
 		})
-
-
 		it("brace_document_navlink is in the system as a program", function(done) {
 			it_will.stop = true 
 			try {
@@ -67,8 +65,7 @@ describe("Using stop further progression methodology for dependencies in: "+path
 
 	})
 
-
-	describe("finds all of the commonjs modules which are plugins to this module with the", function() {
+	describe("finds all of the commonjs modules which are plugins to this module with", function() {
 
 		var cwd = path.join(__dirname, "example"), requirejs
 		beforeEach(function() {
@@ -78,20 +75,6 @@ describe("Using stop further progression methodology for dependencies in: "+path
 		})
 		afterEach(cache.dump.bind(cache))
 
-		it("getPlugin with only callbacks as parameters", function(done) {
-			requirejs(["document_parse"], function(document_parse) { 
-
-				var parser = document_parse()
-				parser.getPlugin(function(data) {
-
-					expect(data).to.be.a("array")
-					expect(data.length > 0, "There is a least one module installed in the system").to.be.true
-					done()
-
-				}, function(error) { expect(true, error).to.be.false; done() })
-			})
-		})
-
 		it("passing in a path to getPlugin", function(done) {
 			requirejs(["document_parse"], function(document_parse) { 
 
@@ -100,15 +83,15 @@ describe("Using stop further progression methodology for dependencies in: "+path
 
 				parser.getPlugin(test_path, function(data) {
 
-					expect(data).to.be.an("array")
-					expect(data.length > 1, "There bracket_document_testplugin was not found at " + test_path).to.be.true
-					expect(data[0]).to.include({name: "bracket_document_testplugin"})
+					expect(data).to.be.an("object").that.have.all.keys(["collect", "directory", "first", "last"])
+					expect(data.directory).to.be.an("array")
+					expect(data.directory, "There bracket_document_testplugin was not found at " + test_path).to.have.length(1)
+					expect(data.directory[0]).to.include({name: "bracket_document_testplugin"})
 					done()
 
 				}, function(error) { expect(true, error).to.be.false; done() })
 			})
 		})
-
 		it("passing in a path to getPlugin that ends with node_modules", function(done) {
 			requirejs(["document_parse"], function(document_parse) { 
 
@@ -117,15 +100,15 @@ describe("Using stop further progression methodology for dependencies in: "+path
 
 				parser.getPlugin(test_path, function(data) {
 
-					expect(data).to.be.an("array")
-					expect(data.length > 1, "There bracket_document_testplugin was not found at " + test_path).to.be.true
-					expect(data[0]).to.include({name: "bracket_document_testplugin"})
+					expect(data).to.be.an("object").that.have.all.keys(["collect", "directory", "first", "last"])
+					expect(data.directory).to.be.an("array")
+					expect(data.directory, "There bracket_document_testplugin was not found at " + test_path).to.have.length(1)
+					expect(data.directory[0]).to.include({name: "bracket_document_testplugin"})
 					done()
 
 				}, function(error) { expect(true, error).to.be.false; done() })
 			})
 		})
-
 		it("passing in a path to getPlugin and setting a pluginRegex", function(done) {
 			requirejs(["document_parse"], function(document_parse) { 
 
@@ -135,15 +118,15 @@ describe("Using stop further progression methodology for dependencies in: "+path
 
 				parser.getPlugin(test_path, function(data) {
 
-					expect(data).to.be.an("array")
-					expect(data.length === 1, "The test_plugin module was not found at " + test_path).to.be.true
-					expect(data[0]).to.include({name: "test_plugin"})
+					expect(data).to.be.an("object").that.have.all.keys(["collect", "directory", "first", "last"])
+					expect(data.first).to.be.an("array")
+					expect(data.first, "test_plugin was not found at " + test_path).to.have.length(1)
+					expect(data.first[0]).to.include({name: "test_plugin"})
 					done()
 
 				}, function(error) { expect(true, error).to.be.false; done() })
 			})
 		})
-
 	})
 })
 

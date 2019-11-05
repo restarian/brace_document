@@ -1,4 +1,4 @@
-/* Copyright (c) 2019 Robert Steckroth, Bust0ut <RobertSteckroth@gmail.com>
+/* Copyright (c) 2020 Robert Steckroth, Bust0ut <RobertSteckroth@gmail.com>
 
 Brace document resides under the MIT license
 
@@ -136,7 +136,7 @@ describe("Using stop further progression methodology for dependencies in: "+path
 
 		it("the npm run make_docs command", function(done) {
 			utils.Exec("npm", ["run", "make_docs", "--", "-v", "--no-color", "--dry-run"], {cwd: path.join(__dirname, "..")}, function(exit_code, stdout, stderr) { 
-				expect(stdout).to.include("SUCCESS")
+				expect(stdout).to.include("FINISHED")
 				expect(stdout).to.include("Using git repository at "+ path.join(__dirname, ".."))
 				done()
 			}, function(error) { expect(false, error).to.be.true; done() })

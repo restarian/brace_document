@@ -70,7 +70,6 @@ describe("Using stop further progression methodology for dependencies in: "+path
 			requirejs = require("requirejs")
 			requirejs.config({baseUrl: path.join(__dirname, "..", "lib"), nodeRequire: require})
 		})
-
 		afterEach(cache.dump.bind(cache))
 
 		var test_path = path.join(__dirname, "example", "directories")
@@ -89,17 +88,19 @@ describe("Using stop further progression methodology for dependencies in: "+path
 							this.findStructure((structure) => {
 								this.acquireData(structure, (data) => {
 
-									expect(data).to.be.a("object")
+									expect(data).to.be.an("object")
 									// Note: it is not possible to asynchronously test the structure output without the sort flag set to something sense it can end 
 									// up in any order. This is because the callback to any one particular fs command is based on many external factors (like drive IO).
 									expect(Object.keys(data).length).to.equal(5)
-									expect(data[path.join(test_path, "framers.md")]).to.be.a("object")
-									var all = Object.keys(data), key
-									expect(data[key = all.pop()].content).to.be.a("string")
-									expect(data[key = all.pop()].content).to.be.a("string")
-									expect(data[key = all.pop()].content).to.be.a("string")
-									expect(data[key = all.pop()].content).to.be.a("string")
-									expect(data[key = all.pop()].content).to.be.a("string")
+
+									expect(data[path.join(test_path, "framers.md")]).to.be.an("object")
+
+									var all = Object.keys(data)
+									expect(data[all.pop()].content).to.be.a("string")
+									expect(data[all.pop()].content).to.be.a("string")
+									expect(data[all.pop()].content).to.be.a("string")
+									expect(data[all.pop()].content).to.be.a("string")
+									expect(data[all.pop()].content).to.be.a("string")
 									done()
 
 								}, function(error) { expect(true, error).to.be.false; done() })

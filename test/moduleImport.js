@@ -1,4 +1,4 @@
-/* Copyright (c) 2019 Robert Steckroth, Bust0ut <RobertSteckroth@gmail.com>
+/* Copyright (c) 2020 Robert Steckroth, Bust0ut <RobertSteckroth@gmail.com>
 
 Brace document resides under the MIT license
 
@@ -63,6 +63,11 @@ describe("Using stop further progression methodology for dependencies in: "+path
 
 	})
 
+	var err_cb = function(error) { 
+		expect(false, error).to.be.true
+		done() 
+	}
+
 	describe("using the testing example directory -> " + path.join("test", "example"), function() {
 
 		var requirejs, parser
@@ -80,33 +85,30 @@ describe("Using stop further progression methodology for dependencies in: "+path
 		it("the module will load when not passed any option data to it", function(done) {
 			parser("text", (exit_code) => {
 				
-				expect(exit_code).to.equal(0)
+				expect(exit_code).to.equal(2)
 				done()
-			}, function(error) { expect("brace_document has failed", error).to.be.true; done() })
+			}, err_cb)
 		})
-
 		it("the module will laod the proper plugins when given a plugin path and plugin regex", function(done) {
 			parser({plugins: true, pluginPath: path.join(__dirname, "example"), pluginRegex: ".*testplugin$"}, (exit_code) => {
 
-				expect(exit_code).to.equal(0)
+				expect(exit_code).to.equal(9)
 				done()
-			}, function(error) { expect("brace_document has failed", error).to.be.true; done() })
+			}, err_cb)
 		})
-
 		it("the module will load when not passed any option data to it", function(done) {
 			parser(null, (exit_code) => {
 				
-				expect(exit_code).to.equal(0)
+				expect(exit_code).to.equal(2)
 				done()
-			}, function(error) { expect("brace_document has failed", error).to.be.true; done() })
+			}, err_cb)
 		})
-
 		it("the module will load when bad option data is passed to it", function(done) {
 			parser({"badOption": true}, (exit_code) => {
 				
-				expect(exit_code).to.equal(0)
+				expect(exit_code).to.equal(2)
 				done()
-			}, function(error) { expect("brace_document has failed", error).to.be.true; done() })
+			}, err_cb)
 		})
 	})
 })

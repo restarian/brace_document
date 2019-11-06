@@ -1,11 +1,5 @@
 version: 1.0.{build}
-
-image:
-   - Visual Studio 2015
-   - Ubuntu
-
 clone_depth: 1
-
 notifications:
 - provider: Email
   to:
@@ -17,19 +11,41 @@ notifications:
 environment:
   matrix:
     - nodejs_version: 6
+      appveyor_build_worker_image: Visual Studio 2015
     - nodejs_version: 9
+      appveyor_build_worker_image: Visual Studio 2015
     - nodejs_version: 10
+      appveyor_build_worker_image: Visual Studio 2015
     - nodejs_version: 11
+      appveyor_build_worker_image: Visual Studio 2015
     - nodejs_version: 12
-
+      appveyor_build_worker_image: Visual Studio 2015
+    - nodejs_version: 6
+      appveyor_build_worker_image: Ubuntu
+    - nodejs_version: 9
+      appveyor_build_worker_image: Ubuntu
+    - nodejs_version: 10
+      appveyor_build_worker_image: Ubuntu
+    - nodejs_version: 11
+      appveyor_build_worker_image: Ubuntu
+    - nodejs_version: 12
+      appveyor_build_worker_image: Ubuntu
 install:
   - npm install
-
 build: off
-
 test_script:
   - node --version && npm --version
   - npm test
-
 matrix:
   fast_finish: false
+for:
+-
+  matrix:
+    only:
+      - appveyor_build_worker_image: Ubuntu
+  clone_folder: /home/appveyor/brace_document
+-
+  matrix:
+    only:
+      - appveyor_build_worker_image: Visual Studio 2015
+  clone_folder: C:\projects\brace_document

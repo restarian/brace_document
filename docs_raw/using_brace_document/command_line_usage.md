@@ -8,11 +8,21 @@
 
 The program is ran from the command line by invoking the script *./bin/document.js* via nodejs and passing in the desired handling options.
 
-Below are two examples of invoking the Brace document command line program.
+Below are three examples invoking Brace Document via the command line:
 
-```:> node path/to/brace_document/bin/document.js [options]``` or if installed globally: ```:> brace_document [options]```
+```:> npm run brace_document [options]```
 
-The program exits with code **7** after a succesfull run through. A code of **2** is returned when the *plugins* option is supllied to display the available plugins.
+or
+
+```:> node path/to/brace_document/bin/document.js [options]```
+
+or if installed globally with a system path entry to the npm bin --global path:
+
+```:> brace_document [options]```
+
+Note: The *package.json* scripts field contains a *make_docs* entry which processes these very documents. Simply use *npm run make_docs* after any modifications are made within the *docs_raw* directory.
+
+The program exits with code **0** after a successful run through. A code value **1** is returned when a bad option is specified while using a commander instance or the document.js bin script.
 
 #### This program requires a git repository to operate with as the project location.
 This is determined by asking git what its top level directory is. All paths used within the platform will then be relative to that project location directory. The shell process working directory is used as the default value when locating a git repository to establish a project location. It can be set to another value at run-time by passing in the desired project location to the *findPath* API member or by setting the *projectLocation* option via the cli or to a imported module as option data.
@@ -22,7 +32,7 @@ This is how the help menu contains all of the usage and option data from all ava
 Note: the *--plugins* option will show all available plugins and exit the program early.
 
 ### The full list of available options can be read using the *-h* flag
-The outputed help screen will include all the option data found in all the available plugins.
+The outputted help screen will include all the option data found in all the available plugins.
 
 ### The command line script will exit early under certain circumstances
 When the *-h* option is supplied, when the *--plugins* flag is supplied or if bad option parameters are passed in via the command line. All other commands will result in full program execution.

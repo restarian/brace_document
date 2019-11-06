@@ -5,10 +5,9 @@
 ### Document pages
 ----
 
-#### Brace Document is included in the [Brace Suite](https://github.com/restarian/restarian/tree/master/brace).
-
 All works, media and writings contained within this project carry the same license as the Brace Document license unless it is explicitly specified otherwise.
 
+#### Brace Document is included in the [Brace Suite](https://github.com/restarian/restarian/tree/master/brace).
 #### The Brace Suite is a collection of javascript centric libraries aimed at application development.
 
 A project which is labeled with the Brace Suite is open-sourced under the **MIT** license. However, the license for the Brace Suite may not pertain to all content used within a Brace Suite project. Any (*and all*), content which is not explicitly licensed shall be used under the *Brace Suite* license. Please make sure to verify all content licensing before using the works within the *Brace Suite*.  

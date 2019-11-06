@@ -41,15 +41,6 @@ describe("Using stop further progression methodology for dependencies in: "+path
 
 	describe("Checking for dependencies..", function() { 
 
-		/*
-		it("r_js in the system as a program", function(done) {
-			it_will.stop = true 
-			expect((function() {try { require("requirejs"); return true; } catch(e) { return e; }})()).to.be.true 
-			it_will.stop = false 
-			done()
-		})
-		*/
-
 		it("brace_document_navlink is in the system as a program", function(done) {
 			it_will.stop = true 
 			try {
@@ -63,20 +54,6 @@ describe("Using stop further progression methodology for dependencies in: "+path
 			}
 		})
 
-		/*
-		it("git is available in the system as a program", function(done) {
-			it_will.stop = true 
-			utils.Spawn("git", [], function() {
-				expect(true).to.be.true
-				it_will.stop = false 
-				done()
-			}, function() {
-				expect(false, "git is not available as a system program").to.be.true
-				done()
-			})
-		})
-		*/
-
 	})
 
 	describe("the CLI returns the proper codes and string output when using", function() {
@@ -88,7 +65,7 @@ describe("Using stop further progression methodology for dependencies in: "+path
 		afterEach(cache.dump.bind(cache))
 
 		it("the help option", function(done) {
-			utils.Spawn("node", ["document.js", "-h"], {cwd: cwd}, function(exit_code, stdout, stderr) { 
+			utils.Exec("node", ["document.js", "-h"], {cwd: cwd}, function(exit_code, stdout, stderr) { 
 				
 				// commander exits 0 on help exit
 				expect(exit_code).to.equal(0)
@@ -99,7 +76,7 @@ describe("Using stop further progression methodology for dependencies in: "+path
 		})
 
 		it("the plugins option", function(done) {
-			utils.Spawn("node", ["document.js", "--plugins"], {cwd: cwd}, function(exit_code, stdout, stderr) { 
+			utils.Exec("node", ["document.js", "--plugins"], {cwd: cwd}, function(exit_code, stdout, stderr) { 
 				
 				expect(exit_code).to.equal(0)
 				expect(stdout).to.include("brace_document_navlink :")
@@ -109,7 +86,7 @@ describe("Using stop further progression methodology for dependencies in: "+path
 		})
 
 		it("only the dryRun option", function(done) {
-			utils.Spawn("node", ["document.js", "-v", "--dry-run", "--no-color"], {cwd: cwd}, function(exit_code, stdout, stderr) { 
+			utils.Exec("node", ["document.js", "-v", "--dry-run", "--no-color"], {cwd: cwd}, function(exit_code, stdout, stderr) { 
 				
 				expect(exit_code).to.equal(0)
 				expect(stdout).to.include("Using git repository at "+ path.join(__dirname, ".."))
@@ -119,7 +96,7 @@ describe("Using stop further progression methodology for dependencies in: "+path
 		})
 
 		it("a non-available option set", function(done) {
-			utils.Spawn("node", ["document.js", "-v", "--dry-run", "--bad-option"], {cwd: cwd}, function(exit_code, stdout, stderr) { 
+			utils.Exec("node", ["document.js", "-v", "--dry-run", "--bad-option"], {cwd: cwd}, function(exit_code, stdout, stderr) { 
 				
 				expect(exit_code).to.equal(1)
 				done()

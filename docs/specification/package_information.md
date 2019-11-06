@@ -38,7 +38,7 @@
 | ---- | ------ |
  | test | ```mocha``` |
  | brace_document | ```node ./bin/document.js``` |
- | make_docs | ```npm run brace_document --silent -- --navlink --link --link-dest ../Readme.md --link-path synopsis.md -r -i docs_raw -b docs --force-title --title "Brace Document help pages" --sort depth``` |
+ | make_docs | ```npm run brace_document --silent -- --navlink --link --link-dest ../Readme.md --link-path ../docs/synopsis.md -r -i docs_raw -b docs --force-title --title "Brace Document help pages" --sort depth``` |
  | make_docs_extra | ```npm run make_docs --silent -- --specification --mocha``` |
 
 **Keywords**: *markdown*, *documentation*, *platform*, *generation*

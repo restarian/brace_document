@@ -62,14 +62,13 @@ describe("Using stop further progression methodology for dependencies in: "+path
 
 	describe("the CLI returns the proper codes and string output when using", function() {
 
-		var cwd = path.join(__dirname, "..", "bin")
 		beforeEach(function() {
 			cache.start()
 		})
 		afterEach(cache.dump.bind(cache))
 
 		it("the help option", function(done) {
-			utils.Exec("node", ["document.js", "-h"], {cwd: cwd}, function(exit_code, stdout, stderr) { 
+			utils.Exec("node", [path.join("bin", "document.js"), "-h"], {}, function(exit_code, stdout, stderr) { 
 				
 				// commander exits 0 on help exit
 				//expect(exit_code).to.equal(0)
@@ -80,7 +79,7 @@ describe("Using stop further progression methodology for dependencies in: "+path
 
 		})
 		it("the plugins option", function(done) {
-			utils.Exec("node", ["document.js", "--plugins"], {cwd: cwd}, function(exit_code, stdout, stderr) { 
+			utils.Exec("node", [path.join("bin", "document.js"), "--plugins"], {}, function(exit_code, stdout, stderr) { 
 				
 //				expect(exit_code).to.equal(9)
 				expect(stdout).to.include("brace_document_navlink :")
@@ -89,7 +88,7 @@ describe("Using stop further progression methodology for dependencies in: "+path
 
 		})
 		it("only the dryRun option", function(done) {
-			utils.Exec("node", ["document.js", "-v", "--dry-run", "--no-color"], {cwd: cwd}, function(exit_code, stdout, stderr) { 
+			utils.Exec("node", [path.join("bin", "document.js"), "-v", "--dry-run", "--no-color"], {}, function(exit_code, stdout, stderr) { 
 				
 //				expect(exit_code).to.equal(2)
 				expect(stdout).to.include("Using git repository at "+ path.join(__dirname, ".."))
@@ -98,27 +97,27 @@ describe("Using stop further progression methodology for dependencies in: "+path
 
 		})
 		it("a non-available option set", function(done) {
-			utils.Exec("node", ["document.js", "-v", "--dry-run", "--bad-option"], {cwd: cwd}, function(exit_code, stdout, stderr) { 
+			utils.Exec("node", [path.join("bin", "document.js"), "-v", "--dry-run", "--bad-option"], {}, function(exit_code, stdout, stderr) { 
 				
 //				expect(exit_code).to.equal(1)
 				done()
 			}, err_cb)
 		})
 		it("the npm run make_docs command", function(done) {
-			utils.Exec("npm", ["run", "make_docs", "--", "--dry-run"], {cwd: path.join(__dirname, "..")}, function(exit_code, stdout, stderr) { 
+			utils.Exec("npm", ["run", "make_docs", "--", "--dry-run"], {}, function(exit_code, stdout, stderr) { 
 				
 				done()
 			}, err_cb)
 		})
 		it("the npm run make_docs command", function(done) {
-			utils.Exec("npm", ["run", "make_docs", "--", "-v", "--no-color", "--dry-run"], {cwd: path.join(__dirname, "..")}, function(exit_code, stdout, stderr) { 
+			utils.Exec("npm", ["run", "make_docs", "--", "-v", "--no-color", "--dry-run"], {}, function(exit_code, stdout, stderr) { 
 				expect(stdout).to.include("FINISHED")
 				expect(stdout).to.include("Using git repository at "+ path.join(__dirname, ".."))
 				done()
 			}, err_cb)
 		})
 		it("the npm run make_docs command", function(done) {
-			utils.Exec("npm", ["run", "make_docs", "--", "-v", "--no-color", "--plugins", "--dry-run"], {cwd: path.join(__dirname, "..")}, function(exit_code, stdout, stderr) { 
+			utils.Exec("npm", ["run", "make_docs", "--", "-v", "--no-color", "--plugins", "--dry-run"], {}, function(exit_code, stdout, stderr) { 
 				expect(stdout).to.include("brace_document_navlink :")
 				done()
 			}, err_cb)

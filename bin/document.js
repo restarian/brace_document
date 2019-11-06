@@ -73,4 +73,4 @@ viewed with the -h flag.`)
 .option("-R, --reverse-sort", up.toStyleString("Reverse the sorting operation specified via the -sort option."))
 
 // The process exit code is maintained for unit testing via the cli.
-require("../../brace_document")(program, print({level: 1, title_stamp: false, log_title: path.join("bin", "document")}), function(exit_code) { process.exit(exit_code||1) })
+require("../../brace_document")(program, print({level: 1, title_stamp: false, log_title: path.join("bin", "document")}), function(exit_code) { process.exit(exit_code||0) })

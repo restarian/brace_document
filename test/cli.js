@@ -27,7 +27,8 @@ SOFTWARE. */
 var expect = require("chai").expect,
 	path = require("path"),
 	utils = require("bracket_utils"),
-	maybe = require("brace_maybe")
+	maybe = require("brace_maybe"),
+	version = require("brace_document/package.json").version 
 
 module.paths.unshift(path.join(__dirname, "..", ".."))
 var cache = utils.cacheManager(require)
@@ -73,7 +74,7 @@ describe("Using stop further progression methodology for dependencies in: "+path
 				
 				// commander exits 0 on help exit
 				//expect(exit_code).to.equal(0)
-				expect(stdout).to.include("-- Brace Document "+ require("brace_document/package.json").version + "  --------------")
+				expect(stdout).to.include("-- Brace Document " + version + "  --------------")
 				done()
 			}, err_cb)
 

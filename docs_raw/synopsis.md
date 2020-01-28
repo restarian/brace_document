@@ -32,7 +32,7 @@
 * Requires nodejs version 6 or greater
 
 ### What it is
-##### Brace document serves as a platform to generate/modify document pages without using special syntax.
+##### Brace Document serves as a platform to generate/modify document pages without using special syntax.
 It does this by creating a structure object which is representative of the document pages hierarchy. It also creates a data object which contains the individual document page content and meta data. These objects (*structure* and *data*), are then passed to available plugins to be modified before returning back to be used with writing out the new document pages.
 
 ### Idempotent

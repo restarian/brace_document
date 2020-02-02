@@ -22,7 +22,7 @@ ___
 
 ---
 
-Copyright 2020 Robert Steckroth, Bustout <RobertSteckroth@gmail.com>
+Copyright (c) 2020 Robert Steckroth [<RobertSteckroth@gmail.com>](mailto:RobertSteckroth@gmail.com)
 
 The MIT license
 

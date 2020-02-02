@@ -7,8 +7,7 @@
 	"scripts": {
 		"test": "mocha",
 		"brace_document": "node ./bin/document.js",
-		"make_docs": "npm run brace_document --silent -- --navlink --link --link-dest ../Readme.md --link-path ../docs/synopsis.md -r -i docs_raw -b docs --force-title --title \"Brace Document help pages\" --sort depth",
-		"make_docs_extra": "npm run make_docs --silent -- --specification --mocha"
+		"make_docs": "npm run brace_document --silent -- --navlink --link --link-dest ../Readme.md --link-path ../docs/synopsis.md -r -i docs_raw -b docs --force-title --title \"Brace Document help pages\" --sort depth --specification --mocha"
 	},
 	"repository": {
 		"type": "git",
@@ -31,17 +30,22 @@
 	"homepage": "https://github.com/restarian/brace_document#readme",
 	"dependencies": {
 		"amdefine": "^1.0.1",
-		"bracket_print": "^0.10.0",
+		"bracket_print": "^0.10.4",
 		"commander": "^2.14.1"
 	},
 	"devDependencies": {
+		"brace_document_navlink": "^1.1.9",
 		"brace_maybe": "^0.1.3",
 		"bracket_utils": "^0.3.1",
-		"chai": "^4.1.2",
-		"mocha": "^5.0.0",
+		"chai": "^4.2.0",
+		"mocha": "^7.0.0",
 		"requirejs": "^2.3.5"
 	},
-	"optionalDependencies": {},
+	"optionalDependencies": {
+		"brace_document_link": "^1.1.9",
+		"brace_document_mocha": "^1.1.0",
+		"brace_document_specification": "^1.2.2"
+	},
 	"technologies": [
 		{
 			"name": "VIM",

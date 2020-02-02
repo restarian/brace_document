@@ -38,6 +38,8 @@ var it_will = global
 
 describe("Using stop further progression methodology for dependencies in: "+path.basename(__filename), function() { 
 
+	this.timeout(9000)
+
 	var it = maybe(it_will)	
 	it_will.stop = !!process.env.DRY_RUN  
 	it_will.quiet = !!process.env.QUIET

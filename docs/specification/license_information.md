@@ -1,5 +1,5 @@
 # Brace Document
-## Restarian Technology
+## License information by Restarian Technology
 
 ----
 ### Brace Document help pages
@@ -17,11 +17,12 @@
 * Using brace document
   * [Command line usage](https://github.com/restarian/brace_document/blob/master/docs/using_brace_document/command_line_usage.md)
   * [Using the module directly](https://github.com/restarian/brace_document/blob/master/docs/using_brace_document/using_the_module_directly.md)
+
 ----
 
-#### Brace Document is included in the [Brace Suite](https://github.com/restarian/restarian/tree/master/brace).
+#### Brace Document is included in the Brace Suite.
 
-All works, media and writings contained within this project carry the same license as the Brace Document license unless it is explicitly specified otherwise.
+All works, media and writings contained within this project are licensed the same as Brace Document license unless it is explicitly specified otherwise.
 
 #### The Brace Suite is a collection of javascript centric libraries aimed at application development.
 
@@ -31,12 +32,11 @@ ___
 
 **Author**: Robert Steckroth, *Bust0ut* [<RobertSteckroth@gmail.com>](mailto:robertsteckroth@gmail.com)
 
-
 ![Brace](https://raw.githubusercontent.com/restarian/restarian/master/brace/doc/image/brace_logo_medium.png)
 
 ---
 
-Copyright 2020 Robert Steckroth, Bustout <RobertSteckroth@gmail.com>
+Copyright (c) 2020 Robert Steckroth [<RobertSteckroth@gmail.com>](mailto:RobertSteckroth@gmail.com)
 
 The MIT license
 

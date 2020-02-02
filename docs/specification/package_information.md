@@ -20,7 +20,7 @@
   * [Using the module directly](https://github.com/restarian/brace_document/blob/master/docs/using_brace_document/using_the_module_directly.md)
 ----
 
-**Version**: 1.1.4
+**Version**: 1.1.9
 
 **Description**: A platform for plugin utilization regarding document generation which has many plugins
 
@@ -28,9 +28,9 @@
 
 **Dependencies**: [amdefine](https://npmjs.org/package/amdefine) [bracket_print](https://npmjs.org/package/bracket_print) [commander](https://npmjs.org/package/commander)
 
-**Development dependencies**: [brace_maybe](https://npmjs.org/package/brace_maybe) [bracket_utils](https://npmjs.org/package/bracket_utils) [chai](https://npmjs.org/package/chai) [mocha](https://npmjs.org/package/mocha) [requirejs](https://npmjs.org/package/requirejs)
+**Development dependencies**: [brace_document_navlink](https://npmjs.org/package/brace_document_navlink) [brace_maybe](https://npmjs.org/package/brace_maybe) [bracket_utils](https://npmjs.org/package/bracket_utils) [chai](https://npmjs.org/package/chai) [mocha](https://npmjs.org/package/mocha) [requirejs](https://npmjs.org/package/requirejs)
 
-**Optional Dependencies**: [brace_document_navlink](https://npmjs.org/package/brace_document_navlink) [brace_document_specification](https://npmjs.org/package/brace_document_specification) [brace_document_link](https://npmjs.org/package/brace_document_link)
+**Optional Dependencies**: [brace_document_link](https://npmjs.org/package/brace_document_link) [brace_document_mocha](https://npmjs.org/package/brace_document_mocha) [brace_document_specification](https://npmjs.org/package/brace_document_specification)
 
 **Package scripts**:
 
@@ -38,8 +38,7 @@
 | ---- | ------ |
  | test | ```mocha``` |
  | brace_document | ```node ./bin/document.js``` |
- | make_docs | ```npm run brace_document --silent -- --navlink --link --link-dest ../Readme.md --link-path ../docs/synopsis.md -r -i docs_raw -b docs --force-title --title "Brace Document help pages" --sort depth``` |
- | make_docs_extra | ```npm run make_docs --silent -- --specification --mocha``` |
+ | make_docs | ```npm run brace_document --silent -- --navlink --link --link-dest ../Readme.md --link-path ../docs/synopsis.md -r -i docs_raw -b docs --force-title --title "Brace Document help pages" --sort depth --specification --mocha``` |
 
 **Keywords**: *markdown*, *documentation*, *platform*, *generation*
 
